@@ -11,7 +11,7 @@ public class BotController : MonoBehaviour
 
     public float health { get; set; }
     public float maxHealth = 100f;
-    public UnityAction onDeath;
+    public UnityAction onDeath, onAttack;
 
     public float damage = 10f;
     public float attackCooldown = 1f;
@@ -68,7 +68,9 @@ public class BotController : MonoBehaviour
 
     public void Attack()
     {
-        if (attackTimer < attackCooldown) return;
+        if (attackTimer < attackCooldown || attackBox.enemies.Count == 0) return;
+
+        onAttack?.Invoke();
 
         attackTimer = 0f;
 

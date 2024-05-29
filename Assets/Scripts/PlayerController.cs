@@ -5,6 +5,10 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     BotController controller;
+    [SerializeField] new CameraController camera;
+
+    [Header("Attack")]
+    [Tooltip("X = duration \nY = magnitude \nZ = Frequency")] [SerializeField] Vector3 attackShake;
 
     public float health { get { return controller.health; } }
     public float maxHealth { get { return controller.maxHealth; } }    
@@ -14,6 +18,11 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<BotController>();
     }
 
+    void Start()
+    {
+        controller.onAttack += () => camera.Shake(attackShake.x, attackShake.y, attackShake.z);
+    }
+
     void Update()
     {
         controller.Move(Input.GetAxis("Vertical"));
@@ -21,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            controller.Attack();
+            controller.Attack();  
         }
 
         //controller.ApplyGravity();

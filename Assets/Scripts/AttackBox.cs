@@ -9,7 +9,7 @@ public class AttackBox : MonoBehaviour
     { 
         if (other.transform.parent != transform.parent)
         {
-            Debug.Log("Enter " + other.name);
+            //Debug.Log("Enter " + other.name);
 
             enemies.Add(other.GetComponent<BotController>());
 
@@ -26,7 +26,7 @@ public class AttackBox : MonoBehaviour
     {
         if (other.transform.parent != transform.parent)
         {
-            Debug.Log("Exit " + other.name);
+            //Debug.Log("Exit " + other.name);
 
             enemies.Remove(other.GetComponent<BotController>());
 
