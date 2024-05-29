@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour
             controller.Attack();  
         }
 
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            controller.Parry();
+        }
+
         //controller.ApplyGravity();
         //controller.ApplyMovement();   
     } 

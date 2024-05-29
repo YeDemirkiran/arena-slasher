@@ -16,13 +16,18 @@ public class BotController : MonoBehaviour
     public Weapons weaponsList;
     public Weapon currentWeapon { get; private set; }
     [SerializeField] AudioSource audioSource;
-    float attackTimer = 0f;
 
     Vector3 horizontalVelocity, verticalVelocity;
 
     AttackBox attackBox;
 
     bool moveCalledThisFrame = false;
+
+    bool stunned, isParrying;
+
+    [SerializeField] float stunTime = 2f;
+    [SerializeField] RotatingObject stunIcon;
+    float attackTimer, parryTimer, stunTimer;
 
     void Awake()
     {
@@ -42,6 +47,34 @@ public class BotController : MonoBehaviour
         ApplyMovement();
 
         attackTimer += Time.deltaTime;
+
+        if (isParrying)
+        {
+            if (parryTimer < currentWeapon.parryCooldown)
+            {
+                parryTimer += Time.deltaTime;
+            }
+            else
+            {
+                isParrying = false;
+                parryTimer = 0f;
+            }
+        }
+
+        if (stunned)
+        {
+            if (stunTimer < stunTime)
+            {
+                stunTimer += Time.deltaTime;
+            }
+            else
+            {
+                stunned = false;
+                stunIcon.gameObject.SetActive(false);
+                stunTimer = 0f;
+            }
+        }
+        
 
         if (health <= 0)
         {
@@ -76,7 +109,7 @@ public class BotController : MonoBehaviour
 
     public void Attack()
     {
-        if (attackTimer < currentWeapon.cooldown || attackBox.enemies.Count == 0) return;
+        if (stunned || attackTimer < currentWeapon.attackCooldown || attackBox.enemies.Count == 0) return;
 
         for (int i = attackBox.enemies.Count - 1; i >= 0; i--)
         {
@@ -91,12 +124,30 @@ public class BotController : MonoBehaviour
                 else continue;
             }
 
-            enemy.health -= currentWeapon.damagePerHit;
+            if (enemy.isParrying)
+            {
+                stunned = true;
+                stunIcon.gameObject.SetActive(true);
+                return;
+            }
+            else
+            {
+                enemy.health -= currentWeapon.damagePerHit;
+            }
         }
 
         attackTimer = 0f;
         onAttack?.Invoke();
         audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
+    }
+
+    public void Parry()
+    {
+        if (!isParrying)
+        {
+            isParrying = true;
+            parryTimer = 0f;
+        }
     }
 
     public void OnDeath()

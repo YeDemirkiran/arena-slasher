@@ -6,7 +6,8 @@ public class Weapon
 {
     public string name;
     public float damagePerHit;
-    public float cooldown;
+    public float attackCooldown;
+    public float parryCooldown;
     public GameObject mesh;
     public AudioClip[] attackSoundClips;
 }
