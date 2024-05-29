@@ -13,8 +13,9 @@ public class BotController : MonoBehaviour
     public float maxHealth = 100f;
     public UnityAction onDeath, onAttack;
 
-    public float damage = 10f;
-    public float attackCooldown = 1f;
+    public Weapons weaponsList;
+    public Weapon currentWeapon { get; private set; }
+    [SerializeField] AudioSource audioSource;
     float attackTimer = 0f;
 
     Vector3 horizontalVelocity, verticalVelocity;
@@ -30,6 +31,7 @@ public class BotController : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        currentWeapon = weaponsList.weapons[0];
     }
 
     void Update()
@@ -68,11 +70,7 @@ public class BotController : MonoBehaviour
 
     public void Attack()
     {
-        if (attackTimer < attackCooldown || attackBox.enemies.Count == 0) return;
-
-        onAttack?.Invoke();
-
-        attackTimer = 0f;
+        if (attackTimer < currentWeapon.cooldown || attackBox.enemies.Count == 0) return;
 
         for (int i = attackBox.enemies.Count - 1; i >= 0; i--)
         {
@@ -82,11 +80,17 @@ public class BotController : MonoBehaviour
             {
                 //Debug.Log("Enemy is already dead, removing from list");
                 attackBox.enemies.Remove(attackBox.enemies[i]);
-                continue;
+
+                if (attackBox.enemies.Count == 0) return;
+                else continue;
             }
 
-            enemy.health -= damage;
+            enemy.health -= currentWeapon.damagePerHit;
         }
+
+        attackTimer = 0f;
+        onAttack?.Invoke();
+        audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
     }
 
     public void OnDeath()
