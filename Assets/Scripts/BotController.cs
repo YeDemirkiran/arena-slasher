@@ -107,9 +107,9 @@ public class BotController : MonoBehaviour
         controller.Move(horizontalVelocity + verticalVelocity);
     }
 
-    public void Attack()
+    public bool Attack()
     {
-        if (stunned || attackTimer < currentWeapon.attackCooldown || attackBox.enemies.Count == 0) return;
+        if (stunned || attackTimer < currentWeapon.attackCooldown || attackBox.enemies.Count == 0) return false;
 
         for (int i = attackBox.enemies.Count - 1; i >= 0; i--)
         {
@@ -120,7 +120,7 @@ public class BotController : MonoBehaviour
                 //Debug.Log("Enemy is already dead, removing from list");
                 attackBox.enemies.Remove(attackBox.enemies[i]);
 
-                if (attackBox.enemies.Count == 0) return;
+                if (attackBox.enemies.Count == 0) return false;
                 else continue;
             }
 
@@ -128,7 +128,7 @@ public class BotController : MonoBehaviour
             {
                 stunned = true;
                 stunIcon.gameObject.SetActive(true);
-                return;
+                return false;
             }
             else
             {
@@ -139,6 +139,7 @@ public class BotController : MonoBehaviour
         attackTimer = 0f;
         onAttack?.Invoke();
         audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
+        return true;
     }
 
     public void Parry()
