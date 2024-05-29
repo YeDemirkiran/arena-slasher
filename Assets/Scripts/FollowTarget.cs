@@ -8,6 +8,7 @@ public class FollowTarget : MonoBehaviour
 
     void LateUpdate()
     {
+        //transform.position = target.position + (target.forward * offset.z) + (target.right * offset.x) + (target.up * offset.y);
         transform.position = target.position + offset;
     }
 }
