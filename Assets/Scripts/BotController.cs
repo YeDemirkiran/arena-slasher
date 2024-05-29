@@ -5,8 +5,8 @@ public class BotController : MonoBehaviour
 {
     CharacterController controller;
 
-    public float runningSpeed;
-    public float rotationSpeed;
+    public float runningSpeed = 10f;
+    public float rotationSpeed = 250f;
     public float gravity = -9.81f;
 
     public float health { get; set; }
@@ -21,6 +21,8 @@ public class BotController : MonoBehaviour
     Vector3 horizontalVelocity, verticalVelocity;
 
     AttackBox attackBox;
+
+    bool moveCalledThisFrame = false;
 
     void Awake()
     {
@@ -45,11 +47,15 @@ public class BotController : MonoBehaviour
         {
             OnDeath();
         }
+
+        if (!moveCalledThisFrame) { horizontalVelocity = Vector3.zero; }
+        moveCalledThisFrame = false;
     }
 
     public void Move(float input)
     {
         horizontalVelocity = transform.forward * input * runningSpeed * Time.deltaTime;
+        moveCalledThisFrame = true;
     }
 
     public void Rotate(float inputX)

@@ -7,7 +7,7 @@ public class AttackBox : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     { 
-        if (other.transform.parent != transform.parent)
+        if (other.transform.root != transform.root)
         {
             //Debug.Log("Enter " + other.name);
 
@@ -24,7 +24,7 @@ public class AttackBox : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.transform.parent != transform.parent)
+        if (other.transform.root != transform.root)
         {
             //Debug.Log("Exit " + other.name);
 

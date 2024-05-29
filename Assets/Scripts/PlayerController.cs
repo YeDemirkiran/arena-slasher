@@ -4,6 +4,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(BotController))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance { get; private set; }
+
     BotController controller;
     [SerializeField] new CameraController camera;
 
@@ -15,6 +17,14 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        Instance = this;
+
         controller = GetComponent<BotController>();
     }
 
