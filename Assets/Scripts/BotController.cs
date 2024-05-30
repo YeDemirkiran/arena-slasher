@@ -5,6 +5,8 @@ public class BotController : MonoBehaviour
 {
     CharacterController controller;
 
+    [SerializeField] Animator animator;
+
     public float runningSpeed = 10f;
     public float rotationSpeed = 250f;
     public float gravity = -9.81f;
@@ -81,7 +83,7 @@ public class BotController : MonoBehaviour
             OnDeath();
         }
 
-        if (!moveCalledThisFrame) { horizontalVelocity = Vector3.zero; }
+        if (!moveCalledThisFrame) { horizontalVelocity = Vector3.zero; animator.SetBool("Running", false); }
         moveCalledThisFrame = false;
     }
 
@@ -89,6 +91,7 @@ public class BotController : MonoBehaviour
     {
         horizontalVelocity = transform.forward * input * runningSpeed * Time.deltaTime;
         moveCalledThisFrame = true;
+        animator.SetBool("Running", input > 0.1f);
     }
 
     public void Rotate(float inputX)
