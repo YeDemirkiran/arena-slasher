@@ -18,14 +18,17 @@ public class BotController : MonoBehaviour
     public Weapons weaponsList;
     public Weapon currentWeapon { get; private set; }
     [SerializeField] AudioSource audioSource;
+    public float parryCooldown, parryCooldownTimer;
 
     Vector3 horizontalVelocity, verticalVelocity;
 
     AttackBox attackBox;
 
     bool moveCalledThisFrame = false;
+    bool stunned;
 
-    bool stunned, isParrying;
+    bool _parrying;
+    bool isParrying { get { return _parrying; } set { _parrying = value; animator.SetBool("Parrying", value); } }
 
     [SerializeField] float stunTime = 2f;
     [SerializeField] RotatingObject stunIcon;
@@ -41,6 +44,7 @@ public class BotController : MonoBehaviour
     {
         health = maxHealth;
         currentWeapon = weaponsList.weapons[0];
+
     }
 
     void Update()
@@ -52,15 +56,20 @@ public class BotController : MonoBehaviour
 
         if (isParrying)
         {
-            if (parryTimer < currentWeapon.parryCooldown)
+            if (parryTimer < currentWeapon.parryDuration)
             {
                 parryTimer += Time.deltaTime;
             }
             else
             {
                 isParrying = false;
-                parryTimer = 0f;
+                //parryTimer = 0f;
+                //parryCooldownTimer = 0f;
             }
+        }
+        else
+        {
+            parryCooldownTimer += Time.deltaTime;
         }
 
         if (stunned)
@@ -89,9 +98,18 @@ public class BotController : MonoBehaviour
 
     public void Move(float input)
     {
-        horizontalVelocity = transform.forward * input * runningSpeed * Time.deltaTime;
+        if (!isParrying)
+        {
+            horizontalVelocity = transform.forward * input * runningSpeed * Time.deltaTime;
+            animator.SetBool("Running", input > 0.1f);
+        }
+        else
+        {
+            horizontalVelocity = Vector3.zero;
+            animator.SetBool("Running", false);
+        }
+
         moveCalledThisFrame = true;
-        animator.SetBool("Running", input > 0.1f);
     }
 
     public void Rotate(float inputX)
@@ -147,10 +165,10 @@ public class BotController : MonoBehaviour
 
     public void Parry()
     {
-        if (!isParrying)
+        if (parryCooldownTimer >= parryCooldown && !isParrying)
         {
             isParrying = true;
-            parryTimer = 0f;
+            parryTimer = parryCooldownTimer = 0f; 
         }
     }
 

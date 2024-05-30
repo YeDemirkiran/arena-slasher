@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class ParryBar : MonoBehaviour
 {
     [SerializeField] BotController controller;
     [SerializeField] Image bar;
 
     void Update()
     {
-        bar.fillAmount = controller.health / controller.maxHealth;
+        bar.fillAmount = Mathf.Clamp01(controller.parryCooldownTimer / controller.parryCooldown);
     }
 }

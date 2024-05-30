@@ -16,7 +16,7 @@ MonoBehaviour:
   - name: Katana
     damagePerHit: 10
     attackCooldown: 0.1
-    parryCooldown: 0.5
+    parryDuration: 1
     mesh: {fileID: 0}
     attackSoundClips:
     - {fileID: 8300000, guid: c291da0a204beb44db26c090caed3c0b, type: 3}

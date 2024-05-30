@@ -38,12 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else
         {
-            float parry = Random.Range(0f, 100f);
-
-            if (parry <= parryChance)
-            {
-                controller.Parry();
-            }
+            
 
             if (actionTimer == -1f)
             {
@@ -58,30 +53,40 @@ public class EnemyBehaviour : MonoBehaviour
             }
             else
             {
-                if (controller.Attack())
+                // Parry
+                float parry = Random.Range(0f, 100f);
+
+                if (parry <= parryChance)
                 {
-                    if (currentHit < maxCombo)
+                    controller.Parry();
+                }
+                else
+                {
+                    if (controller.Attack())
                     {
-                        currentHit++;
-
-                        float comboProgressChance = Random.Range(0f, 100f);
-                        float eval = (comboChanceDecrease.Evaluate((float)(currentHit - 1) / (float)maxCombo)) * 100f;
-
-                        Debug.Log(eval);
-                        Debug.Log(currentHit);
-
-                        if (comboProgressChance < eval)
+                        if (currentHit < maxCombo)
                         {
-                            comboAllowed = true;
-                        }
-                        else
-                        {
-                            actionTimer = 0f;
-                            comboAllowed = false;
-                            currentHit = 0;
+                            currentHit++;
+
+                            float comboProgressChance = Random.Range(0f, 100f);
+                            float eval = (comboChanceDecrease.Evaluate((float)(currentHit - 1) / (float)maxCombo)) * 100f;
+
+                            Debug.Log(eval);
+                            Debug.Log(currentHit);
+
+                            if (comboProgressChance < eval)
+                            {
+                                comboAllowed = true;
+                            }
+                            else
+                            {
+                                actionTimer = 0f;
+                                comboAllowed = false;
+                                currentHit = 0;
+                            }
                         }
                     }
-                }        
+                }           
             }    
         }
     }
