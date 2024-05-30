@@ -25,7 +25,10 @@ public class BotController : MonoBehaviour
     AttackBox attackBox;
 
     bool moveCalledThisFrame = false;
-    bool stunned;
+
+    bool _stunned;
+    bool stunned { get { return _stunned; } set { _stunned = value; animator.SetBool("Stunned", value); } }
+
 
     bool _parrying;
     bool isParrying { get { return _parrying; } set { _parrying = value; animator.SetBool("Parrying", value); } }
