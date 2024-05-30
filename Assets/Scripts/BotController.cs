@@ -157,6 +157,7 @@ public class BotController : MonoBehaviour
             }
         }
 
+        animator.SetTrigger("Slash");
         attackTimer = 0f;
         onAttack?.Invoke();
         audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);

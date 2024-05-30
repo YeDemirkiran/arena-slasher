@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 166219026}
   runningSpeed: 10
-  rotationSpeed: 250
+  rotationSpeed: 500
   gravity: -9.81
   maxHealth: 100
   weaponsList: {fileID: 11400000, guid: 9648aefe5ef044748917aaf580bcee35, type: 2}
