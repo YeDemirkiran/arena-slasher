@@ -101,7 +101,7 @@ public class BotController : MonoBehaviour
 
     public void Move(float input)
     {
-        if (!isParrying)
+        if (!isParrying && !stunned)
         {
             horizontalVelocity = transform.forward * input * runningSpeed * Time.deltaTime;
             animator.SetBool("Running", input > 0.1f);
@@ -117,6 +117,8 @@ public class BotController : MonoBehaviour
 
     public void Rotate(float inputX)
     {
+        if (stunned) return;
+
         transform.eulerAngles += Vector3.up * inputX * rotationSpeed * Time.deltaTime;
     }
 
@@ -133,7 +135,13 @@ public class BotController : MonoBehaviour
 
     public bool Attack()
     {
-        if (stunned || attackTimer < currentWeapon.attackCooldown || attackBox.enemies.Count == 0) return false;
+        if (stunned || attackTimer < currentWeapon.attackCooldown) return false;
+
+        animator.SetTrigger("Slash");
+        attackTimer = 0f;
+        audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
+
+        if (attackBox.enemies.Count == 0) return false;
 
         for (int i = attackBox.enemies.Count - 1; i >= 0; i--)
         {
@@ -159,11 +167,9 @@ public class BotController : MonoBehaviour
                 enemy.health -= currentWeapon.damagePerHit;
             }
         }
-
-        animator.SetTrigger("Slash");
-        attackTimer = 0f;
+        
         onAttack?.Invoke();
-        audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
+        
         return true;
     }
 
