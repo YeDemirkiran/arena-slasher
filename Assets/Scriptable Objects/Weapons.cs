@@ -4,6 +4,7 @@ using UnityEngine;
 [Serializable]
 public class Weapon
 {
+    public int ID;
     public string name;
     public float damagePerHit;
     public float attackCooldown;

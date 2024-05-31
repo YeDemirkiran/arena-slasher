@@ -50,5 +50,10 @@ public class PlayerController : MonoBehaviour
 
         //controller.ApplyGravity();
         //controller.ApplyMovement();   
-    } 
+    }
+
+    public void ResetPlayer()
+    {
+        controller.ResetBot();
+    }
 }

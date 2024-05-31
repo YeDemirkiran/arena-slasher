@@ -18,7 +18,8 @@ public class BotController : MonoBehaviour
     public Weapons weaponsList;
     public Weapon currentWeapon { get; private set; }
     [SerializeField] AudioSource audioSource;
-    public float parryCooldown, parryCooldownTimer;
+    public float parryCooldown;
+    float parryCooldownTimer;
 
     Vector3 horizontalVelocity, verticalVelocity;
 
@@ -27,7 +28,7 @@ public class BotController : MonoBehaviour
     bool moveCalledThisFrame = false;
 
     bool _stunned;
-    bool stunned { get { return _stunned; } set { _stunned = value; animator.SetBool("Stunned", value); } }
+    bool stunned { get { return _stunned; } set { _stunned = value; stunIcon.gameObject.SetActive(value); animator.SetBool("Stunned", value); } }
 
 
     bool _parrying;
@@ -47,7 +48,6 @@ public class BotController : MonoBehaviour
     {
         health = maxHealth;
         currentWeapon = weaponsList.weapons[0];
-
     }
 
     void Update()
@@ -162,7 +162,6 @@ public class BotController : MonoBehaviour
             if (enemy.isParrying)
             {
                 stunned = true;
-                stunIcon.gameObject.SetActive(true);
                 return false;
             }
             else
@@ -191,5 +190,14 @@ public class BotController : MonoBehaviour
         onDeath?.Invoke();
 
         Destroy(gameObject);
+    }
+
+    public void ResetBot()
+    {
+        health = maxHealth;
+        isParrying = stunned = moveCalledThisFrame = false;
+        parryCooldownTimer = parryCooldown;
+        parryTimer = attackTimer = stunTimer = 0f;
+        horizontalVelocity = verticalVelocity = Vector3.zero;
     }
 }
