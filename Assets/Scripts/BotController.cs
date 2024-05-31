@@ -139,6 +139,7 @@ public class BotController : MonoBehaviour
     {
         if (stunned || attackTimer < currentWeapon.attackCooldown) return false;
 
+        isParrying = false;
         animator.SetTrigger("Slash");
         attackTimer = 0f;
         audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
@@ -171,7 +172,8 @@ public class BotController : MonoBehaviour
         }
         
         onAttack?.Invoke();
-        
+        audioSource.PlayOneShot(currentWeapon.hitSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
+
         return true;
     }
 

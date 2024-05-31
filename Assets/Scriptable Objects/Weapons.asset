@@ -19,6 +19,12 @@ MonoBehaviour:
     parryDuration: 1
     mesh: {fileID: 0}
     attackSoundClips:
+    - {fileID: 8300000, guid: 9a26a3f9699efdc46a183f869c727fdf, type: 3}
+    - {fileID: 8300000, guid: bc239572c53879749a5ad1f0e5e3640a, type: 3}
+    - {fileID: 8300000, guid: 260dc4683e1f0bc4ba43a183a9063eaf, type: 3}
+    - {fileID: 8300000, guid: df4515586dbc5aa4cba1dd522e0885ce, type: 3}
+    - {fileID: 8300000, guid: 9b42d58354ef89040aeed07c95e2c326, type: 3}
+    hitSoundClips:
     - {fileID: 8300000, guid: c291da0a204beb44db26c090caed3c0b, type: 3}
     - {fileID: 8300000, guid: 51edd9b2b84b8754ea1de2d7705e6348, type: 3}
     - {fileID: 8300000, guid: ff7af60d12df34f409a691e48c87cc06, type: 3}

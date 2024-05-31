@@ -10,6 +10,7 @@ public class Weapon
     public float parryDuration;
     public GameObject mesh;
     public AudioClip[] attackSoundClips;
+    public AudioClip[] hitSoundClips;
 }
 
 [CreateAssetMenu(fileName = "Weapons", menuName = "Scriptable Objects/Weapons")]
