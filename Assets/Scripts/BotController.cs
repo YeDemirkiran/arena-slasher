@@ -101,7 +101,7 @@ public class BotController : MonoBehaviour
 
     public void Move(float input)
     {
-        if (!isParrying && !stunned)
+        if (!isParrying && !stunned && verticalVelocity.y >= -0.1f) // Since vertical velocity is negative
         {
             horizontalVelocity = transform.forward * input * runningSpeed * Time.deltaTime;
             animator.SetBool("Running", input > 0.1f);
@@ -126,6 +126,8 @@ public class BotController : MonoBehaviour
     {
         if (controller.isGrounded) verticalVelocity.y = 0f;
         else verticalVelocity.y += gravity * Time.deltaTime * Time.deltaTime;
+
+        animator.SetBool("Falling", verticalVelocity.y < -0.05f);
     }
 
     public void ApplyMovement()
