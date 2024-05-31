@@ -14,16 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - id: 0
-    style:
-      baseModel: {fileID: 919132149155446097, guid: 35b375b42768f7844ab4d7a9345e97f0,
-        type: 3}
-      headGearPosition: {fileID: 0}
-      torsoGearPosition: {fileID: 0}
-      pantsGearPosition: {fileID: 0}
-      feetGearPosition: {fileID: 0}
-      weaponPosition: {fileID: 0}
+    prefab: {fileID: 8875070994121796977, guid: f506bf793bad1324f9d594eaa1ab40ef,
+      type: 3}
     weaponID: 0
-    headGear: {fileID: 0}
-    torsoGear: {fileID: 0}
+    headGear: {fileID: 3903423835090756995, guid: eeec6ecca54c15c418f2d0dba7508197,
+      type: 3}
+    torsoGear: {fileID: 7949877963963584137, guid: c24e9c6784e34024aa6f26b88b0a066d,
+      type: 3}
     pantsGear: {fileID: 0}
     feetGear: {fileID: 0}

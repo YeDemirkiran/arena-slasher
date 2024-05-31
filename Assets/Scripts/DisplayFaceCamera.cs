@@ -3,13 +3,13 @@ using UnityEngine.UIElements;
 
 public class DisplayFaceCamera : MonoBehaviour
 {
-    Canvas canvas;
+    //Canvas canvas;
     Transform cam;
 
     void Start()
     {
-        canvas = GetComponent<Canvas>();
-        cam = canvas.worldCamera.transform;
+        //canvas = GetComponent<Canvas>();
+        cam = Camera.main.transform;
     }
 
     

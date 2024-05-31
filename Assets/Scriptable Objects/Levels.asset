@@ -17,6 +17,6 @@ MonoBehaviour:
     difficultyID: 1
     spawnPoint: {x: 0, y: 0, z: 0}
     spawnArea: {x: 32, y: 32}
-    spawnPerSecond: 0.1
+    spawnTime: 2
     enemyPerSpawn: 2
     enemyIDs: 00000000

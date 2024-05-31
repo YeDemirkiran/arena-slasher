@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class BotController : MonoBehaviour
 {
     CharacterController controller;
+    BotOutfit outfit;
 
     [SerializeField] Animator animator;
 
@@ -16,10 +17,10 @@ public class BotController : MonoBehaviour
     public UnityAction onDeath, onAttack;
 
     public Weapons weaponsList;
-    public Weapon currentWeapon { get; private set; }
+    public Weapon currentWeapon { get; set; }
     [SerializeField] AudioSource audioSource;
     public float parryCooldown;
-    float parryCooldownTimer;
+    [HideInInspector] public float parryCooldownTimer;
 
     Vector3 horizontalVelocity, verticalVelocity;
 
@@ -41,6 +42,7 @@ public class BotController : MonoBehaviour
     void Awake()
     {
         controller = GetComponent<CharacterController>();
+        outfit = GetComponent<BotOutfit>();
         attackBox = GetComponentInChildren<AttackBox>();
     }
 
@@ -97,6 +99,11 @@ public class BotController : MonoBehaviour
 
         if (!moveCalledThisFrame) { horizontalVelocity = Vector3.zero; animator.SetBool("Running", false); }
         moveCalledThisFrame = false;
+
+        Debug.Log("outfit null: " + outfit == null);
+        Debug.Log("animator null: " + animator == null);
+
+        outfit?.UpdateOutfit(animator);
     }
 
     public void Move(float input)

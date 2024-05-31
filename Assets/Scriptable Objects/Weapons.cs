@@ -4,12 +4,12 @@ using UnityEngine;
 [Serializable]
 public class Weapon
 {
-    public int ID;
+    public int id;
     public string name;
     public float damagePerHit;
     public float attackCooldown;
     public float parryDuration;
-    public GameObject mesh;
+    public GameObject prefab;
     public AudioClip[] attackSoundClips;
     public AudioClip[] hitSoundClips;
 }
