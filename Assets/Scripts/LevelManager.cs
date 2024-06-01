@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour
 
             for (int i = 0; i < Mathf.Clamp(currentLevel.enemyPerSpawn, 0, availableEnemy); i++)
             {
-                Vector3 spawnPoint = currentLevel.spawnPoint + new Vector3(Random.Range(-spawnArea.x, spawnArea.x), 10f, Random.Range(-spawnArea.y, spawnArea.y));
+                Vector3 spawnPoint = currentLevel.spawnPoint + new Vector3(Random.Range(-spawnArea.x / 2f, spawnArea.x / 2f), 10f, Random.Range(-spawnArea.y / 2f, spawnArea.y / 2f));
                 SpawnEnemy(spawnPoint);
             }
         }
@@ -115,6 +115,8 @@ public class LevelManager : MonoBehaviour
         {
             levelTimer = 0f;
         }
+
+        GenerateArena();
     }
 
     void FlushLevel()
@@ -129,6 +131,70 @@ public class LevelManager : MonoBehaviour
         spawnTimer = 0f;
 
         //Destroy(PlayerController.Instance.gameObject);  
+    }
+
+    void GenerateArena()
+    {
+        Vector2 area = currentLevel.arenaArea;
+
+        Transform parent = new GameObject("Arena").transform;
+        parent.position = currentLevel.spawnPoint;
+
+        GameObject ground = Instantiate(currentLevel.ground, parent);
+
+        GameObject topWall = Instantiate(currentLevel.wall, parent);
+        GameObject rightWall = Instantiate(currentLevel.wall, parent);
+        GameObject leftWall = Instantiate(currentLevel.wall, parent);
+        GameObject bottomWall = Instantiate(currentLevel.wall, parent);
+
+        GameObject leftTopColumn = Instantiate(currentLevel.column, parent);
+        GameObject rightTopColumn = Instantiate(currentLevel.column, parent);
+        GameObject leftBottomColumn = Instantiate(currentLevel.column, parent);
+        GameObject rightBottomColumn = Instantiate(currentLevel.column, parent);
+
+        ground.transform.localPosition = Vector3.zero;
+
+        leftTopColumn.transform.localPosition = Vector3.zero + new Vector3(-area.x, 0f, area.y) / 2f;
+        rightTopColumn.transform.localPosition = Vector3.zero + new Vector3(area.x, 0f, area.y) / 2f;
+        leftBottomColumn.transform.localPosition = Vector3.zero + new Vector3(-area.x, 0f, -area.y) / 2f;
+        rightBottomColumn.transform.localPosition = Vector3.zero + new Vector3(area.x, 0f, -area.y) / 2f;
+
+        leftTopColumn.transform.localEulerAngles = new Vector3(0f, 90f, 0f);
+        rightTopColumn.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+        leftBottomColumn.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+        rightBottomColumn.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
+
+        topWall.transform.localPosition = Vector3.zero + new Vector3(0f, 0f, area.y) / 2f;
+        rightWall.transform.localPosition = Vector3.zero + new Vector3(area.x, 0f, 0f) / 2f;
+        leftWall.transform.localPosition = Vector3.zero + new Vector3(-area.x, 0f, 0f) / 2f;
+        bottomWall.transform.localPosition = Vector3.zero + new Vector3(0f, 0f, -area.y) / 2f;
+
+        topWall.transform.localScale = new Vector3(area.x, 0f, area.y) / 10f;
+        rightWall.transform.localScale = new Vector3(area.x, 0f, area.y) / 10f;
+        leftWall.transform.localScale = new Vector3(area.x, 0f, area.y) / 10f;
+        bottomWall.transform.localScale = new Vector3(area.x, 0f, area.y) / 10f;
+
+        rightWall.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
+        leftWall.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
+
+        ground.GetComponent<Renderer>().material = currentLevel.groundMaterial;
+
+        leftTopColumn.GetComponent<Renderer>().material
+            = rightTopColumn.GetComponent<Renderer>().material
+            = leftBottomColumn.GetComponent<Renderer>().material
+            = rightBottomColumn.GetComponent<Renderer>().material
+            = currentLevel.columnMaterial;
+
+        topWall.GetComponent<Renderer>().material
+            = rightWall.GetComponent<Renderer>().material
+            = leftWall.GetComponent<Renderer>().material
+            = bottomWall.GetComponent<Renderer>().material
+            = currentLevel.wallMaterial;
+
+        //Vector3 groundScale = ground.transform.localScale;
+        //groundScale.x = area.x;
+        //groundScale.z = area.y;
+        //ground.transform.
     }
 
     public void EnemyDeathReport(EnemyBehaviour enemy)
