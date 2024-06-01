@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - id: 0
-    difficultyID: 1
+    type: 0
+    difficultyID: 3
     spawnPoint: {x: 0, y: 0, z: 0}
     spawnArea: {x: 32, y: 32}
     spawnTime: 2

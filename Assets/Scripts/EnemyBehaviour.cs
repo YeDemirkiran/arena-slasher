@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class EnemyBehaviour : MonoBehaviour
     int currentHit = 0;
     bool comboAllowed = false;
 
+    public LevelManager level { get; set; }
+
     void Awake()
     {
         controller = GetComponent<BotController>();
@@ -24,6 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         player = PlayerController.Instance;
+        controller.onDeath += () => level?.EnemyDeathReport(this);
     }
 
     void Update()

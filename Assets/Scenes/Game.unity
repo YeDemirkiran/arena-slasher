@@ -5136,47 +5136,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 136189206717612459, guid: f506bf793bad1324f9d594eaa1ab40ef,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 136189206717612459, guid: f506bf793bad1324f9d594eaa1ab40ef,
-        type: 3}
-      propertyPath: positionOffset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 136189206717612459, guid: f506bf793bad1324f9d594eaa1ab40ef,
-        type: 3}
-      propertyPath: positionOffset.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 136189206717612459, guid: f506bf793bad1324f9d594eaa1ab40ef,
-        type: 3}
-      propertyPath: automaticPositionOffset
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1616590798392458312, guid: f506bf793bad1324f9d594eaa1ab40ef,
-        type: 3}
-      propertyPath: automaticPositionOffset
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1852864130195248881, guid: f506bf793bad1324f9d594eaa1ab40ef,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2746464457878868642, guid: f506bf793bad1324f9d594eaa1ab40ef,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5038195403852587118, guid: f506bf793bad1324f9d594eaa1ab40ef,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 330585545}
-    - target: {fileID: 5908083697661503319, guid: f506bf793bad1324f9d594eaa1ab40ef,
         type: 3}
       propertyPath: m_Camera
       value: 
@@ -5231,28 +5191,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8532237517194404495, guid: f506bf793bad1324f9d594eaa1ab40ef,
+    - target: {fileID: 6972626337075990088, guid: f506bf793bad1324f9d594eaa1ab40ef,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: bones.Array.size
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8765828979542719520, guid: f506bf793bad1324f9d594eaa1ab40ef,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 4.125
       objectReference: {fileID: 0}
     - target: {fileID: 8875070994121796977, guid: f506bf793bad1324f9d594eaa1ab40ef,
         type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8875070994121796977, guid: f506bf793bad1324f9d594eaa1ab40ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4320577572653826935, guid: f506bf793bad1324f9d594eaa1ab40ef, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

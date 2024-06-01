@@ -39,6 +39,7 @@ public class BotController : MonoBehaviour
     [SerializeField] RotatingObject stunIcon;
     float attackTimer, parryTimer, stunTimer;
 
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -100,8 +101,8 @@ public class BotController : MonoBehaviour
         if (!moveCalledThisFrame) { horizontalVelocity = Vector3.zero; animator.SetBool("Running", false); }
         moveCalledThisFrame = false;
 
-        Debug.Log("outfit null: " + outfit == null);
-        Debug.Log("animator null: " + animator == null);
+        //Debug.Log("outfit null: " + outfit == null);
+        //Debug.Log("animator null: " + animator == null);
 
         //outfit?.UpdateOutfit(animator);
     }
@@ -195,7 +196,6 @@ public class BotController : MonoBehaviour
     public void OnDeath()
     {
         onDeath?.Invoke();
-
         Destroy(gameObject);
     }
 
