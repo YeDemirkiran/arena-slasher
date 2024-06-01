@@ -7,71 +7,69 @@ public class BotOutfit : MonoBehaviour
 {
     BotController controller;
 
-    public Transform headGearRoot;
-    public Transform torsoGearRoot;
-    public Transform pantsGearRoot;
-    public Transform feetGearRoot;
-    public Transform weaponRoot;
+    [SerializeField] Bone[] bones;
 
-    Animator headGear, torsoGear, pantsGear, feetGear;
-    Animator weapon;
+    Outfit headGear, torsoGear, pantsGear, feetGear;
+    Outfit weapon;
 
     void Awake()
     {
         controller = GetComponent<BotController>();
     }
 
-    // Must call every frame to update the outfits
-    // I will work on a better system later
-    public void UpdateOutfit(Animator baseAnimator)
-    {
-        Debug.Log(torsoGear == null);
-
-        for (int i = 0; i < baseAnimator.parameters.Length; i++)
-        {
-            Debug.Log("param " + i + " " + baseAnimator.parameters[i]);
-            torsoGear.parameters[i] = baseAnimator.parameters[i];
-        }
-    }
-
     public void SetHeadGear(GameObject gear)
     {
-        if (headGear != null) Destroy(headGear);
+        if (headGear != null) Destroy(headGear.gameObject);
 
-        headGear = SetGear(gear, headGearRoot).GetComponent<Animator>();
+        headGear = SetGear(gear, transform);
+        headGear.SetPairs(bones);
     }
 
     public void SetTorsoGear(GameObject gear)
     {
         if (torsoGear != null) Destroy(torsoGear);
-        headGear = SetGear(gear, torsoGearRoot).GetComponent<Animator>();
+        torsoGear = SetGear(gear, transform);
+        torsoGear.SetPairs(bones);
     }
 
     public void SetPantsGear(GameObject gear)
     {
         if (pantsGear != null) Destroy(pantsGear);
-        pantsGear = SetGear(gear, pantsGearRoot).GetComponent<Animator>();
+        pantsGear = SetGear(gear, transform);
+        pantsGear.SetPairs(bones);
     }
 
     public void SetFeetGear(GameObject gear)
     {
         if (feetGear != null) Destroy(feetGear);
-        feetGear = SetGear(gear, feetGearRoot).GetComponent<Animator>();
+        feetGear = SetGear(gear, transform);
+        feetGear.SetPairs(bones);
     }
 
     public void SetWeapon(Weapon weapon)
     {
         if (this.weapon != null) Destroy(this.weapon);
-        this.weapon = SetGear(weapon.prefab, weaponRoot).GetComponent<Animator>();
+        this.weapon = SetGear(weapon.prefab, transform);
         controller.currentWeapon = weapon;
     }
 
-    GameObject SetGear(GameObject gearPrefab, Transform parent)
+    //GameObject SetGear(GameObject gearPrefab, Transform parent)
+    //{
+    //    if (gearPrefab != null)
+    //    {
+    //        GameObject gear = Instantiate(gearPrefab, parent, false);
+    //        return gear;
+    //    }
+
+    //    return null;
+    //}
+
+    Outfit SetGear(GameObject gearPrefab, Transform parent)
     {
         if (gearPrefab != null)
         {
             GameObject gear = Instantiate(gearPrefab, parent, false);
-            return gear;
+            return gear.GetComponent<Outfit>();
         }
 
         return null;

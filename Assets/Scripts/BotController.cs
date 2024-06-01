@@ -103,7 +103,7 @@ public class BotController : MonoBehaviour
         Debug.Log("outfit null: " + outfit == null);
         Debug.Log("animator null: " + animator == null);
 
-        outfit?.UpdateOutfit(animator);
+        //outfit?.UpdateOutfit(animator);
     }
 
     public void Move(float input)

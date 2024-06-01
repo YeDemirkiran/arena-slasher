@@ -54,13 +54,13 @@ public class LevelManager : MonoBehaviour
         EnemyBehaviour enemyBehaviour = enemyObj.GetComponent<EnemyBehaviour>();
         BotOutfit outfit = enemyObj.GetComponent<BotOutfit>();
 
-        outfit.SetHeadGear(enemy.headGear);
+        //outfit.SetHeadGear(enemy.headGear);
         outfit.SetTorsoGear(enemy.torsoGear);
-        outfit.SetPantsGear(enemy.pantsGear);
-        outfit.SetFeetGear(enemy.feetGear);
+        //outfit.SetPantsGear(enemy.pantsGear);
+        //outfit.SetFeetGear(enemy.feetGear);
 
-        Weapon weapon = weapons.weapons.First(x => x.id == enemy.weaponID);
-        outfit.SetWeapon(weapon);
+        //Weapon weapon = weapons.weapons.First(x => x.id == enemy.weaponID);
+        //outfit.SetWeapon(weapon);
         currentEnemies.Add(enemyBehaviour);
     }
 

@@ -1891,7 +1891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 4.1101375}
+  m_AnchoredPosition: {x: 0, y: 4.125}
   m_SizeDelta: {x: 1920.7614, y: 1079.572}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5038195403852587118
@@ -2004,7 +2004,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8875070994121796977}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000037252897}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -9.38, y: 14.74, z: 10.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2125,11 +2125,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc56ad8272101645a219a1b7b90982b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headGearRoot: {fileID: 3219140374311833811}
-  torsoGearRoot: {fileID: 635710428925309316}
-  pantsGearRoot: {fileID: 0}
-  feetGearRoot: {fileID: 0}
-  weaponRoot: {fileID: 0}
+  bones:
+  - type: 0
+    transform: {fileID: 7924356153829657293}
+  - type: 1
+    transform: {fileID: 5396794607071873897}
+  - type: 2
+    transform: {fileID: 2338805314247136366}
+  - type: 3
+    transform: {fileID: 7229004950846845235}
+  - type: 4
+    transform: {fileID: 3145666131606722368}
+  - type: 5
+    transform: {fileID: 410675301143103310}
+  - type: 6
+    transform: {fileID: 7554913480111498174}
+  - type: 7
+    transform: {fileID: 240231904630988215}
+  - type: 8
+    transform: {fileID: 1159229602990358081}
+  - type: 9
+    transform: {fileID: 8084744872716431476}
+  - type: 10
+    transform: {fileID: 7731802570827838247}
+  - type: 11
+    transform: {fileID: 1729857100012589946}
+  - type: 12
+    transform: {fileID: 8050116361462606071}
+  - type: 13
+    transform: {fileID: 1142369182181369753}
+  - type: 14
+    transform: {fileID: 3171329816905386308}
+  - type: 15
+    transform: {fileID: 4611333959761997124}
+  - type: 16
+    transform: {fileID: 1117765831708321927}
+  - type: 17
+    transform: {fileID: 681270940240999720}
+  - type: 18
+    transform: {fileID: 1921405399164090565}
+  - type: 19
+    transform: {fileID: 5660172986601087131}
+  - type: 20
+    transform: {fileID: 4049648161390660888}
 --- !u!82 &8981909436537350096
 AudioSource:
   m_ObjectHideFlags: 0
