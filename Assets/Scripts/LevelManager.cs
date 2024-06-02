@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance;
+
     [SerializeField] GameObject playerPrefab;
 
     [SerializeField] Levels levels;
@@ -21,6 +23,12 @@ public class LevelManager : MonoBehaviour
 
     public float levelTimer { get; private set; }
 
+    private void Awake()
+    {
+        if (Instance != null) Destroy(this);
+        Instance = this;
+    }
+
     void Start()
     {
         GenerateLevel(0, 3);
@@ -31,23 +39,23 @@ public class LevelManager : MonoBehaviour
         if (spawnTimer < currentLevel.spawnTime)
         {
             spawnTimer += Time.deltaTime;
-            Debug.Log("1");
+            //Debug.Log("1");
 
         }
         else
         {
             spawnTimer = 0f;
 
-            Debug.Log("!2");
+            //Debug.Log("!2");
 
             Vector2 spawnArea = currentLevel.spawnArea;
             int availableEnemy = currentDifficulty.maxEnemies - currentEnemies.Count;
 
-            Debug.Log(currentDifficulty.maxEnemies);
+            //Debug.Log(currentDifficulty.maxEnemies);
 
             for (int i = 0; i < Mathf.Clamp(currentLevel.enemyPerSpawn, 0, availableEnemy); i++)
             {
-                Vector3 spawnPoint = currentLevel.spawnPoint + new Vector3(Random.Range(-spawnArea.x / 2f, spawnArea.x / 2f), 10f, Random.Range(-spawnArea.y / 2f, spawnArea.y / 2f));
+                Vector3 spawnPoint = currentLevel.spawnPoint + new Vector3(Random.Range(-spawnArea.x / 2f, spawnArea.x / 2f), 0f, Random.Range(-spawnArea.y / 2f, spawnArea.y / 2f));
                 SpawnEnemy(spawnPoint);
             }
         }
@@ -109,7 +117,7 @@ public class LevelManager : MonoBehaviour
 
         if (currentLevel.type == Level.LevelType.Timed)
         {
-            levelTimer = currentDifficulty.duration;
+            levelTimer = currentLevel.duration;
         }
         else
         {
@@ -138,7 +146,7 @@ public class LevelManager : MonoBehaviour
         Vector2 area = currentLevel.arenaArea;
 
         Transform parent = new GameObject("Arena").transform;
-        parent.position = currentLevel.spawnPoint;
+        parent.position = currentLevel.center;
 
         GameObject ground = Instantiate(currentLevel.ground, parent);
 

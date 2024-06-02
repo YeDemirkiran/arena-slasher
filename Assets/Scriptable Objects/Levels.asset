@@ -16,7 +16,7 @@ MonoBehaviour:
   - id: 0
     type: 0
     difficultyID: 3
-    spawnPoint: {x: 0, y: 0, z: 0}
+    center: {x: 0, y: 0, z: 0}
     arenaArea: {x: 128, y: 128}
     ground: {fileID: 4260383356816931615, guid: 8e37b282056a05d40bbd0f8b31c84819,
       type: 3}
@@ -26,7 +26,9 @@ MonoBehaviour:
     groundMaterial: {fileID: 2100000, guid: 5961106871064724e8436916ad67e371, type: 2}
     columnMaterial: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     wallMaterial: {fileID: 2100000, guid: 72b56e4bf0f41914e8089b561c7da9f3, type: 2}
+    spawnPoint: {x: 0, y: 25, z: 0}
     spawnArea: {x: 32, y: 32}
     spawnTime: 2
     enemyPerSpawn: 2
     enemyIDs: 00000000
+    duration: 90

@@ -6,7 +6,6 @@ public class Difficulty
     public int id;
     public string name;
     [TextArea] public string description;
-    public float duration;
     public int maxEnemies;
 }
 
