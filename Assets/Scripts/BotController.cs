@@ -41,7 +41,7 @@ public class BotController : MonoBehaviour
     [SerializeField] GameObject bloodParticles;
     float attackTimer, parryTimer, stunTimer;
 
-    [SerializeField] AudioClip[] warriorScreams;
+    [SerializeField] AudioClip[] warriorScreams, attackGrunts;
 
     void Awake()
     {
@@ -199,6 +199,7 @@ public class BotController : MonoBehaviour
         
         onAttack?.Invoke();
         audioSource.PlayOneShot(currentWeapon.hitSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
+        audioSource.PlayOneShot(attackGrunts[Random.Range(0, attackGrunts.Length)]);
 
         return true;
     }
