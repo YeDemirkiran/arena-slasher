@@ -1,15 +1,18 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public enum GameState { Running, Paused }
+    public enum GameState { Running, Paused, MainMenu }
 
     GameState _state;
     public GameState state { get { return _state; } private set { _state = value; EvaluateGameState(); } }
+
+    public UnityAction onResume, onPause, onGameBegin, onMainMenu;
 
     void Awake()
     {
@@ -22,7 +25,22 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        state = GameState.Paused;
+        state = GameState.MainMenu;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (state == GameState.Paused)
+            {
+                ContinueGame();
+            }
+            else if (state == GameState.Running)
+            {
+                PauseGame();
+            }
+        }
     }
 
     public void SetMouse(bool on)
@@ -37,9 +55,28 @@ public class GameManager : MonoBehaviour
         StartCoroutine(CreateSessionIE(levelId, difficultyId));
     }
 
-    IEnumerator CreateSessionIE(int levelId, int difficultyId)
+    public void PauseGame()
+    {
+        state = GameState.Paused;
+        onPause?.Invoke();
+    }
+
+    public void ContinueGame()
     {
         state = GameState.Running;
+        onResume?.Invoke();
+    }
+
+    public void GoToMainMenu()
+    {
+        state = GameState.MainMenu;
+        SceneManager.LoadScene("Menu");
+        onMainMenu?.Invoke();
+        DestroyImmediate(gameObject);
+    }
+
+    IEnumerator CreateSessionIE(int levelId, int difficultyId)
+    {
         SceneManager.LoadScene("Game");
 
         while (LevelManager.Instance == null)
@@ -47,6 +84,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
+        state = GameState.Running;
         LevelManager.Instance.GenerateLevel(levelId, difficultyId);
     }
 
@@ -54,10 +92,12 @@ public class GameManager : MonoBehaviour
     {
         if (state == GameState.Running)
         {
+            Time.timeScale = 1f;
             SetMouse(false);
         }
-        else if (state == GameState.Paused)
+        else if (state == GameState.Paused || state == GameState.MainMenu)
         {
+            Time.timeScale = 0f;
             SetMouse(true);
         }
     }
