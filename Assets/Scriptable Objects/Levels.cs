@@ -1,11 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Level
 {
     public int id;
+    public string name, description;
+    public Sprite thumbnail;
+    public Status status;
+
     public LevelType type = LevelType.Timed;
+    public float duration;
     public int difficultyID;
+
     public Vector3 center;
     public Vector2 arenaArea;
 
@@ -17,12 +24,14 @@ public class Level
     public float spawnTime;
     public int enemyPerSpawn;
     public int[] enemyIDs;
+
     public enum LevelType { Timed, Survival }
-    public float duration;
+    public enum Status { None, Locked, Unlocked }
 }
 
 [CreateAssetMenu(fileName = "Levels", menuName = "Scriptable Objects/Levels")]
 public class Levels : ScriptableObject
 {
+    public static Levels instance;
     public Level[] levels;
 }

@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - id: 0
+    name: Sandlands
+    description: A gladiator arena filled with bloody sand!
+    thumbnail: {fileID: 21300000, guid: 4cecbb0079f69a045b79313a04e849e6, type: 3}
+    status: 2
     type: 0
+    duration: 90
     difficultyID: 3
     center: {x: 0, y: 0, z: 0}
     arenaArea: {x: 128, y: 128}
@@ -31,4 +36,49 @@ MonoBehaviour:
     spawnTime: 2
     enemyPerSpawn: 2
     enemyIDs: 00000000
+  - id: 1
+    name: Thundersnow
+    description: A savage group of warriors' hideout at the snowy mountains
+    thumbnail: {fileID: 21300000, guid: 34e895a989f067e4cb2c89098e2e8cd2, type: 3}
+    status: 1
+    type: 0
     duration: 90
+    difficultyID: 3
+    center: {x: 0, y: 0, z: 0}
+    arenaArea: {x: 128, y: 128}
+    ground: {fileID: 4260383356816931615, guid: 8e37b282056a05d40bbd0f8b31c84819,
+      type: 3}
+    column: {fileID: 4858100155726873148, guid: 2b2900ff1c3c46d4aaab25a61da99cf3,
+      type: 3}
+    wall: {fileID: 4045356650877161983, guid: 4176d9894d5c35444b7c8a852c0d4ed6, type: 3}
+    groundMaterial: {fileID: 2100000, guid: 5961106871064724e8436916ad67e371, type: 2}
+    columnMaterial: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    wallMaterial: {fileID: 2100000, guid: 72b56e4bf0f41914e8089b561c7da9f3, type: 2}
+    spawnPoint: {x: 0, y: 25, z: 0}
+    spawnArea: {x: 32, y: 32}
+    spawnTime: 2
+    enemyPerSpawn: 2
+    enemyIDs: 00000000
+  - id: 2
+    name: Green Zone
+    description: A rain forest filled with cannibalistic maniacs
+    thumbnail: {fileID: 21300000, guid: b74f6dcd591f81e4297f2d947f69220b, type: 3}
+    status: 1
+    type: 0
+    duration: 90
+    difficultyID: 3
+    center: {x: 0, y: 0, z: 0}
+    arenaArea: {x: 128, y: 128}
+    ground: {fileID: 4260383356816931615, guid: 8e37b282056a05d40bbd0f8b31c84819,
+      type: 3}
+    column: {fileID: 4858100155726873148, guid: 2b2900ff1c3c46d4aaab25a61da99cf3,
+      type: 3}
+    wall: {fileID: 4045356650877161983, guid: 4176d9894d5c35444b7c8a852c0d4ed6, type: 3}
+    groundMaterial: {fileID: 2100000, guid: 5961106871064724e8436916ad67e371, type: 2}
+    columnMaterial: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    wallMaterial: {fileID: 2100000, guid: 72b56e4bf0f41914e8089b561c7da9f3, type: 2}
+    spawnPoint: {x: 0, y: 25, z: 0}
+    spawnArea: {x: 32, y: 32}
+    spawnTime: 2
+    enemyPerSpawn: 2
+    enemyIDs: 00000000

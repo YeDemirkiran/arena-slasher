@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] GameObject playerPrefab;
 
-    [SerializeField] Levels levels;
+    public Levels levels;
     [SerializeField] DifficultyLevels difficulties;
     [SerializeField] Weapons weapons;
     [SerializeField] Enemies enemies;
@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     float spawnTimer = 0f;
 
     public float levelTimer { get; private set; }
+    bool levelCreated = false;
 
     private void Awake()
     {
@@ -31,11 +32,13 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        GenerateLevel(0, 3);
+        //GenerateLevel(0, 3);
     }
 
     void Update()
     {
+        if (!levelCreated) return;
+
         if (spawnTimer < currentLevel.spawnTime)
         {
             spawnTimer += Time.deltaTime;
@@ -102,7 +105,7 @@ public class LevelManager : MonoBehaviour
         //outfit.SetWeapon(weapon);
         currentEnemies.Add(enemyBehaviour);
 
-        Debug.Log("Spawned enemy");
+        //Debug.Log("Spawned enemy");
     }
 
     public void GenerateLevel(int levelID, int difficultyID)
@@ -125,6 +128,8 @@ public class LevelManager : MonoBehaviour
         }
 
         GenerateArena();
+
+        levelCreated = true;
     }
 
     void FlushLevel()
