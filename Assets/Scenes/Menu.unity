@@ -188,7 +188,7 @@ MonoBehaviour:
   levelName: {fileID: 1276459573}
   imageSlot: {fileID: 552590384}
   lockedMarker: {fileID: 456032495}
-  comingSoonMarker: {fileID: 456032495}
+  comingSoonMarker: {fileID: 0}
   levelsObject: {fileID: 11400000, guid: 4365165628e71ab438ae610d7d8cfafe, type: 2}
 --- !u!114 &9240071
 MonoBehaviour:
@@ -6604,7 +6604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &298291147
 Transform:
   m_ObjectHideFlags: 0
@@ -16354,7 +16354,7 @@ MonoBehaviour:
   levelName: {fileID: 705364314}
   imageSlot: {fileID: 2046844543}
   lockedMarker: {fileID: 809482459}
-  comingSoonMarker: {fileID: 809482459}
+  comingSoonMarker: {fileID: 0}
   levelsObject: {fileID: 11400000, guid: 4365165628e71ab438ae610d7d8cfafe, type: 2}
 --- !u!114 &1434001441
 MonoBehaviour:
@@ -17687,7 +17687,7 @@ MonoBehaviour:
   levelName: {fileID: 1934244089}
   imageSlot: {fileID: 1138403375}
   lockedMarker: {fileID: 1165047713}
-  comingSoonMarker: {fileID: 1165047713}
+  comingSoonMarker: {fileID: 0}
   levelsObject: {fileID: 11400000, guid: 4365165628e71ab438ae610d7d8cfafe, type: 2}
 --- !u!114 &1786060870
 MonoBehaviour:
