@@ -41,6 +41,7 @@ public class BotController : MonoBehaviour
     [SerializeField] GameObject bloodParticles;
     float attackTimer, parryTimer, stunTimer;
 
+    [SerializeField] AudioClip[] warriorScreams;
 
     void Awake()
     {
@@ -148,6 +149,11 @@ public class BotController : MonoBehaviour
         else verticalVelocity.y += gravity * Time.deltaTime * Time.deltaTime;
 
         animator.SetBool("Falling", verticalVelocity.y < -0.05f);
+
+        if (verticalVelocity.y < -0.05f && !audioSource.isPlaying && warriorScreams.Length > 0)
+        {
+            audioSource.PlayOneShot(warriorScreams[Random.Range(0, warriorScreams.Length)]);
+        }
     }
 
     public void ApplyMovement()
