@@ -98,6 +98,11 @@ public class LevelManager : MonoBehaviour
 
         //outfit.SetHeadGear(enemy.headGear);
         outfit.SetTorsoGear(enemy.torsoGear);
+
+        foreach (var gear in enemy.additionalGear)
+        {
+            outfit.SetGear(gear, outfit.transform);
+        }
         //outfit.SetPantsGear(enemy.pantsGear);
         //outfit.SetFeetGear(enemy.feetGear);
 

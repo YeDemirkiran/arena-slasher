@@ -23,3 +23,5 @@ MonoBehaviour:
       type: 3}
     pantsGear: {fileID: 0}
     feetGear: {fileID: 0}
+    additionalGear:
+    - {fileID: 1403336550295410016, guid: aeb719ee33cdb2f4292cf2f64129a1c3, type: 3}

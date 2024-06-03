@@ -20,7 +20,8 @@ public class BonePair
 public class Bone
 {
     // Hard coded. Add a bone type here if you need it
-    public enum BoneType { Spine0, Spine1, Spine2, 
+    public enum BoneType { Root,
+        Spine0, Spine1, Spine2, 
         Neck, Head, 
         ShoulderR, ShoulderL,
         UpperArmR, UpperArmL,
@@ -29,7 +30,8 @@ public class Bone
         UpperLegR, UpperLegL,
         ShinR, ShinL,
         FootR, FootL,
-        ToeR, ToeL}
+        ToeR, ToeL,
+    Sheath}
 
     public BoneType type;
     public Transform transform;
@@ -53,7 +55,7 @@ public class Outfit : MonoBehaviour
         {
             pair.child.transform.position = pair.parent.transform.position;
             pair.child.transform.rotation = pair.parent.transform.rotation;
-            pair.child.transform.localScale = pair.parent.transform.localScale;
+            //pair.child.transform.localScale = pair.parent.transform.localScale;
         }
     }
 

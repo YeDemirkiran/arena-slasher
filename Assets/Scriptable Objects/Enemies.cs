@@ -11,6 +11,7 @@ public class Enemy
     public GameObject torsoGear;
     public GameObject pantsGear;
     public GameObject feetGear;
+    public GameObject[] additionalGear;
 }
 
 [CreateAssetMenu(fileName = "Enemies", menuName = "Scriptable Objects/Enemies")]

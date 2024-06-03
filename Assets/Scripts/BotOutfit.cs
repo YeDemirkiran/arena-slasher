@@ -22,28 +22,24 @@ public class BotOutfit : MonoBehaviour
         if (headGear != null) Destroy(headGear.gameObject);
 
         headGear = SetGear(gear, transform);
-        headGear.SetPairs(bones);
     }
 
     public void SetTorsoGear(GameObject gear)
     {
         if (torsoGear != null) Destroy(torsoGear);
         torsoGear = SetGear(gear, transform);
-        torsoGear.SetPairs(bones);
     }
 
     public void SetPantsGear(GameObject gear)
     {
         if (pantsGear != null) Destroy(pantsGear);
         pantsGear = SetGear(gear, transform);
-        pantsGear.SetPairs(bones);
     }
 
     public void SetFeetGear(GameObject gear)
     {
         if (feetGear != null) Destroy(feetGear);
         feetGear = SetGear(gear, transform);
-        feetGear.SetPairs(bones);
     }
 
     public void SetWeapon(Weapon weapon)
@@ -64,12 +60,14 @@ public class BotOutfit : MonoBehaviour
     //    return null;
     //}
 
-    Outfit SetGear(GameObject gearPrefab, Transform parent)
+    public Outfit SetGear(GameObject gearPrefab, Transform parent)
     {
         if (gearPrefab != null)
         {
             GameObject gear = Instantiate(gearPrefab, parent, false);
-            return gear.GetComponent<Outfit>();
+            Outfit outfit = gear.GetComponent<Outfit>();
+            outfit.SetPairs(bones);
+            return outfit;
         }
 
         return null;
