@@ -93,6 +93,7 @@ public class LevelManager : MonoBehaviour
 
         EnemyBehaviour enemyBehaviour = enemyObj.GetComponent<EnemyBehaviour>();
         enemyBehaviour.level = this;
+        enemyBehaviour.drops = enemy.drops;
 
         BotOutfit outfit = enemyObj.GetComponent<BotOutfit>();
 
@@ -135,6 +136,7 @@ public class LevelManager : MonoBehaviour
         GenerateArena();
 
         levelCreated = true;
+        spawnTimer = currentLevel.spawnTime;
     }
 
     void FlushLevel()

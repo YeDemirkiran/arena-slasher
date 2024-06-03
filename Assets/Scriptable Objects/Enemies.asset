@@ -25,3 +25,7 @@ MonoBehaviour:
     feetGear: {fileID: 0}
     additionalGear:
     - {fileID: 1403336550295410016, guid: aeb719ee33cdb2f4292cf2f64129a1c3, type: 3}
+    drops:
+    - rarity: 100
+      prefab: {fileID: 1876570636509243283, guid: 960bcf87e6db561468a640c9ab62f7a3,
+        type: 3}

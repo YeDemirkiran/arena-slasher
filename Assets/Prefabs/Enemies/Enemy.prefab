@@ -2109,7 +2109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followSafeDistance: 3
-  parryChance: 100
+  parryChance: 10
   actionTimeMinMax: {x: 0.5, y: 1}
   maxCombo: 5
   comboChanceDecrease:

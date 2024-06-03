@@ -12,6 +12,14 @@ public class Enemy
     public GameObject pantsGear;
     public GameObject feetGear;
     public GameObject[] additionalGear;
+    public Drop[] drops;
+}
+
+[System.Serializable]
+public class Drop
+{
+    public float rarity;
+    public GameObject prefab;
 }
 
 [CreateAssetMenu(fileName = "Enemies", menuName = "Scriptable Objects/Enemies")]

@@ -29,7 +29,7 @@ public class BotController : MonoBehaviour
     bool moveCalledThisFrame = false;
 
     bool _stunned;
-    bool stunned { get { return _stunned; } set { _stunned = value; stunIcon.gameObject.SetActive(value); animator.SetBool("Stunned", value); } }
+    public bool stunned { get { return _stunned; } private set { _stunned = value; stunIcon.gameObject.SetActive(value); animator.SetBool("Stunned", value); } }
 
 
     bool _parrying;
@@ -80,6 +80,10 @@ public class BotController : MonoBehaviour
 
         if (stunned)
         {
+            attackTimer = 0f;
+            parryTimer = 0f;
+            isParrying = false;
+
             if (stunTimer < stunTime)
             {
                 stunTimer += Time.deltaTime;
@@ -96,6 +100,10 @@ public class BotController : MonoBehaviour
         if (health <= 0)
         {
             OnDeath();
+        }
+        else if (health > maxHealth)
+        {
+            health = maxHealth;
         }
 
         if (!moveCalledThisFrame) { horizontalVelocity = Vector3.zero; animator.SetBool("Running", false); }

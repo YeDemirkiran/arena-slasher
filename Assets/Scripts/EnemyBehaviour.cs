@@ -18,6 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
     bool comboAllowed = false;
 
     public LevelManager level { get; set; }
+    public Drop[] drops { get; set; }
 
     void Awake()
     {
@@ -28,6 +29,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         player = PlayerController.Instance;
         controller.onDeath += () => level?.EnemyDeathReport(this);
+        controller.onDeath += () => Drop();
     }
 
     void Update()
@@ -102,5 +104,22 @@ public class EnemyBehaviour : MonoBehaviour
         Vector3 dir = playerPos - transform.position;
         float singleStep = controller.rotationSpeed * Time.deltaTime;
         transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, dir, singleStep, 0f));
+    }
+
+    public void Drop()
+    {
+        Debug.Log("Drop Test");
+        float chance = Random.Range(0f, 100f);
+        Drop selectedDrop = drops[Random.Range(0, drops.Length)];
+
+        if (chance < selectedDrop.rarity)
+        {
+            GameObject drop = Instantiate(selectedDrop.prefab, transform.position, Quaternion.identity);
+
+            if (drop.TryGetComponent(out Rigidbody rb))
+            {
+                rb.AddForce(-transform.forward * 10f, ForceMode.Impulse);
+            }
+        }
     }
 }

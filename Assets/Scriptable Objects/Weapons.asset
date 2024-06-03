@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Weapons
   m_EditorClassIdentifier: 
   weapons:
-  - ID: 0
+  - id: 0
     name: Sword
     damagePerHit: 10
     attackCooldown: 0.1
-    parryDuration: 1
-    mesh: {fileID: 0}
+    parryDuration: 0.5
+    prefab: {fileID: 0}
     attackSoundClips:
     - {fileID: 8300000, guid: 9a26a3f9699efdc46a183f869c727fdf, type: 3}
     - {fileID: 8300000, guid: bc239572c53879749a5ad1f0e5e3640a, type: 3}
