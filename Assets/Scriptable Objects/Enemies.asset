@@ -19,7 +19,7 @@ MonoBehaviour:
     weaponID: 0
     headGear: {fileID: 3903423835090756995, guid: eeec6ecca54c15c418f2d0dba7508197,
       type: 3}
-    torsoGear: {fileID: 7949877963963584137, guid: c24e9c6784e34024aa6f26b88b0a066d,
+    torsoGear: {fileID: 1164285958295557463, guid: c51d08f0cff20be40b1d684139ec3286,
       type: 3}
     pantsGear: {fileID: 0}
     feetGear: {fileID: 0}
