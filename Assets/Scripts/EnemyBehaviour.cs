@@ -34,7 +34,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.state != GameManager.GameState.Running) { return; }
+        if (GameManager.Instance.state != GameManager.GameState.Running || controller.stunned) { return; }
 
         RotateTowards(player.transform);
 

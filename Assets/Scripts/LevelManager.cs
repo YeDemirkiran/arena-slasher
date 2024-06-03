@@ -13,8 +13,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] DifficultyLevels difficulties;
     [SerializeField] Weapons weapons;
     [SerializeField] Enemies enemies;
-    
-    public List<EnemyBehaviour> currentEnemies { get; private set; } =  new List<EnemyBehaviour>();
+
+    public List<EnemyBehaviour> currentEnemies { get; private set; } = new List<EnemyBehaviour>();
 
     public Difficulty currentDifficulty { get; private set; }
     public Level currentLevel { get; private set; }
@@ -23,6 +23,8 @@ public class LevelManager : MonoBehaviour
 
     public float levelTimer { get; private set; }
     bool levelCreated = false;
+
+    [SerializeField] GameObject winMenu;
 
     private void Awake()
     {
@@ -40,7 +42,7 @@ public class LevelManager : MonoBehaviour
         if (GameManager.Instance.state != GameManager.GameState.Running) { return; }
         if (!levelCreated) return;
 
-        if (spawnTimer < currentLevel.spawnTime)
+        if (spawnTimer < currentLevel.spawnTime && currentEnemies.Count > 0)
         {
             spawnTimer += Time.deltaTime;
             //Debug.Log("1");
@@ -70,7 +72,8 @@ public class LevelManager : MonoBehaviour
 
             if (levelTimer <= 0f)
             {
-                // Level over
+                GameManager.Instance.PauseGamePure();
+                winMenu.SetActive(true);
             }
         }
         else
@@ -136,7 +139,7 @@ public class LevelManager : MonoBehaviour
 
         if (currentLevel.type == Level.LevelType.Timed)
         {
-            levelTimer = currentLevel.duration;
+            levelTimer = currentDifficulty.duration;
         }
         else
         {

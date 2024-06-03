@@ -7,6 +7,7 @@ public class Difficulty
     public string name;
     [TextArea] public string description;
     public int maxEnemies;
+    public float duration;
     public bool excludeFromGame;
 }
 

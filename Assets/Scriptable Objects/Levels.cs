@@ -11,7 +11,7 @@ public class Level
     public AudioClip soundtrack;
 
     public LevelType type = LevelType.Timed;
-    public float duration;
+    
 
     public Vector3 center;
     public Vector2 arenaArea;
