@@ -7,6 +7,7 @@ public class Difficulty
     public string name;
     [TextArea] public string description;
     public int maxEnemies;
+    public bool excludeFromGame;
 }
 
 [CreateAssetMenu(fileName = "Difficulty Levels", menuName = "Scriptable Objects/Difficulty Levels")]

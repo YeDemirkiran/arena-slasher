@@ -16,38 +16,38 @@ MonoBehaviour:
   - id: 0
     name: Testing
     description: No Enemies
-    duration: -1
     maxEnemies: 0
+    excludeFromGame: 1
   - id: 1
     name: Passive
     description: Enemies only follow, don't attack
-    duration: -1
     maxEnemies: 4
+    excludeFromGame: 1
   - id: 2
     name: Baby Warrior
     description: Slow paced enemies, no parry, slow paced attack, short level time
-    duration: 60
     maxEnemies: 4
+    excludeFromGame: 0
   - id: 3
     name: Child Soldier
     description: Slow paced enemies, low parry chance, medium paced attack, medium
       level time
-    duration: 90
     maxEnemies: 6
+    excludeFromGame: 0
   - id: 4
     name: FNG
     description: Medium paced enemies, normal parry, medium paced attack, medium
       level time
-    duration: 90
     maxEnemies: 8
+    excludeFromGame: 0
   - id: 5
     name: War Veteran
     description: Fast paced enemies, high parry chance, fast attack, long level time
-    duration: 120
     maxEnemies: 12
+    excludeFromGame: 0
   - id: 6
     name: Assassination
     description: Almost teleporting enemies, no parry, very fast attack, long level
       time
-    duration: 120
     maxEnemies: 4
+    excludeFromGame: 0

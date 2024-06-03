@@ -11,7 +11,6 @@ public class Level
 
     public LevelType type = LevelType.Timed;
     public float duration;
-    public int difficultyID;
 
     public Vector3 center;
     public Vector2 arenaArea;

@@ -28,7 +28,6 @@ public class LevelSelectorUI : MonoBehaviour
 
                 playButton.button.interactable = value.playable;
                 playButton.levelID = value.level.id;
-                playButton.difficultyID = value.level.difficultyID;
                 
                 infoLevelName.text = value._levelName;
                 infoLevelDescription.text = value.levelDescription;
@@ -36,8 +35,14 @@ public class LevelSelectorUI : MonoBehaviour
             else
             {
                 selectedOutline.gameObject.SetActive(false);
+                playButton.button.interactable = false;
             }
         } 
+    }
+
+    void Start()
+    {
+        selectedLevel = null;
     }
 
     void OnDisable()
