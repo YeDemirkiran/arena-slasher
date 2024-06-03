@@ -20,6 +20,8 @@ public class ChildOf : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.state != GameManager.GameState.Running) { return; }
+
         Vector3 position, rotation;
 
         position.x = positionLock.x ? parent.position.x : transform.position.x;

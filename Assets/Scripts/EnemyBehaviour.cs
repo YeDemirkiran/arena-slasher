@@ -34,6 +34,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.state != GameManager.GameState.Running) { return; }
+
         RotateTowards(player.transform);
 
         if (Vector3.Distance(player.transform.position, transform.position) > followSafeDistance)

@@ -51,6 +51,8 @@ public class Outfit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.state != GameManager.GameState.Running) { return; }
+
         foreach (var pair in pairs)
         {
             pair.child.transform.position = pair.parent.transform.position;

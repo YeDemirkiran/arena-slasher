@@ -57,6 +57,8 @@ public class BotController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.state != GameManager.GameState.Running) { return; }
+
         ApplyGravity();
         ApplyMovement();
 

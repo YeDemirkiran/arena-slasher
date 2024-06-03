@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.state != GameManager.GameState.Running) { return; }
         if (!levelCreated) return;
 
         if (spawnTimer < currentLevel.spawnTime)

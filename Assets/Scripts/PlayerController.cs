@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.state != GameManager.GameState.Running) { return; }
+
         controller.Move(Input.GetAxis("Vertical"));
         controller.Rotate(Input.GetAxisRaw("Horizontal"));
 
