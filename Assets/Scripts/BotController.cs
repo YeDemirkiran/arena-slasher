@@ -37,6 +37,7 @@ public class BotController : MonoBehaviour
 
     [SerializeField] float stunTime = 2f;
     [SerializeField] RotatingObject stunIcon;
+    [SerializeField] GameObject bloodParticles;
     float attackTimer, parryTimer, stunTimer;
 
 
@@ -183,6 +184,7 @@ public class BotController : MonoBehaviour
             else
             {
                 enemy.health -= currentWeapon.damagePerHit;
+                GameObject blood = Instantiate(bloodParticles, enemy.transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 2f), Random.Range(-1f, 1f)), Random.rotation);
             }
         }
         

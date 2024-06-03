@@ -2096,6 +2096,8 @@ MonoBehaviour:
   parryCooldownTimer: 0
   stunTime: 2
   stunIcon: {fileID: 7545526979315758404}
+  bloodParticles: {fileID: 2116337426646649413, guid: 442500dd6a68fec43b5012bae35e2e8f,
+    type: 3}
 --- !u!114 &80823981334970367
 MonoBehaviour:
   m_ObjectHideFlags: 0
