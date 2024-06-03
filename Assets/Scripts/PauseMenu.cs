@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField] GameObject pauseMenu, deathMenu;
+
     // Start is called before the first frame update
     void Awake()
     {
-        GameManager.Instance.onPause += () => gameObject.SetActive(true);
-        GameManager.Instance.onResume += () => gameObject.SetActive(false);
-        gameObject.SetActive(false);
+        GameManager.Instance.onPause += () => pauseMenu.SetActive(true);
+        GameManager.Instance.onResume += () => pauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);
     }
 }

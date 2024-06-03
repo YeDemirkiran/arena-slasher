@@ -61,6 +61,11 @@ public class GameManager : MonoBehaviour
         onPause?.Invoke();
     }
 
+    public void PauseGamePure()
+    {
+        state = GameState.Paused;
+    }
+
     public void ContinueGame()
     {
         state = GameState.Running;

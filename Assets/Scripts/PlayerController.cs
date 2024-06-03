@@ -9,8 +9,12 @@ public class PlayerController : MonoBehaviour
     BotController controller;
     [SerializeField] new CameraController camera;
 
+    [SerializeField] GameObject deathMenu;
+
     [Header("Attack")]
     [Tooltip("X = duration \nY = magnitude \nZ = Frequency")] [SerializeField] Vector3 attackShake;
+
+
 
     public float health { get { return controller.health; } }
     public float maxHealth { get { return controller.maxHealth; } }    
@@ -31,6 +35,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller.onAttack += () => camera.Shake(attackShake.x, attackShake.y, attackShake.z);
+        controller.onDeath += () => 
+        {
+            GameManager.Instance.PauseGamePure();
+            deathMenu.SetActive(true);
+        };
+
+        controller.destroyOnDeath = false;
     }
 
     void Update()
@@ -54,6 +65,12 @@ public class PlayerController : MonoBehaviour
 
     public void ResetPlayer()
     {
+        deathMenu.SetActive(false);
         controller.ResetBot();
+    }
+
+    private void OnDestroy()
+    {
+        Instance = null;
     }
 }

@@ -80,6 +80,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void RestartLevel()
+    {
+        GenerateLevel(currentLevel.id, currentDifficulty.id);
+    }
+
     public void SpawnEnemy(Vector3 spawnPoint, int enemyID = -1)
     {
         int id;
@@ -121,8 +126,12 @@ public class LevelManager : MonoBehaviour
         currentLevel = levels.levels.First(x => x.id == levelID);
         currentDifficulty = difficulties.difficultyLevels.First(x => x.id == difficultyID);
 
-        //PlayerController.Instance.ResetPlayer();
-        //PlayerController.Instance.transform.position = currentLevel.spawnPoint;
+        PlayerController.Instance.ResetPlayer();
+        CharacterController cha = PlayerController.Instance.GetComponent<CharacterController>();
+        cha.enabled = false;
+        //GameObject player = Instantiate(playerPrefab, currentLevel.spawnPoint, Quaternion.identity);
+        PlayerController.Instance.transform.position = currentLevel.spawnPoint;
+        cha.enabled = true;
 
         if (currentLevel.type == Level.LevelType.Timed)
         {
@@ -150,7 +159,7 @@ public class LevelManager : MonoBehaviour
 
         spawnTimer = 0f;
 
-        //Destroy(PlayerController.Instance.gameObject);  
+       // Destroy(PlayerController.Instance.gameObject);  
     }
 
     void GenerateArena()

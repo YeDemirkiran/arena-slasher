@@ -13,6 +13,7 @@ public class BotController : MonoBehaviour
     public float gravity = -9.81f;
 
     public float health { get; set; }
+    public bool destroyOnDeath { get; set; } = true;
     public float maxHealth = 100f;
     public UnityAction onDeath, onAttack;
 
@@ -206,7 +207,8 @@ public class BotController : MonoBehaviour
     public void OnDeath()
     {
         onDeath?.Invoke();
-        Destroy(gameObject);
+
+        if (destroyOnDeath) Destroy(gameObject);      
     }
 
     public void ResetBot()
