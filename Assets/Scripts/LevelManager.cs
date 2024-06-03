@@ -147,6 +147,12 @@ public class LevelManager : MonoBehaviour
 
         levelCreated = true;
         spawnTimer = currentLevel.spawnTime;
+
+        if (MusicManager.Instance.audioSource.clip != currentLevel.soundtrack)
+        {
+            MusicManager.Instance.audioSource.clip = currentLevel.soundtrack;
+            MusicManager.Instance.audioSource.Play();
+        }
     }
 
     void FlushLevel()
@@ -159,6 +165,8 @@ public class LevelManager : MonoBehaviour
         currentEnemies.Clear();
 
         spawnTimer = 0f;
+
+        //MusicManager.Instance.audioSource.Stop();
 
        // Destroy(PlayerController.Instance.gameObject);  
     }

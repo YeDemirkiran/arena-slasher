@@ -106,4 +106,9 @@ public class GameManager : MonoBehaviour
             SetMouse(true);
         }
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

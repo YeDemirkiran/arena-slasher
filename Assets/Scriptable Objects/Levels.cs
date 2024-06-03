@@ -8,6 +8,7 @@ public class Level
     public string name, description;
     public Sprite thumbnail;
     public Status status;
+    public AudioClip soundtrack;
 
     public LevelType type = LevelType.Timed;
     public float duration;
