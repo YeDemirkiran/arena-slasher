@@ -21,7 +21,7 @@ MonoBehaviour:
     soundtrack: {fileID: 8300000, guid: e63da688b3f75b542a11c81685023af3, type: 3}
     type: 0
     center: {x: 0, y: 0, z: 0}
-    arenaArea: {x: 128, y: 128}
+    arenaArea: {x: 96, y: 96}
     ground: {fileID: 4260383356816931615, guid: 8e37b282056a05d40bbd0f8b31c84819,
       type: 3}
     column: {fileID: 4858100155726873148, guid: 2b2900ff1c3c46d4aaab25a61da99cf3,
@@ -48,7 +48,7 @@ MonoBehaviour:
       sizeB: {x: 3, y: 3, z: 3}
     volume: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
     spawnPoint: {x: 0, y: 25, z: 0}
-    spawnArea: {x: 128, y: 128}
+    spawnArea: {x: 96, y: 96}
     spawnTime: 10
     enemyPerSpawn: 2
     enemyIDs: 00000000
@@ -72,7 +72,7 @@ MonoBehaviour:
     props: []
     volume: {fileID: 11400000, guid: a80300d8bf5452541883f7bed96f0336, type: 2}
     spawnPoint: {x: 0, y: 25, z: 0}
-    spawnArea: {x: 32, y: 32}
+    spawnArea: {x: 128, y: 128}
     spawnTime: 10
     enemyPerSpawn: 3
     enemyIDs: 00000000
