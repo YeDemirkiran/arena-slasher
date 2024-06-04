@@ -1,7 +1,22 @@
 using System.Collections;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+
+[System.Serializable]
+public struct GameData
+{
+    // Unlocked
+    public int[] unlockedLevelIDs;
+    public int[] unlockedGearIDs;
+    public int[] unlockedWeaponIDs;
+
+    // Options
+    public float sfxLevel;
+    public float musicLevel;
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +29,9 @@ public class GameManager : MonoBehaviour
 
     public UnityAction onResume, onPause, onGameBegin, onMainMenu;
 
+    [HideInInspector] public GameData gameData;
+    [SerializeField] DefaultGameData defaultGameData;
+
     void Awake()
     {
         if (Instance != null) Destroy(this);
@@ -21,6 +39,8 @@ public class GameManager : MonoBehaviour
 
         transform.parent = null;
         DontDestroyOnLoad(gameObject);
+
+        LoadDataFromFile(Application.persistentDataPath + "/data.bin");
     }
 
     void Start()
@@ -109,6 +129,48 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+        SaveGame();
         Application.Quit();
+    }
+
+    void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+
+    public void SaveGame()
+    {
+        SaveGameToFile(Application.persistentDataPath + "/data.bin");
+    }
+
+    void SaveGameToFile(string filePath)
+    {
+        if (!File.Exists(filePath))
+            File.Delete(filePath);
+
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        FileStream saveFile = File.Create(filePath);
+        formatter.Serialize(saveFile, gameData);
+        saveFile.Close();
+    }
+
+    void LoadDataFromFile(string filePath)
+    {
+        GameData data;
+
+        if (File.Exists(filePath))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream file = File.Open(filePath, FileMode.Open);
+            data = (GameData)formatter.Deserialize(file);
+            file.Close();
+        }
+        else
+        {
+            data = defaultGameData.gameData;
+        }
+
+        gameData = data;
     }
 }

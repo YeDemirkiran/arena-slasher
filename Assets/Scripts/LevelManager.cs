@@ -151,10 +151,10 @@ public class LevelManager : MonoBehaviour
         levelCreated = true;
         spawnTimer = currentLevel.spawnTime;
 
-        if (MusicManager.Instance.audioSource.clip != currentLevel.soundtrack)
+        if (AudioManager.Instance.musicSource.clip != currentLevel.soundtrack)
         {
-            MusicManager.Instance.audioSource.clip = currentLevel.soundtrack;
-            MusicManager.Instance.audioSource.Play();
+            AudioManager.Instance.musicSource.clip = currentLevel.soundtrack;
+            AudioManager.Instance.musicSource.Play();
         }
     }
 
