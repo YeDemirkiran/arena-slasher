@@ -2,6 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
+public class Prop
+{
+    public GameObject[] prefabs;
+    public int count;
+    public Vector3 sizeA, sizeB;
+}
+
+[System.Serializable]
 public class Level
 {
     public int id;
@@ -18,6 +26,8 @@ public class Level
 
     public GameObject ground, column, wall;
     public Material groundMaterial, columnMaterial, wallMaterial;
+
+    public Prop[] props;
 
     public Vector3 spawnPoint;
     public Vector2 spawnArea;

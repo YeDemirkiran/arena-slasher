@@ -26,6 +26,8 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] GameObject winMenu;
 
+    List<GameObject> arenaObjects = new List<GameObject>();
+
     private void Awake()
     {
         if (Instance != null) Destroy(this);
@@ -169,6 +171,13 @@ public class LevelManager : MonoBehaviour
 
         spawnTimer = 0f;
 
+        foreach (var obj in arenaObjects)
+        {
+            Destroy(obj);
+        }
+
+        arenaObjects.Clear();
+
         //MusicManager.Instance.audioSource.Stop();
 
        // Destroy(PlayerController.Instance.gameObject);  
@@ -232,10 +241,42 @@ public class LevelManager : MonoBehaviour
             = bottomWall.GetComponent<Renderer>().material
             = currentLevel.wallMaterial;
 
+        arenaObjects.Add(ground);
+        arenaObjects.Add(leftWall);
+        arenaObjects.Add(rightWall);
+        arenaObjects.Add(topWall);
+        arenaObjects.Add(bottomWall);
+        arenaObjects.Add(leftTopColumn);
+        arenaObjects.Add(rightTopColumn);
+        arenaObjects.Add(leftBottomColumn);
+        arenaObjects.Add(rightBottomColumn);
+
+        GenerateProps();
+
         //Vector3 groundScale = ground.transform.localScale;
         //groundScale.x = area.x;
         //groundScale.z = area.y;
         //ground.transform.
+    }
+
+    void GenerateProps()
+    {
+        GameObject parent = new GameObject("Props");
+        parent.transform.position = currentLevel.center;
+
+        foreach (var prop in currentLevel.props)
+        {
+            for (int i = 0; i < prop.count; i++)
+            {
+                Vector2 area = currentLevel.arenaArea;
+                GameObject propObj = Instantiate(prop.prefabs[Random.Range(0, prop.prefabs.Length)]);
+                propObj.transform.position = currentLevel.center + new Vector3(Random.Range(-area.x / 2f, area.x / 2f), 0f, Random.Range(-area.y / 2f, area.y / 2f));
+                propObj.transform.eulerAngles = new Vector3(propObj.transform.eulerAngles.x, Random.Range(0f, 180f), propObj.transform.eulerAngles.z);
+                propObj.transform.localScale = new Vector3(Random.Range(prop.sizeA.x, prop.sizeB.x), Random.Range(prop.sizeA.y, prop.sizeB.y), Random.Range(prop.sizeA.z, prop.sizeB.z));
+                propObj.transform.parent = parent.transform;
+                arenaObjects.Add(propObj);
+            }
+        }
     }
 
     public void EnemyDeathReport(EnemyBehaviour enemy)

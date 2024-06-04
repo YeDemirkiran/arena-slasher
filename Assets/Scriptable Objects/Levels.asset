@@ -20,7 +20,6 @@ MonoBehaviour:
     status: 2
     soundtrack: {fileID: 8300000, guid: e63da688b3f75b542a11c81685023af3, type: 3}
     type: 0
-    duration: 90
     center: {x: 0, y: 0, z: 0}
     arenaArea: {x: 128, y: 128}
     ground: {fileID: 4260383356816931615, guid: 8e37b282056a05d40bbd0f8b31c84819,
@@ -31,6 +30,12 @@ MonoBehaviour:
     groundMaterial: {fileID: 2100000, guid: 5961106871064724e8436916ad67e371, type: 2}
     columnMaterial: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     wallMaterial: {fileID: 2100000, guid: 72b56e4bf0f41914e8089b561c7da9f3, type: 2}
+    props:
+    - prefabs:
+      - {fileID: 2355276858065580046, guid: e371e256cb4e4a34db5ca244a1f1e0a7, type: 3}
+      count: 5
+      sizeA: {x: 5, y: 5, z: 5}
+      sizeB: {x: 10, y: 10, z: 10}
     spawnPoint: {x: 0, y: 25, z: 0}
     spawnArea: {x: 128, y: 128}
     spawnTime: 10
@@ -43,7 +48,6 @@ MonoBehaviour:
     status: 1
     soundtrack: {fileID: 0}
     type: 0
-    duration: 90
     center: {x: 0, y: 0, z: 0}
     arenaArea: {x: 128, y: 128}
     ground: {fileID: 4260383356816931615, guid: 8e37b282056a05d40bbd0f8b31c84819,
@@ -54,6 +58,7 @@ MonoBehaviour:
     groundMaterial: {fileID: 2100000, guid: 5961106871064724e8436916ad67e371, type: 2}
     columnMaterial: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     wallMaterial: {fileID: 2100000, guid: 72b56e4bf0f41914e8089b561c7da9f3, type: 2}
+    props: []
     spawnPoint: {x: 0, y: 25, z: 0}
     spawnArea: {x: 32, y: 32}
     spawnTime: 2
@@ -66,7 +71,6 @@ MonoBehaviour:
     status: 1
     soundtrack: {fileID: 0}
     type: 0
-    duration: 90
     center: {x: 0, y: 0, z: 0}
     arenaArea: {x: 128, y: 128}
     ground: {fileID: 4260383356816931615, guid: 8e37b282056a05d40bbd0f8b31c84819,
@@ -77,6 +81,7 @@ MonoBehaviour:
     groundMaterial: {fileID: 2100000, guid: 5961106871064724e8436916ad67e371, type: 2}
     columnMaterial: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     wallMaterial: {fileID: 2100000, guid: 72b56e4bf0f41914e8089b561c7da9f3, type: 2}
+    props: []
     spawnPoint: {x: 0, y: 25, z: 0}
     spawnArea: {x: 32, y: 32}
     spawnTime: 2
