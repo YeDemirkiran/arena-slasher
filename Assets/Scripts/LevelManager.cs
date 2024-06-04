@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,17 +15,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Weapons weapons;
     [SerializeField] Enemies enemies;
 
-    public List<EnemyBehaviour> currentEnemies { get; private set; } = new List<EnemyBehaviour>();
+    [SerializeField] Volume sceneVolume;
+
+    [SerializeField] GameObject winMenu;
 
     public Difficulty currentDifficulty { get; private set; }
     public Level currentLevel { get; private set; }
+    public List<EnemyBehaviour> currentEnemies { get; private set; } = new List<EnemyBehaviour>();
+
 
     float spawnTimer = 0f;
 
     public float levelTimer { get; private set; }
     bool levelCreated = false;
-
-    [SerializeField] GameObject winMenu;
 
     List<GameObject> arenaObjects = new List<GameObject>();
 
@@ -150,6 +153,8 @@ public class LevelManager : MonoBehaviour
 
         GenerateArena();
 
+        sceneVolume.profile = currentLevel.volume;
+
         levelCreated = true;
         spawnTimer = currentLevel.spawnTime;
 
@@ -241,6 +246,7 @@ public class LevelManager : MonoBehaviour
             = bottomWall.GetComponent<Renderer>().material
             = currentLevel.wallMaterial;
 
+        arenaObjects.Add(parent.gameObject);
         arenaObjects.Add(ground);
         arenaObjects.Add(leftWall);
         arenaObjects.Add(rightWall);
@@ -263,6 +269,7 @@ public class LevelManager : MonoBehaviour
     {
         GameObject parent = new GameObject("Props");
         parent.transform.position = currentLevel.center;
+        arenaObjects.Add(parent);
 
         foreach (var prop in currentLevel.props)
         {

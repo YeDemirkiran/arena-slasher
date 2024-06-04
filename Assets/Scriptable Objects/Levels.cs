@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -28,6 +29,7 @@ public class Level
     public Material groundMaterial, columnMaterial, wallMaterial;
 
     public Prop[] props;
+    public VolumeProfile volume;
 
     public Vector3 spawnPoint;
     public Vector2 spawnArea;

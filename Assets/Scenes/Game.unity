@@ -308,6 +308,7 @@ MonoBehaviour:
   difficulties: {fileID: 11400000, guid: f1470047f9446b346a2908ecacdbf4d6, type: 2}
   weapons: {fileID: 11400000, guid: 9648aefe5ef044748917aaf580bcee35, type: 2}
   enemies: {fileID: 11400000, guid: c4685e440a0f43841b31f5d4488df79b, type: 2}
+  sceneVolume: {fileID: 832575518}
   winMenu: {fileID: 641128265}
 --- !u!1 &258876846
 GameObject:
