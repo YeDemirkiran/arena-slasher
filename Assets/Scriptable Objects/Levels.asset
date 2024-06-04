@@ -41,6 +41,11 @@ MonoBehaviour:
       count: 2
       sizeA: {x: 0.5, y: 0.5, z: 0.5}
       sizeB: {x: 1, y: 1, z: 1}
+    - prefabs:
+      - {fileID: 7430432768971439345, guid: 7ff79db7f1329b34794d09a54d2b62b3, type: 3}
+      count: 15
+      sizeA: {x: 2, y: 2, z: 2}
+      sizeB: {x: 3, y: 3, z: 3}
     spawnPoint: {x: 0, y: 25, z: 0}
     spawnArea: {x: 128, y: 128}
     spawnTime: 10
