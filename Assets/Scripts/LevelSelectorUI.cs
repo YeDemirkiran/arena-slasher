@@ -42,11 +42,11 @@ public class LevelSelectorUI : MonoBehaviour
 
     void Start()
     {
-        selectedLevel = null;
+        selectedLevel = GetComponentInChildren<LevelInfo>();
     }
 
     void OnDisable()
     {
-        selectedLevel = null;
+        //selectedLevel = null;
     }
 }

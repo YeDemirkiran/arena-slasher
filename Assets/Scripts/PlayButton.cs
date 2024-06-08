@@ -11,7 +11,7 @@ public class PlayButton : MonoBehaviour
     public Button button { get; private set; }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(() => GameManager.Instance.CreateSession(levelID, difficultyID));
