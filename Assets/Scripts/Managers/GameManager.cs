@@ -16,6 +16,16 @@ public struct GameData
     // Options
     public float sfxLevel;
     public float musicLevel;
+
+    public bool CheckLevelStatus(int id)
+    {
+        foreach (var level in unlockedLevelIDs)
+        {
+            if (level == id) return true;    
+        }
+
+        return false;
+    }
 }
 
 public class GameManager : MonoBehaviour
