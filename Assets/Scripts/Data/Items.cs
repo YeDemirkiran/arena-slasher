@@ -5,10 +5,12 @@ using UnityEngine;
 public class Item
 {
     public int id;
+    public ItemType type;
     public string name;
     [TextArea] public string description;
     public bool locked, purchased;
     public GameObject prefab;
+    public Sprite banner;
 
     public enum ItemType { Helmet, Armor, Pants, Boots }
 }

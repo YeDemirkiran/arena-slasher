@@ -16,7 +16,7 @@ public class Level
     public int id;
     public string name, description;
     public Sprite thumbnail;
-    public Status status;
+    public bool playable;
     public AudioClip soundtrack;
 
     public LevelType type = LevelType.Timed;
@@ -38,7 +38,6 @@ public class Level
     public int[] enemyIDs;
 
     public enum LevelType { Timed, Survival }
-    public enum Status { None, Locked, Unlocked }
 }
 
 [CreateAssetMenu(fileName = "Levels", menuName = "Scriptable Objects/Levels")]

@@ -10,8 +10,8 @@ public struct GameData
 {
     // Unlocked
     public int[] unlockedLevelIDs;
-    public int[] unlockedGearIDs;
-    public int[] unlockedWeaponIDs;
+    public int[] unlockedItemIDs, boughtItemIDs;
+    public int[] unlockedWeaponIDs, boughtWeaponIDs;
 
     // Options
     public float sfxLevel;

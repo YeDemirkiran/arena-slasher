@@ -40,16 +40,8 @@ public class LevelInfo : MonoBehaviour
         levelDescription = level.description;
         imageSlot.sprite = level.thumbnail;
 
-        if (level.status == Level.Status.Locked)
-        {
-            playable = false;
-            lockedMarker.SetActive(true);
-        }
-        else
-        {
-            playable = true;
-            lockedMarker.SetActive(false);
-        }
+        playable = level.playable;
+        lockedMarker.SetActive(!playable);
 
         comingSoonMarker.SetActive(false);
     }
