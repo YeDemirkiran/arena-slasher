@@ -50,6 +50,6 @@ MonoBehaviour:
     name: Helmet_Empty_02
     description: Helmet 2
     price: 100
-    arenaID: 0
+    arenaID: 1
     prefab: {fileID: 0}
     banner: {fileID: 0}
