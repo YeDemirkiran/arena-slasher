@@ -19,29 +19,21 @@ public class LevelInfo : MonoBehaviour
     public string _levelName {  get; private set; }
     public string levelDescription {  get; private set; }
     public bool playable { get; private set; }
+    public bool unlocked { get; private set; }
 
     public void Initialize(Level level)
     {
         button = GetComponent<Button>();
-
-        if (!level.playable)
-        {
-            levelName.text = "Coming Soon";
-            _levelName = "Coming Soon!";
-            levelDescription = "Stay tuned for the updates!";
-            playable = false;
-            comingSoonMarker.SetActive(true);
-            return;
-        }
-
-        comingSoonMarker.SetActive(false);
-
         id = level.id;
-        levelName.text = _levelName = level.name;
-        levelDescription = level.description;
-        imageSlot.sprite = level.thumbnail;
 
-        playable = level.playable && GameManager.Instance.gameData.CheckLevelStatus(id);
-        lockedMarker.SetActive(!playable);
+        playable = level.playable;
+        unlocked = GameManager.Instance.gameData.CheckLevelStatus(id);
+        
+        levelName.text = _levelName = playable ? level.name : "Coming Soon";
+        levelDescription = playable ? level.description : "Stay tuned for the updates!";
+        imageSlot.sprite = playable ? level.thumbnail : null;
+
+        comingSoonMarker.SetActive(!playable);
+        lockedMarker.SetActive(playable && !unlocked);    
     }
 }

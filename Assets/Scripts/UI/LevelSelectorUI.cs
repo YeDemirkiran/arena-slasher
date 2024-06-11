@@ -13,6 +13,7 @@ public class LevelSelectorUI : MonoBehaviour
     [SerializeField] TMP_Text infoLevelName, infoLevelDescription;
     [SerializeField] RectTransform selectedOutline;
     [SerializeField] PlayButton playButton;
+    [SerializeField] GameObject difficultySelector, lockedMessage;
 
     LevelInfo _level;
     public LevelInfo selectedLevel 
@@ -28,13 +29,15 @@ public class LevelSelectorUI : MonoBehaviour
             if (value != null)
             {
                 selectedOutline.gameObject.SetActive(true);
-                Debug.Log("Before: " + selectedOutline.position);
+                //Debug.Log("Before: " + selectedOutline.position);
                 
-                Debug.Log("Anan: " + value.transform.position);
-                Debug.Log("After: " + selectedOutline.position);
+                //Debug.Log("Anan: " + value.transform.position);
+                //Debug.Log("After: " + selectedOutline.position);
 
 
-                playButton.button.interactable = value.playable;
+                playButton.button.interactable = value.playable && value.unlocked;
+                difficultySelector.SetActive(value.playable && value.unlocked);
+                lockedMessage.SetActive(value.playable && !value.unlocked);
                 playButton.levelID = value.id;
                 
                 infoLevelName.text = value._levelName;

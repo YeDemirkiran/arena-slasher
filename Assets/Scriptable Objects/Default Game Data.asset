@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameData:
     unlockedLevelIDs: 00000000
-    unlockedGearIDs: 00000000
+    unlockedItemIDs: 00000000
+    boughtItemIDs: 00000000
     unlockedWeaponIDs: 00000000
+    boughtWeaponIDs: 00000000
     sfxLevel: 1
     musicLevel: 0.5

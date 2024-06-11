@@ -86,8 +86,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8513575345182155509}
   - component: {fileID: 3695658727793171220}
+  - component: {fileID: 4933939097213811995}
   m_Layer: 5
-  m_Name: Item
+  m_Name: Item Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,6 +172,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4933939097213811995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422100335192643570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42628d7454e5094398045892602da26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 3695658727793171220}
+  bannerSlot: {fileID: 3093837364306909641}
+  textSlot: {fileID: 1088808872903307092}
+  lockedImage: {fileID: 212656236629190289}
 --- !u!1 &754361009936004797
 GameObject:
   m_ObjectHideFlags: 0

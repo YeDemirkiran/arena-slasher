@@ -9,6 +9,8 @@ public class ItemStrip : MonoBehaviour
     public Item.ItemType Type { get; set; }
     public Sprite Banner { get; set; }
 
+    public ItemManager manager { get; set; }
+
     [SerializeField] Transform content;
     [SerializeField] Items items;
     [SerializeField] GameObject itemPrefab;
@@ -28,9 +30,8 @@ public class ItemStrip : MonoBehaviour
         {
             if (items[i].type == Type)
             {
-                GameObject item = Instantiate(itemPrefab, content);
-                item.transform.Find("Image").GetComponent<Image>().sprite = items[i].banner;
-                item.transform.GetComponentInChildren<TMP_Text>().text = items[i].name;
+                ItemSlot slot = Instantiate(itemPrefab, content).GetComponent<ItemSlot>();
+                slot.Initialize(items[i], manager);
             }
         }
 

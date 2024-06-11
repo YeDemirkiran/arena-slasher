@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -9,13 +10,26 @@ using UnityEngine.SceneManagement;
 public struct GameData
 {
     // Unlocked
-    public int[] unlockedLevelIDs;
-    public int[] unlockedItemIDs, boughtItemIDs;
-    public int[] unlockedWeaponIDs, boughtWeaponIDs;
+    public List<int> unlockedLevelIDs;
+    public List<int> boughtItemIDs;
+    public List<int> boughtWeaponIDs;
 
     // Options
     public float sfxLevel;
     public float musicLevel;
+
+    int _currency;
+    public int currency 
+    {  
+        get
+        {
+            return _currency;
+        }
+        set
+        {
+            _currency = Mathf.Clamp(value, 0, 999999);
+        }
+    }
 
     public bool CheckLevelStatus(int id)
     {
@@ -25,6 +39,17 @@ public struct GameData
         }
 
         return false;
+    }
+
+    public void BuyItem(Item item)
+    {
+        if (boughtItemIDs.Contains(item.id) || currency < item.price)
+        {
+            return;
+        }
+
+        boughtItemIDs.Add(item.id);
+        currency -= item.price;
     }
 }
 
@@ -153,10 +178,17 @@ public class GameManager : MonoBehaviour
         SaveGameToFile(Application.persistentDataPath + "/data.bin");
     }
 
+    public void ResetSave()
+    {
+        ResetGameData();
+        SaveGameToFile(Application.persistentDataPath + "/data.bin");
+        SceneManager.LoadScene(0);
+        Destroy(gameObject);
+    }
+
     void SaveGameToFile(string filePath)
     {
-        if (!File.Exists(filePath))
-            File.Delete(filePath);
+        RemoveDataFile(filePath);
 
         BinaryFormatter formatter = new BinaryFormatter();
 
@@ -182,5 +214,18 @@ public class GameManager : MonoBehaviour
         }
 
         gameData = data;
+    }
+
+    void RemoveDataFile(string filePath)
+    {
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+    }
+
+    void ResetGameData()
+    {
+        gameData = defaultGameData.gameData;
     }
 }

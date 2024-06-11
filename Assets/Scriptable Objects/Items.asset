@@ -17,31 +17,39 @@ MonoBehaviour:
     type: 0
     name: Helmet_Empty
     description: Helmet_Desc
-    locked: 0
-    purchased: 0
+    price: 0
+    arenaID: 0
     prefab: {fileID: 0}
     banner: {fileID: 0}
   - id: 1
     type: 1
     name: Armor_Empty
     description: Armor_Desc
-    locked: 0
-    purchased: 0
+    price: 0
+    arenaID: 0
     prefab: {fileID: 0}
     banner: {fileID: 0}
   - id: 2
     type: 2
     name: Pants_Empty
     description: Pants_Desc
-    locked: 0
-    purchased: 0
+    price: 0
+    arenaID: 0
     prefab: {fileID: 0}
     banner: {fileID: 0}
   - id: 3
     type: 3
     name: Boots_Empty
     description: Boots_Desc
-    locked: 0
-    purchased: 0
+    price: 0
+    arenaID: 0
+    prefab: {fileID: 0}
+    banner: {fileID: 0}
+  - id: 4
+    type: 0
+    name: Helmet_Empty_02
+    description: Helmet 2
+    price: 100
+    arenaID: 0
     prefab: {fileID: 0}
     banner: {fileID: 0}
