@@ -198,7 +198,7 @@ public class BotController : MonoBehaviour
         }
         
         onAttack?.Invoke();
-        audioSource.PlayOneShot(currentWeapon.hitSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
+        audioSource.PlayOneShot(currentWeapon.hitSoundClips[Random.Range(0, currentWeapon.hitSoundClips.Length)]);
         audioSource.PlayOneShot(attackGrunts[Random.Range(0, attackGrunts.Length)]);
 
         return true;

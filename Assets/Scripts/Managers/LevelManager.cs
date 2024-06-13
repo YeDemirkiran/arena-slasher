@@ -109,23 +109,14 @@ public class LevelManager : MonoBehaviour
         enemyBehaviour.level = this;
         enemyBehaviour.drops = enemy.drops;
 
-        BotOutfit outfit = enemyObj.GetComponent<BotOutfit>();
-
-        //outfit.SetHeadGear(enemy.headGear);
-        outfit.SetTorsoGear(enemy.torsoGear);
-
-        foreach (var gear in enemy.additionalGear)
-        {
-            outfit.SetGear(gear, outfit.transform);
-        }
-        //outfit.SetPantsGear(enemy.pantsGear);
-        //outfit.SetFeetGear(enemy.feetGear);
-
-        //Weapon weapon = weapons.weapons.First(x => x.id == enemy.weaponID);
-        //outfit.SetWeapon(weapon);
         currentEnemies.Add(enemyBehaviour);
 
-        //Debug.Log("Spawned enemy");
+        BotOutfit outfit = enemyObj.GetComponent<BotOutfit>();
+
+        foreach (var gear in enemy.gears)
+        {
+            outfit.SetGear(gear.prefab, outfit.transform);
+        }
     }
 
     public void GenerateLevel(int levelID, int difficultyID)

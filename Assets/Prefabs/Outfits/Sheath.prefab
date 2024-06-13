@@ -45,9 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4f82e8ad80e4140b6a9bb7b1231e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  root: {fileID: 1439542524420954144}
   bones:
-  - type: 22
+  - type: 23
     transform: {fileID: 1439542524420954144}
 --- !u!1 &3240385687721134906
 GameObject:

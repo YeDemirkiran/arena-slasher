@@ -13,19 +13,12 @@ public class HealthDrop : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
-
         if (other.CompareTag("Player"))
         {
-            Debug.Log("drop test 2");
             BotController bot = other.GetComponent<BotController>();
             bot.health += bot.maxHealth * healPercentage;
             AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("drop test 3");
         }
     }
 }

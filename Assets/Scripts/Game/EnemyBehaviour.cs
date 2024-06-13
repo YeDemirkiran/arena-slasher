@@ -79,8 +79,8 @@ public class EnemyBehaviour : MonoBehaviour
                             float comboProgressChance = Random.Range(0f, 100f);
                             float eval = (comboChanceDecrease.Evaluate((float)(currentHit - 1) / (float)maxCombo)) * 100f;
 
-                            Debug.Log(eval);
-                            Debug.Log(currentHit);
+                            //Debug.Log(eval);
+                            //Debug.Log(currentHit);
 
                             if (comboProgressChance < eval)
                             {
@@ -110,7 +110,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void Drop()
     {
-        Debug.Log("Drop Test");
         float chance = Random.Range(0f, 100f);
         Drop selectedDrop = drops[Random.Range(0, drops.Length)];
 

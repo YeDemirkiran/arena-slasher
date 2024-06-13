@@ -8426,6 +8426,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 298291147}
+  - component: {fileID: 298291149}
+  - component: {fileID: 298291148}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -8449,6 +8451,36 @@ Transform:
   - {fileID: 543450653575686884}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -94.924, z: 0}
+--- !u!114 &298291148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298291143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc56ad8272101645a219a1b7b90982b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bones:
+  - type: 0
+    transform: {fileID: 0}
+--- !u!114 &298291149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298291143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4f82e8ad80e4140b6a9bb7b1231e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bones:
+  - type: 0
+    transform: {fileID: 0}
 --- !u!1 &308772880
 GameObject:
   m_ObjectHideFlags: 0
@@ -14895,7 +14927,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1463568822}
-  items: {fileID: 11400000, guid: 8af9209461e562b41ad7526b45e26c3b, type: 2}
   itemPrefab: {fileID: 422100335192643570, guid: 8dbf5d037ce947e498d444e7b4242780,
     type: 3}
   banner: {fileID: 0}
@@ -18525,18 +18556,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc17e88b85bb30d418d4dc564f763914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectorOutline: {fileID: 1723593215}
   type: 1
+  itemInfoName: {fileID: 230345637}
+  itemTypeBanners: []
   buyButton: {fileID: 0}
-  equipButton: {fileID: 582006659}
   itemStripPrefab: {fileID: 0}
   contentTransform: {fileID: 0}
-  selectorOutline: {fileID: 1723593215}
   cantBuyMessage: {fileID: 0}
   alreadyHaveMessage: {fileID: 0}
-  itemInfoName: {fileID: 230345637}
-  itemInfoDescription: {fileID: 0}
   itemInfoPrice: {fileID: 0}
-  itemTypeBanners: []
+  itemInfoDescription: {fileID: 0}
+  equipButton: {fileID: 582006659}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -22329,18 +22360,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc17e88b85bb30d418d4dc564f763914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  buyButton: {fileID: 922355663}
-  equipButton: {fileID: 0}
-  itemStripPrefab: {fileID: 4441465966326063888, guid: 57dc356ddc52c564885ec09e9afe4b3f,
-    type: 3}
-  contentTransform: {fileID: 1600474494}
   selectorOutline: {fileID: 2019496029}
-  cantBuyMessage: {fileID: 483556584}
-  alreadyHaveMessage: {fileID: 52351135}
+  type: 0
   itemInfoName: {fileID: 875105454}
-  itemInfoDescription: {fileID: 1008516494}
-  itemInfoPrice: {fileID: 25913359}
   itemTypeBanners:
   - type: 0
     banner: {fileID: 21300000, guid: cc56b4d2353700140af138a1435c237c, type: 3}
@@ -22350,6 +22372,15 @@ MonoBehaviour:
     banner: {fileID: 21300000, guid: e13d9efe5dea7ec409d7a46f646db44f, type: 3}
   - type: 3
     banner: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  buyButton: {fileID: 922355663}
+  itemStripPrefab: {fileID: 4441465966326063888, guid: 57dc356ddc52c564885ec09e9afe4b3f,
+    type: 3}
+  contentTransform: {fileID: 1600474494}
+  cantBuyMessage: {fileID: 483556584}
+  alreadyHaveMessage: {fileID: 52351135}
+  itemInfoPrice: {fileID: 25913359}
+  itemInfoDescription: {fileID: 1008516494}
+  equipButton: {fileID: 0}
 --- !u!1 &1373964245
 GameObject:
   m_ObjectHideFlags: 0

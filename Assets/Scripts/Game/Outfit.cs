@@ -22,7 +22,7 @@ public class Bone
     // Hard coded. Add a bone type here if you need it
     public enum BoneType { Root,
         Spine0, Spine1, Spine2, 
-        Neck, Head, 
+        Neck, Head, Hair, 
         ShoulderR, ShoulderL,
         UpperArmR, UpperArmL,
         LowerArmR, LowerArmL,
@@ -39,14 +39,8 @@ public class Bone
 
 public class Outfit : MonoBehaviour
 {
-    [SerializeField] Transform root;
     [SerializeField] Bone[] bones;
     List<BonePair> pairs = new List<BonePair>();
-
-    void Start()
-    {
-        transform.parent = root;
-    }
 
     // Update is called once per frame
     void Update()

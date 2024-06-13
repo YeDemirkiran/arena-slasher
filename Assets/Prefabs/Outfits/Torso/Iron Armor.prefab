@@ -46,25 +46,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4f82e8ad80e4140b6a9bb7b1231e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  root: {fileID: 5509525163769070552}
   bones:
-  - type: 0
-    transform: {fileID: 2449410341901393054}
   - type: 1
-    transform: {fileID: 3777293076752288181}
+    transform: {fileID: 2449410341901393054}
   - type: 2
-    transform: {fileID: 8597179676867964768}
+    transform: {fileID: 3777293076752288181}
   - type: 3
-    transform: {fileID: 5758161043072919879}
+    transform: {fileID: 8597179676867964768}
   - type: 4
-    transform: {fileID: 2712689819062598758}
+    transform: {fileID: 5758161043072919879}
   - type: 5
-    transform: {fileID: 3157143853778718710}
-  - type: 6
-    transform: {fileID: 623920706928785836}
+    transform: {fileID: 2712689819062598758}
   - type: 7
-    transform: {fileID: 781363545890270930}
+    transform: {fileID: 3157143853778718710}
   - type: 8
+    transform: {fileID: 623920706928785836}
+  - type: 9
+    transform: {fileID: 781363545890270930}
+  - type: 10
     transform: {fileID: 5648399306003523591}
 --- !u!1 &1715578164998694600
 GameObject:

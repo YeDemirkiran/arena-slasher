@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +8,9 @@ public class ItemStrip : MonoBehaviour
 
     public ItemManager manager { get; set; }
 
+    Items items { get { return Items.Instance; } }
+
     [SerializeField] Transform content;
-    [SerializeField] Items items;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Image banner;
 
@@ -28,7 +26,7 @@ public class ItemStrip : MonoBehaviour
 
         for (int i = 0; i < items.items.Length; i++)
         {
-            if (items[i].type == Type)
+            if (!items[i].excludeFromStore && items[i].type == Type)
             {
                 ItemSlot slot = Instantiate(itemPrefab, content).GetComponent<ItemSlot>();
                 slot.button.onClick.AddListener(() => manager.selectedSlot = slot);
