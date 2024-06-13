@@ -31,10 +31,13 @@ public class ItemStrip : MonoBehaviour
             if (items[i].type == Type)
             {
                 ItemSlot slot = Instantiate(itemPrefab, content).GetComponent<ItemSlot>();
-                slot.Initialize(items[i], manager);
+                slot.button.onClick.AddListener(() => manager.selectedSlot = slot);
             }
         }
 
-        banner.sprite = Banner;
+        if (banner != null)
+        {
+            banner.sprite = Banner;
+        }
     }
 }

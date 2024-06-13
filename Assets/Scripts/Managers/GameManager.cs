@@ -9,10 +9,14 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public struct GameData
 {
-    // Unlocked
+    // Player Data
     public List<int> unlockedLevelIDs;
+
     public List<int> boughtItemIDs;
+    public List<int> equippedItemIDs;
+
     public List<int> boughtWeaponIDs;
+    public int equippedWeaponID;
 
     // Options
     public float sfxLevel;
@@ -44,12 +48,19 @@ public struct GameData
     public void BuyItem(Item item)
     {
         if (boughtItemIDs.Contains(item.id) || currency < item.price)
-        {
             return;
-        }
 
         boughtItemIDs.Add(item.id);
         currency -= item.price;
+    }
+
+    public void EquipItem(Item item, int replacement)
+    {
+        if (boughtItemIDs.Contains(item.id))
+        {
+            boughtItemIDs.Remove(replacement);
+            equippedItemIDs.Add(item.id);
+        }
     }
 }
 

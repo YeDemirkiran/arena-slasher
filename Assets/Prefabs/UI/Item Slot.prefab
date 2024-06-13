@@ -159,19 +159,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3093837364306909641}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelSelectorUI, Assembly-CSharp
-        m_MethodName: set_selectedLevel
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: LevelInfo, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &4933939097213811995
 MonoBehaviour:
   m_ObjectHideFlags: 0

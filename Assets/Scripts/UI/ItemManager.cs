@@ -13,17 +13,27 @@ public class ItemTypeBanner
 
 public class ItemManager : MonoBehaviour
 {
+    [SerializeField] Transform selectorOutline;
+
+    [Header("General")]
+    [SerializeField] Type type;
+    [SerializeField] TMP_Text itemInfoName;
+    
+    [Header("Store")]
+    [SerializeField] ItemTypeBanner[] itemTypeBanners;
     [SerializeField] Button buyButton;
     [SerializeField] GameObject itemStripPrefab;
     [SerializeField] Transform contentTransform;
-    [SerializeField] Transform selectorOutline;
-
     [SerializeField] GameObject cantBuyMessage, alreadyHaveMessage;
-    [SerializeField] TMP_Text itemInfoName, itemInfoDescription, itemInfoPrice;
+    [SerializeField] TMP_Text itemInfoPrice;
+    [SerializeField] TMP_Text itemInfoDescription;
 
-    [SerializeField] ItemTypeBanner[] itemTypeBanners;
+    [Header("Inventory")]
+    [SerializeField] Button equipButton;
 
     GameData data;
+    
+    public enum Type { Store, Inventory }
 
     ItemSlot _selectedSlot;
     public ItemSlot selectedSlot
@@ -36,6 +46,11 @@ public class ItemManager : MonoBehaviour
         set
         {
             _selectedSlot = value;
+
+            selectorOutline.gameObject.SetActive(true);
+            selectorOutline.SetParent(value.transform.parent);
+            selectorOutline.SetAsFirstSibling();
+            selectorOutline.position = value.transform.position;
 
             DrawInfoScreen();
         }
@@ -82,25 +97,45 @@ public class ItemManager : MonoBehaviour
             if (data.currency >= item.price)
             {
                 data.BuyItem(item);
+                EquipSelectedItem();
             }
         }
+    }
+
+    public void EquipSelectedItem()
+    {
+
     }
 
     public void DrawInfoScreen()
     {
         var value = selectedSlot;
 
-        selectorOutline.position = value.transform.position;
         itemInfoName.text = value.item.name;
-        itemInfoDescription.text = value.item.description;
-        itemInfoPrice.text = "$" + value.item.price;
 
-        bool noMoney = value.item.price > data.currency;
-        bool alreadyHave = data.boughtItemIDs.Contains(value.item.id);
-        cantBuyMessage.SetActive(noMoney);
-        itemInfoPrice.gameObject.SetActive(!alreadyHave);
-        alreadyHaveMessage.SetActive(alreadyHave);
+        switch (type)
+        {
+            case Type.Store:
+                itemInfoDescription.text = value.item.description;
+                itemInfoPrice.text = "$" + value.item.price;
 
-        buyButton.interactable = !(noMoney || alreadyHave);
+                bool noMoney = value.item.price > data.currency;
+                bool alreadyHave = data.boughtItemIDs.Contains(value.item.id);
+
+                cantBuyMessage.SetActive(noMoney);
+                itemInfoPrice.gameObject.SetActive(!alreadyHave);
+                alreadyHaveMessage.SetActive(alreadyHave);
+
+                buyButton.interactable = !(noMoney || alreadyHave);
+                break;
+
+            case Type.Inventory:
+                bool alreadyEquipped = data.equippedItemIDs.Contains(value.item.id);
+                equipButton.interactable = !alreadyEquipped;
+                break;
+
+            default:
+                break;
+        }
     }
 }

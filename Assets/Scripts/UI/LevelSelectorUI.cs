@@ -28,13 +28,6 @@ public class LevelSelectorUI : MonoBehaviour
 
             if (value != null)
             {
-                selectedOutline.gameObject.SetActive(true);
-                //Debug.Log("Before: " + selectedOutline.position);
-                
-                //Debug.Log("Anan: " + value.transform.position);
-                //Debug.Log("After: " + selectedOutline.position);
-
-
                 playButton.button.interactable = value.playable && value.unlocked;
                 difficultySelector.SetActive(value.playable && value.unlocked);
                 lockedMessage.SetActive(value.playable && !value.unlocked);
@@ -42,6 +35,11 @@ public class LevelSelectorUI : MonoBehaviour
                 
                 infoLevelName.text = value._levelName;
                 infoLevelDescription.text = value.levelDescription;
+
+                selectedOutline.gameObject.SetActive(true);
+                selectedOutline.SetParent(selectedLevel.transform.parent);
+                selectedOutline.SetAsFirstSibling();
+                selectedOutline.transform.position = selectedLevel.transform.position;
             }
             else
             {
@@ -78,7 +76,7 @@ public class LevelSelectorUI : MonoBehaviour
 
     private void Update()
     {
-        selectedOutline.position = selectedLevel.transform.position;
+        //selectedOutline.position = selectedLevel.transform.position;
     }
 
     void OnDisable()
