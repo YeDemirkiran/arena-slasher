@@ -78,3 +78,13 @@ MonoBehaviour:
     prefab: {fileID: 3903423835090756995, guid: eeec6ecca54c15c418f2d0dba7508197,
       type: 3}
     banner: {fileID: 0}
+  - id: 7
+    excludeFromStore: 1
+    type: 0
+    name: Iron Helmet
+    description: Iron Helmet
+    price: 0
+    arenaID: 0
+    prefab: {fileID: 5362660531399981044, guid: d901603a911d69f459ceb59970be7af7,
+      type: 3}
+    banner: {fileID: 0}

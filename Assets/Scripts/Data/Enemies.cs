@@ -24,8 +24,6 @@ public class Enemy
                 {
                     if (item.id == id)
                     {
-                        Debug.Log("1: " + item.id);
-                        Debug.Log("2: " + id);
                         _gears.Add(item);
                     }
                 }
