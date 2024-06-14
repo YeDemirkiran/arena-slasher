@@ -107,8 +107,8 @@ public class LevelManager : MonoBehaviour
             outfit.SetGear(gear.prefab, outfit.transform);
         }
 
-        outfit.SetGear(enemy.weapon.prefab, outfit.transform);
-        enemyBehaviour.controller.animator.runtimeAnimatorController = (RuntimeAnimatorController)enemy.weapon.controller;
+        enemyBehaviour.controller.weaponControllers = outfit.SetWeapon(enemy.weapon.prefab, outfit.transform);
+        enemyBehaviour.controller.animator.runtimeAnimatorController = enemy.weapon.controller;
     }
 
     public void GenerateLevel(int levelID, int difficultyID)

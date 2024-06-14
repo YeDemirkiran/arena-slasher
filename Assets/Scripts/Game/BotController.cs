@@ -42,6 +42,27 @@ public class BotController : MonoBehaviour
 
     [SerializeField] AudioClip[] warriorScreams, attackGrunts;
 
+    [SerializeField] string targetTag;
+
+    WeaponController[] _weaponControllers;
+    public WeaponController[] weaponControllers 
+    { 
+        get
+        {
+            return _weaponControllers;
+        } 
+        set
+        {
+            _weaponControllers = value;
+
+            foreach (var item in value)
+            {
+                item.controller = this;
+                item.targetTag = targetTag;
+            }
+        }
+    }
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -168,38 +189,60 @@ public class BotController : MonoBehaviour
         attackTimer = 0f;
         audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
 
-        if (attackBox.enemies.Count == 0) return false;
+        return true;
+    }
 
-        for (int i = attackBox.enemies.Count - 1; i >= 0; i--)
+    public void GiveDamage(BotController enemy)
+    {
+        //if (attackBox.enemies.Count == 0) return;
+
+        //for (int i = attackBox.enemies.Count - 1; i >= 0; i--)
+        //{
+        //    BotController enemy = attackBox.enemies[i];
+
+        //    if (enemy == null)
+        //    {
+        //        //Debug.Log("Enemy is already dead, removing from list");
+        //        attackBox.enemies.Remove(attackBox.enemies[i]);
+
+        //        if (attackBox.enemies.Count == 0) return;
+        //        else continue;
+        //    }
+
+        //    if (enemy.isParrying)
+        //    {
+        //        stunned = true;
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        enemy.health -= currentWeapon.damagePerHit;
+        //        GameObject blood = Instantiate(bloodParticles, enemy.transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 2f), Random.Range(-1f, 1f)), Random.rotation);
+        //    }
+        //}
+
+        if (enemy.isParrying)
         {
-            BotController enemy = attackBox.enemies[i];
-
-            if (enemy == null)
-            {
-                //Debug.Log("Enemy is already dead, removing from list");
-                attackBox.enemies.Remove(attackBox.enemies[i]);
-
-                if (attackBox.enemies.Count == 0) return false;
-                else continue;
-            }
-
-            if (enemy.isParrying)
-            {
-                stunned = true;
-                return false;
-            }
-            else
-            {
-                enemy.health -= currentWeapon.damagePerHit;
-                GameObject blood = Instantiate(bloodParticles, enemy.transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 2f), Random.Range(-1f, 1f)), Random.rotation);
-            }
+            stunned = true;
+            return;
         }
-        
+        else
+        {
+            enemy.health -= currentWeapon.damagePerHit;
+            Instantiate(bloodParticles, enemy.transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 2f), Random.Range(-1f, 1f)), Random.rotation);
+        }
+
         onAttack?.Invoke();
         audioSource.PlayOneShot(currentWeapon.hitSoundClips[Random.Range(0, currentWeapon.hitSoundClips.Length)]);
         audioSource.PlayOneShot(attackGrunts[Random.Range(0, attackGrunts.Length)]);
+    }
 
-        return true;
+    public void SetWeaponAttack(bool value)
+    {
+        foreach (var item in weaponControllers)
+        {
+            item.isAttacking = value;
+        }
     }
 
     public void Parry()

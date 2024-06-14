@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9177810456054428044}
   m_Layer: 0
   m_Name: kneeIK.R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,9 +105,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1403579022119505329}
   - component: {fileID: 1513187935490837729}
+  - component: {fileID: 6355851636522995292}
   m_Layer: 0
   m_Name: Bot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,6 +151,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6355851636522995292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884801302517093028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d324087723fec54897b25986fcdb69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 174739239649461594}
 --- !u!1 &890930346311214889
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +175,7 @@ GameObject:
   - component: {fileID: 7554913480111498174}
   m_Layer: 0
   m_Name: shoulder.L
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -300,7 +314,7 @@ GameObject:
   - component: {fileID: 1486513784189319098}
   m_Layer: 0
   m_Name: elbowIK.R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,7 +345,7 @@ GameObject:
   - component: {fileID: 7722341001864922267}
   m_Layer: 0
   m_Name: sheath
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -394,7 +408,7 @@ GameObject:
   - component: {fileID: 2333564567876572427}
   m_Layer: 0
   m_Name: handIK.L
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,7 +439,7 @@ GameObject:
   - component: {fileID: 7229004950846845235}
   m_Layer: 0
   m_Name: neck
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -490,7 +504,7 @@ GameObject:
   - component: {fileID: 2246639163928745936}
   m_Layer: 0
   m_Name: elbowIK.L
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -521,7 +535,7 @@ GameObject:
   - component: {fileID: 749839553180042345}
   m_Layer: 0
   m_Name: fingers.R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -552,7 +566,7 @@ GameObject:
   - component: {fileID: 1729857100012589946}
   m_Layer: 0
   m_Name: hand.R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -617,7 +631,7 @@ GameObject:
   - component: {fileID: 5396794607071873897}
   m_Layer: 0
   m_Name: spine1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -649,7 +663,7 @@ GameObject:
   - component: {fileID: 6612259409195761476}
   m_Layer: 0
   m_Name: footIK.R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -680,7 +694,7 @@ GameObject:
   - component: {fileID: 1057452603389273914}
   m_Layer: 0
   m_Name: Human
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -712,7 +726,7 @@ GameObject:
   - component: {fileID: 7924356153829657293}
   m_Layer: 0
   m_Name: spine0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -961,7 +975,7 @@ GameObject:
   - component: {fileID: 1142369182181369753}
   m_Layer: 0
   m_Name: upperLeg.R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -993,7 +1007,7 @@ GameObject:
   - component: {fileID: 2240208008256657471}
   m_Layer: 0
   m_Name: root
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1033,7 +1047,7 @@ GameObject:
   - component: {fileID: 3171329816905386308}
   m_Layer: 0
   m_Name: upperLeg.L
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1065,7 +1079,7 @@ GameObject:
   - component: {fileID: 240231904630988215}
   m_Layer: 0
   m_Name: upperArm.R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1129,7 +1143,7 @@ GameObject:
   - component: {fileID: 4975215398058382775}
   m_Layer: 0
   m_Name: footIK.L
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1160,7 +1174,7 @@ GameObject:
   - component: {fileID: 8084744872716431476}
   m_Layer: 0
   m_Name: lowerArm.R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1192,7 +1206,7 @@ GameObject:
   - component: {fileID: 8764548910186683229}
   m_Layer: 0
   m_Name: thumb.R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1223,7 +1237,7 @@ GameObject:
   - component: {fileID: 410675301143103310}
   m_Layer: 0
   m_Name: shoulder.R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1286,7 +1300,7 @@ GameObject:
   - component: {fileID: 9198014363617082207}
   m_Layer: 0
   m_Name: kneeIK.L
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1317,7 +1331,7 @@ GameObject:
   - component: {fileID: 2338805314247136366}
   m_Layer: 0
   m_Name: spine2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1351,7 +1365,7 @@ GameObject:
   - component: {fileID: 568459168561717152}
   m_Layer: 0
   m_Name: handIK.R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1522,7 +1536,7 @@ GameObject:
   - component: {fileID: 5801487763326577558}
   m_Layer: 0
   m_Name: Human Mesh
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1676,7 +1690,7 @@ GameObject:
   - component: {fileID: 136189206717612459}
   m_Layer: 0
   m_Name: Enemy HUD
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1799,7 +1813,7 @@ GameObject:
   - component: {fileID: 8981909436537350096}
   m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1880,6 +1894,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aacc5892c150df245a902211fdbd432b, type: 3}
   - {fileID: 8300000, guid: a49e72f1f1cd8e14a8ae5d51ef27412e, type: 3}
   - {fileID: 8300000, guid: beadd68a15e4aea43bcb5969a25eab06, type: 3}
+  targetTag: Player
 --- !u!114 &80823981334970367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2130,7 +2145,7 @@ GameObject:
   - component: {fileID: 4568494386261572061}
   m_Layer: 3
   m_Name: Attack Box
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1525,6 +1525,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aacc5892c150df245a902211fdbd432b, type: 3}
   - {fileID: 8300000, guid: a49e72f1f1cd8e14a8ae5d51ef27412e, type: 3}
   - {fileID: 8300000, guid: beadd68a15e4aea43bcb5969a25eab06, type: 3}
+  targetTag: Enemy
 --- !u!114 &6972626337075990088
 MonoBehaviour:
   m_ObjectHideFlags: 0
