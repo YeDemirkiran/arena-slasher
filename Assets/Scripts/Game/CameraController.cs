@@ -5,14 +5,27 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera virtualCamera;
+    [SerializeField] Vector2 yClamp;
 
-    public float sensitivity = 100f;
+    public Vector2 sensitivity;
 
     Coroutine currentShake;
 
+    Vector3 euler;
+
+    private void Awake()
+    {
+        euler = transform.localEulerAngles;
+    }
+
     void Update()
     {
-        transform.eulerAngles += Vector3.up * sensitivity * Input.GetAxis("Mouse X") * Time.deltaTime;
+        euler.y += sensitivity.x * Input.GetAxis("Mouse X") * Time.deltaTime;
+        euler.x += sensitivity.y * Input.GetAxis("Mouse Y") * Time.deltaTime;
+
+        euler.x = Mathf.Clamp(euler.x, yClamp.x, yClamp.y);
+
+        transform.localEulerAngles = euler;
     }
 
     public void Shake(float duration, float magnitude, float frequency)

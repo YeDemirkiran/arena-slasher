@@ -456,7 +456,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60.000004
   orthographic: 0
@@ -484,8 +484,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30870134, y: 0.16842969, z: -0.055640444, w: 0.9344726}
-  m_LocalPosition: {x: -9.865949, y: 22.999998, z: -13.611029}
+  m_LocalRotation: {x: 0.096745096, y: 0.1889426, z: -0.018708982, w: 0.97703177}
+  m_LocalPosition: {x: -9.584248, y: 13.399998, z: -11.568811}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2469,17 +2469,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0.5, y: -0.4, z: 0}
-  VerticalArmLength: 15
+  ShoulderOffset: {x: 0, y: 0, z: 0}
+  VerticalArmLength: 5
   CameraSide: 1
-  CameraDistance: 12
+  CameraDistance: 10
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 0
-  IgnoreTag: 
-  CameraRadius: 0.2
+    m_Bits: 55
+  IgnoreTag: Player
+  CameraRadius: 0.022
   DampingIntoCollision: 0
-  DampingFromCollision: 2
+  DampingFromCollision: 1
 --- !u!114 &885382352
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2492,7 +2492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 7.68}
+  m_TrackedObjectOffset: {x: 0, y: 3, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -9044,7 +9044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 1852598923}
-  sensitivity: 250
+  yClamp: {x: -75, y: 75}
+  sensitivity: {x: 250, y: -250}
 --- !u!114 &1655573804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9533,7 +9534,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 60.000004
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.01
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -9557,8 +9558,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852598922}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30870134, y: 0.16842969, z: -0.055640444, w: 0.9344726}
-  m_LocalPosition: {x: -9.865949, y: 22.999998, z: -13.611029}
+  m_LocalRotation: {x: 0.096745096, y: 0.1889426, z: -0.018708982, w: 0.97703177}
+  m_LocalPosition: {x: -9.584248, y: 13.399998, z: -11.568811}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
