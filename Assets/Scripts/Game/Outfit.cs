@@ -45,14 +45,14 @@ public class Outfit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.state != GameManager.GameState.Running) { return; }
+        //if (GameManager.Instance.state != GameManager.GameState.Running) { return; }
 
-        foreach (var pair in pairs)
-        {
-            pair.child.transform.position = pair.parent.transform.position;
-            pair.child.transform.rotation = pair.parent.transform.rotation;
-            //pair.child.transform.localScale = pair.parent.transform.localScale;
-        }
+        //foreach (var pair in pairs)
+        //{
+        //    pair.child.transform.position = pair.parent.transform.position;
+        //    pair.child.transform.rotation = pair.parent.transform.rotation;
+        //    //pair.child.transform.localScale = pair.parent.transform.localScale;
+        //}
     }
 
     public void SetPairs(Bone[] parentBones)
@@ -61,22 +61,25 @@ public class Outfit : MonoBehaviour
         List<Bone> _parentBones = parentBones.ToList();
         List<Bone> _childBones = bones.ToList();
 
-        for (int i = _parentBones.Count - 1; i >= 0 ; i--)
+        for (int i = _childBones.Count - 1; i >= 0; i--)
         {
-            Bone parent = _parentBones[i];
-            
+            Bone child = _childBones[i];
 
-            for (int b = _childBones.Count - 1; b >= 0; b--)
+
+            for (int b = _parentBones.Count - 1; b >= 0; b--)
             {
-                Bone child = _childBones[b];
+                Bone parent = _parentBones[b];
 
                 if (parent.type == child.type)
                 {
-                    pairs.Add(new BonePair(parent, child));
-                    _childBones.RemoveAt(b);
+                    child.transform.parent = parent.transform;
+                    child.transform.localPosition = Vector3.zero;
+                    child.transform.localRotation = Quaternion.identity;
+
+                    _parentBones.RemoveAt(b);
                     break;
                 }
-            }   
+            }
         }
     }
 }

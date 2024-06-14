@@ -4,9 +4,8 @@ using UnityEngine.Events;
 public class BotController : MonoBehaviour
 {
     CharacterController controller;
-    BotOutfit outfit;
 
-    [SerializeField] Animator animator;
+    public Animator animator;
 
     public float runningSpeed = 10f;
     public float rotationSpeed = 250f;
@@ -46,7 +45,6 @@ public class BotController : MonoBehaviour
     void Awake()
     {
         controller = GetComponent<CharacterController>();
-        outfit = GetComponent<BotOutfit>();
         attackBox = GetComponentInChildren<AttackBox>();
     }
 

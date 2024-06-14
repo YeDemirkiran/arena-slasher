@@ -31,15 +31,10 @@ public class LevelManager : MonoBehaviour
 
     List<GameObject> arenaObjects = new List<GameObject>();
 
-    private void Awake()
+    void Awake()
     {
         if (Instance != null) Destroy(this);
         Instance = this;
-    }
-
-    void Start()
-    {
-        //GenerateLevel(0, 3);
     }
 
     void Update()
@@ -50,19 +45,13 @@ public class LevelManager : MonoBehaviour
         if (spawnTimer < currentLevel.spawnTime && currentEnemies.Count > 0)
         {
             spawnTimer += Time.deltaTime;
-            //Debug.Log("1");
-
         }
         else
         {
             spawnTimer = 0f;
 
-            //Debug.Log("!2");
-
             Vector2 spawnArea = currentLevel.spawnArea;
             int availableEnemy = currentDifficulty.maxEnemies - currentEnemies.Count;
-
-            //Debug.Log(currentDifficulty.maxEnemies);
 
             for (int i = 0; i < Mathf.Clamp(currentLevel.enemyPerSpawn, 0, availableEnemy); i++)
             {
@@ -117,6 +106,9 @@ public class LevelManager : MonoBehaviour
         {
             outfit.SetGear(gear.prefab, outfit.transform);
         }
+
+        outfit.SetGear(enemy.weapon.prefab, outfit.transform);
+        enemyBehaviour.controller.animator.runtimeAnimatorController = (RuntimeAnimatorController)enemy.weapon.controller;
     }
 
     public void GenerateLevel(int levelID, int difficultyID)
@@ -129,7 +121,7 @@ public class LevelManager : MonoBehaviour
         PlayerController.Instance.ResetPlayer();
         CharacterController cha = PlayerController.Instance.GetComponent<CharacterController>();
         cha.enabled = false;
-        //GameObject player = Instantiate(playerPrefab, currentLevel.spawnPoint, Quaternion.identity);
+
         PlayerController.Instance.transform.position = currentLevel.spawnPoint;
         cha.enabled = true;
 
@@ -172,11 +164,7 @@ public class LevelManager : MonoBehaviour
             Destroy(obj);
         }
 
-        arenaObjects.Clear();
-
-        //MusicManager.Instance.audioSource.Stop();
-
-       // Destroy(PlayerController.Instance.gameObject);  
+        arenaObjects.Clear(); 
     }
 
     void GenerateArena()
@@ -249,11 +237,6 @@ public class LevelManager : MonoBehaviour
         arenaObjects.Add(rightBottomColumn);
 
         GenerateProps();
-
-        //Vector3 groundScale = ground.transform.localScale;
-        //groundScale.x = area.x;
-        //groundScale.z = area.y;
-        //ground.transform.
     }
 
     void GenerateProps()

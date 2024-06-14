@@ -1,10 +1,10 @@
 using UnityEngine;
-using static Cinemachine.DocumentationSortingAttribute;
 
 public class EnemyBehaviour : MonoBehaviour
 {
     PlayerController player;
-    BotController controller;
+
+    public BotController controller { get; private set; }
 
     [SerializeField] float followSafeDistance = 3f;
     [SerializeField] float parryChance = 10f;

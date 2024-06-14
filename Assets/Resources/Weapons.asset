@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - id: 0
-    name: Sword
-    damagePerHit: 10
-    attackCooldown: 0.1
-    parryDuration: 0.5
-    prefab: {fileID: 0}
+    name: Single Sword
+    controller: {fileID: 9100000, guid: 4d5a3e56470fb0a4394ff25035df9dec, type: 2}
+    prefab: {fileID: 7257401063311385245, guid: c6b06d50df32bf54d8eb4b8d83d39bef,
+      type: 3}
     attackSoundClips:
     - {fileID: 8300000, guid: 9a26a3f9699efdc46a183f869c727fdf, type: 3}
     - {fileID: 8300000, guid: bc239572c53879749a5ad1f0e5e3640a, type: 3}
@@ -33,3 +32,6 @@ MonoBehaviour:
     - {fileID: 8300000, guid: e032845833829cf4197b8227853bd3fc, type: 3}
     - {fileID: 8300000, guid: ea6eabeece395aa458b520c6758f6213, type: 3}
     - {fileID: 8300000, guid: c32b7a9875c81534d81bc068dd871082, type: 3}
+    damagePerHit: 10
+    attackCooldown: 0.1
+    parryDuration: 0.5

@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
@@ -8,7 +6,6 @@ public class Enemy
 {
     public int id;
     public GameObject prefab;
-    public int weaponID;
 
     [SerializeField] int[] gearIDs;
 
@@ -30,6 +27,16 @@ public class Enemy
             }
 
             return _gears.ToArray();
+        }
+    }
+
+    [SerializeField] int weaponID;
+
+    public Weapon weapon
+    {
+        get
+        {
+            return Weapons.Instance[weaponID];
         }
     }
 
