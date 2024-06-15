@@ -36,22 +36,22 @@ public class WeaponController : MonoBehaviour
     {
         if (controller == null)
         {
-            Debug.Log("Controller is null");
+            //Debug.Log("Controller is null");
             return;
         }
         else
         {
-            Debug.Log("Controller is not null");
+            //Debug.Log("Controller is not null");
         }
 
         if (!isAttacking)
         {
-            Debug.Log("Not attacking");
+            //Debug.Log("Not attacking");
             return;
         }
         else
         {
-            Debug.Log("Attacking");
+            //Debug.Log("Attacking");
         }
 
         if (!other.TryGetComponent(out BotController enemyController)) { Debug.Log("No Enemy controller"); return; }

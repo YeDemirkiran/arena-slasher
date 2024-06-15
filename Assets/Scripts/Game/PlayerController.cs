@@ -86,8 +86,6 @@ public class PlayerController : MonoBehaviour
     {
         if (Instance == this)
         {
-            Debug.Log("baban");
-
             Instance = null;
 
             controller.onAttack -= () => cameraController.Shake(attackShake.x, attackShake.y, attackShake.z);

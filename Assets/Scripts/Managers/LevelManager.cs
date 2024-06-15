@@ -83,6 +83,29 @@ public class LevelManager : MonoBehaviour
         GenerateLevel(currentLevel.id, currentDifficulty.id);
     }
 
+    public void SpawnPlayer()
+    {
+        PlayerController player = Instantiate(playerPrefab).GetComponent<PlayerController>();
+        CharacterController cha = player.GetComponent<CharacterController>();
+        cha.enabled = false;
+
+        BotOutfit outfit = player.GetComponent<BotOutfit>();
+
+        foreach (var item in GameManager.Instance.gameData.equippedItemIDs)
+        {
+            Item gear = Items.Instance[item];
+
+            outfit.SetGear(gear.prefab, outfit.transform);
+        }
+
+        Weapon weapon = Weapons.Instance[GameManager.Instance.gameData.equippedWeaponID];
+        player.controller.weaponControllers = outfit.SetWeapon(weapon.prefab, outfit.transform);
+        player.controller.animator.runtimeAnimatorController = weapon.controller;
+
+        player.transform.position = currentLevel.spawnPoint;
+        cha.enabled = true;
+    }
+
     public void SpawnEnemy(Vector3 spawnPoint, int enemyID = -1)
     {
         int id;
@@ -118,12 +141,7 @@ public class LevelManager : MonoBehaviour
         currentLevel = levels.levels.First(x => x.id == levelID);
         currentDifficulty = difficulties.difficultyLevels.First(x => x.id == difficultyID);
 
-        PlayerController player = Instantiate(playerPrefab).GetComponent<PlayerController>();
-        CharacterController cha = player.GetComponent<CharacterController>();
-        cha.enabled = false;
-
-        player.transform.position = currentLevel.spawnPoint;
-        cha.enabled = true;
+        SpawnPlayer();
 
         if (currentLevel.type == Level.LevelType.Timed)
         {
