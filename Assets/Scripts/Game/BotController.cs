@@ -192,35 +192,8 @@ public class BotController : MonoBehaviour
         return true;
     }
 
-    public void GiveDamage(BotController enemy)
+    public void GiveDamage(BotController enemy, WeaponController caller, Vector3 attackPoint)
     {
-        //if (attackBox.enemies.Count == 0) return;
-
-        //for (int i = attackBox.enemies.Count - 1; i >= 0; i--)
-        //{
-        //    BotController enemy = attackBox.enemies[i];
-
-        //    if (enemy == null)
-        //    {
-        //        //Debug.Log("Enemy is already dead, removing from list");
-        //        attackBox.enemies.Remove(attackBox.enemies[i]);
-
-        //        if (attackBox.enemies.Count == 0) return;
-        //        else continue;
-        //    }
-
-        //    if (enemy.isParrying)
-        //    {
-        //        stunned = true;
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        enemy.health -= currentWeapon.damagePerHit;
-        //        GameObject blood = Instantiate(bloodParticles, enemy.transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 2f), Random.Range(-1f, 1f)), Random.rotation);
-        //    }
-        //}
-
         if (enemy.isParrying)
         {
             stunned = true;
@@ -229,7 +202,9 @@ public class BotController : MonoBehaviour
         else
         {
             enemy.health -= currentWeapon.damagePerHit;
-            Instantiate(bloodParticles, enemy.transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 2f), Random.Range(-1f, 1f)), Random.rotation);
+            GameObject blood = Instantiate(bloodParticles, attackPoint, Quaternion.identity);
+            blood.transform.parent = caller.transform;
+            caller.particles.Add(blood);
         }
 
         onAttack?.Invoke();

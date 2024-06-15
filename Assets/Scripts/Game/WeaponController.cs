@@ -5,6 +5,7 @@ public class WeaponController : MonoBehaviour
 {
     public BotController controller { get; set; }
     public string targetTag { get; set; }
+    public List<GameObject> particles { get; set; } = new List<GameObject>();
 
     bool _isAttacking;
     public bool isAttacking
@@ -17,6 +18,14 @@ public class WeaponController : MonoBehaviour
         set
         {
             _isAttacking = value;
+
+            foreach (var particle in particles)
+            {
+                particle.transform.parent = null;
+            }
+
+            particles.Clear();
+
             hitEnemies.Clear();
         }
     }
@@ -50,8 +59,8 @@ public class WeaponController : MonoBehaviour
         if (!hitEnemies.Contains(enemyController) && enemyController != controller && other.CompareTag(targetTag))
         {
             hitEnemies.Add(enemyController);
-            controller.GiveDamage(other.GetComponent<BotController>());
-            Debug.Log("Hit");
+            controller.GiveDamage(other.GetComponent<BotController>(), this, other.ClosestPoint(transform.position));
+            //Debug.Log("Hit");
         }
     }
 }
