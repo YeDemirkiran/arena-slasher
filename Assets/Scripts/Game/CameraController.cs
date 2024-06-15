@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController Instance { get; private set; }
+
     [SerializeField] CinemachineVirtualCamera virtualCamera;
     [SerializeField] Vector2 yClamp;
 
@@ -15,6 +17,13 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance = this;
+
         euler = transform.localEulerAngles;
     }
 

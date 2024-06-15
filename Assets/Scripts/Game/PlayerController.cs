@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,24 +6,25 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }
+    public BotController controller { get; private set; }
 
-    BotController controller;
-    [SerializeField] new CameraController camera;
 
-    [SerializeField] GameObject deathMenu;
+    CameraController cameraController;
+    GameObject deathMenu;
 
     [Header("Attack")]
     [Tooltip("X = duration \nY = magnitude \nZ = Frequency")] [SerializeField] Vector3 attackShake;
 
 
-
     public float health { get { return controller.health; } }
     public float maxHealth { get { return controller.maxHealth; } }    
+
 
     void Awake()
     {
         if (Instance)
         {
+            Debug.Log("anan");
             Destroy(gameObject);
             return;
         }
@@ -32,9 +34,21 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<BotController>();
     }
 
-    void Start()
+    IEnumerator Start()
     {
-        controller.onAttack += () => camera.Shake(attackShake.x, attackShake.y, attackShake.z);
+        while (CameraController.Instance == null) { yield return null; }
+        cameraController = CameraController.Instance;
+
+        while (UIManager.Instance == null) { yield return null; }
+
+        UIManager.Instance.healthBar.controller = controller;
+        UIManager.Instance.parryBar.controller = controller;
+
+        deathMenu = UIManager.Instance.deathMenu.gameObject;
+
+        controller.stunIcon = UIManager.Instance.stunIcon;
+
+        controller.onAttack += () => cameraController.Shake(attackShake.x, attackShake.y, attackShake.z);
         controller.onDeath += () => 
         {
             GameManager.Instance.PauseGamePure();
@@ -59,10 +73,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             controller.Parry();
-        }
-
-        //controller.ApplyGravity();
-        //controller.ApplyMovement();   
+        }   
     }
 
     public void ResetPlayer()
@@ -73,6 +84,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instance = null;
+        if (Instance == this)
+        {
+            Debug.Log("baban");
+
+            Instance = null;
+
+            controller.onAttack -= () => cameraController.Shake(attackShake.x, attackShake.y, attackShake.z);
+            controller.onDeath -= () =>
+            {
+                GameManager.Instance.PauseGamePure();
+            };
+        }
     }
 }

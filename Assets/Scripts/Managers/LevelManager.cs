@@ -118,11 +118,11 @@ public class LevelManager : MonoBehaviour
         currentLevel = levels.levels.First(x => x.id == levelID);
         currentDifficulty = difficulties.difficultyLevels.First(x => x.id == difficultyID);
 
-        PlayerController.Instance.ResetPlayer();
-        CharacterController cha = PlayerController.Instance.GetComponent<CharacterController>();
+        PlayerController player = Instantiate(playerPrefab).GetComponent<PlayerController>();
+        CharacterController cha = player.GetComponent<CharacterController>();
         cha.enabled = false;
 
-        PlayerController.Instance.transform.position = currentLevel.spawnPoint;
+        player.transform.position = currentLevel.spawnPoint;
         cha.enabled = true;
 
         if (currentLevel.type == Level.LevelType.Timed)
@@ -164,7 +164,13 @@ public class LevelManager : MonoBehaviour
             Destroy(obj);
         }
 
-        arenaObjects.Clear(); 
+        arenaObjects.Clear();
+
+        if (PlayerController.Instance != null)
+        {
+            PlayerController.Instance.ResetPlayer();
+            DestroyImmediate(PlayerController.Instance.gameObject);
+        }
     }
 
     void GenerateArena()

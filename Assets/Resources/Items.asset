@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - id: 0
-    excludeFromStore: 0
+    excludeFromStore: 1
     type: 0
     name: Helmet_Empty
     description: Helmet_Desc
@@ -23,7 +23,7 @@ MonoBehaviour:
     prefab: {fileID: 0}
     banner: {fileID: 0}
   - id: 1
-    excludeFromStore: 0
+    excludeFromStore: 1
     type: 1
     name: Armor_Empty
     description: Armor_Desc
@@ -32,7 +32,7 @@ MonoBehaviour:
     prefab: {fileID: 0}
     banner: {fileID: 0}
   - id: 2
-    excludeFromStore: 0
+    excludeFromStore: 1
     type: 2
     name: Pants_Empty
     description: Pants_Desc
@@ -41,7 +41,7 @@ MonoBehaviour:
     prefab: {fileID: 0}
     banner: {fileID: 0}
   - id: 3
-    excludeFromStore: 0
+    excludeFromStore: 1
     type: 3
     name: Boots_Empty
     description: Boots_Desc
@@ -59,11 +59,11 @@ MonoBehaviour:
     prefab: {fileID: 0}
     banner: {fileID: 0}
   - id: 5
-    excludeFromStore: 1
+    excludeFromStore: 0
     type: 1
-    name: ARMOR_IRON
+    name: Iron Armor
     description: Helmet 2
-    price: 0
+    price: 100
     arenaID: 0
     prefab: {fileID: 1164285958295557463, guid: c51d08f0cff20be40b1d684139ec3286,
       type: 3}
@@ -71,9 +71,9 @@ MonoBehaviour:
   - id: 6
     excludeFromStore: 1
     type: 0
-    name: HELMET_HAIR
+    name: Mohawk Hair
     description: Hair
-    price: 0
+    price: 50
     arenaID: 0
     prefab: {fileID: 3903423835090756995, guid: eeec6ecca54c15c418f2d0dba7508197,
       type: 3}
@@ -83,7 +83,7 @@ MonoBehaviour:
     type: 0
     name: Iron Helmet
     description: Iron Helmet
-    price: 0
+    price: 100
     arenaID: 0
     prefab: {fileID: 5362660531399981044, guid: d901603a911d69f459ceb59970be7af7,
       type: 3}

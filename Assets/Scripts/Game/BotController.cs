@@ -24,8 +24,6 @@ public class BotController : MonoBehaviour
 
     Vector3 horizontalVelocity, verticalVelocity;
 
-    AttackBox attackBox;
-
     bool moveCalledThisFrame = false;
 
     bool _stunned;
@@ -36,7 +34,7 @@ public class BotController : MonoBehaviour
     bool isParrying { get { return _parrying; } set { _parrying = value; animator.SetBool("Parrying", value); } }
 
     [SerializeField] float stunTime = 2f;
-    [SerializeField] RotatingObject stunIcon;
+    public RotatingObject stunIcon;
     [SerializeField] GameObject bloodParticles;
     float attackTimer, parryTimer, stunTimer;
 
@@ -66,7 +64,6 @@ public class BotController : MonoBehaviour
     void Awake()
     {
         controller = GetComponent<CharacterController>();
-        attackBox = GetComponentInChildren<AttackBox>();
     }
 
     void Start()
@@ -93,8 +90,6 @@ public class BotController : MonoBehaviour
             else
             {
                 isParrying = false;
-                //parryTimer = 0f;
-                //parryCooldownTimer = 0f;
             }
         }
         else
@@ -132,11 +127,6 @@ public class BotController : MonoBehaviour
 
         if (!moveCalledThisFrame) { horizontalVelocity = Vector3.zero; animator.SetBool("Running", false); }
         moveCalledThisFrame = false;
-
-        //Debug.Log("outfit null: " + outfit == null);
-        //Debug.Log("animator null: " + animator == null);
-
-        //outfit?.UpdateOutfit(animator);
     }
 
     public void Move(float input)
