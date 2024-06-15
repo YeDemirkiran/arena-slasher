@@ -102,6 +102,8 @@ MonoBehaviour:
   bones:
   - type: 14
     transform: {fileID: 3460007809254630145}
+  defaultLocalPosition: {x: 0.0005, y: 0.00102, z: 0.00112}
+  defaultLocalRotation: {x: 75.144295, y: 250.21323, z: 252.08594}
 --- !u!114 &5184679258523584153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +266,8 @@ MonoBehaviour:
   bones:
   - type: 13
     transform: {fileID: 135131185670793267}
+  defaultLocalPosition: {x: 0.0005, y: 0.00102, z: 0.00112}
+  defaultLocalRotation: {x: 75.144295, y: 250.21323, z: 252.08594}
 --- !u!65 &7007110607095620094
 BoxCollider:
   m_ObjectHideFlags: 0
