@@ -30,6 +30,7 @@ public class ItemManager : MonoBehaviour
 
     [Header("Inventory")]
     [SerializeField] Button equipButton;
+    [SerializeField] BotOutfit botOufit;
 
     GameData data;
     
@@ -64,6 +65,8 @@ public class ItemManager : MonoBehaviour
             yield return null;
         }
 
+        data = GameManager.Instance.gameData;
+
         int i = 0;
 
         foreach (Transform item in contentTransform)
@@ -74,18 +77,29 @@ public class ItemManager : MonoBehaviour
             }
         }
 
-        foreach (var item in itemTypeBanners)
+        switch (type)
         {
-            ItemStrip strip = Instantiate(itemStripPrefab, contentTransform).GetComponent<ItemStrip>();
-            strip.manager = this;
-            strip.Type = itemTypeBanners[i].type;
-            strip.Banner = itemTypeBanners[i].banner;
-            strip.UpdateContents();
+            case Type.Store:
+                foreach (var item in itemTypeBanners)
+                {
+                    ItemStrip strip = Instantiate(itemStripPrefab, contentTransform).GetComponent<ItemStrip>();
+                    strip.manager = this;
+                    strip.Type = itemTypeBanners[i].type;
+                    strip.Banner = itemTypeBanners[i].banner;
+                    strip.UpdateContents();
 
-            i++;
+                    i++;
+                }
+                break;
+
+            case Type.Inventory:
+                UpdatePlayerOutfit();
+
+                break;
+
+            default:
+                break;
         }
-
-        data = GameManager.Instance.gameData;
     }
 
     public void BuySelectedItem()
@@ -104,7 +118,15 @@ public class ItemManager : MonoBehaviour
 
     public void EquipSelectedItem()
     {
-
+        foreach (var id in data.equippedItemIDs)
+        {
+            if (Items.Instance[id].type == selectedSlot.item.type)
+            {
+                data.EquipItem(selectedSlot.item, id);
+                UpdatePlayerOutfit();
+            }
+        }
+        
     }
 
     public void DrawInfoScreen()
@@ -137,5 +159,15 @@ public class ItemManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    void UpdatePlayerOutfit()
+    {
+        foreach (var id in data.equippedItemIDs)
+        {
+            botOufit.SetGear(Items.Instance[id].prefab, botOufit.transform);
+        }
+
+        botOufit.SetWeapon(Weapons.Instance[data.equippedWeaponID].prefab, botOufit.transform);
     }
 }

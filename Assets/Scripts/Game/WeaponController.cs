@@ -21,7 +21,10 @@ public class WeaponController : MonoBehaviour
 
             foreach (var particle in particles)
             {
-                particle.transform.parent = null;
+                if (particle != null)
+                {
+                    particle.transform.parent = null;
+                }
             }
 
             particles.Clear();

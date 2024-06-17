@@ -174,6 +174,8 @@ public class BotController : MonoBehaviour
     {
         if (stunned || attackTimer < currentWeapon.attackCooldown) return false;
 
+        SetWeaponAttack(false);
+
         isParrying = false;
         animator.SetTrigger("Slash");
         attackTimer = 0f;
