@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Animations;
 using UnityEngine;
 using System.Linq;
 
@@ -9,7 +8,7 @@ public class Weapon
     public int id;
     public string name;
 
-    public AnimatorController controller;
+    public RuntimeAnimatorController controller;
     public GameObject prefab;
     public AudioClip[] attackSoundClips;
     public AudioClip[] hitSoundClips;

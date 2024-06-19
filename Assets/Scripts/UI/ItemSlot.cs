@@ -12,13 +12,17 @@ public class ItemSlot : MonoBehaviour
     [SerializeField] Image bannerSlot;
     [SerializeField] TMP_Text textSlot;
     [SerializeField] GameObject lockedImage;
-    
+
+    void Awake()
+    {
+        button = GetComponent<Button>();
+    }
 
     public void Initialize(Item item)
     {
         this.item = item;
         bannerSlot.sprite = item.banner;
-        textSlot.name = item.name;
+        textSlot.text = item.name;
 
         lockedImage.SetActive(item.Locked(GameManager.Instance.gameData)); 
     }

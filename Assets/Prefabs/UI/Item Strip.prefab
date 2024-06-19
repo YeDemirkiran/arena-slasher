@@ -556,8 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 7674053122683643646}
-  items: {fileID: 11400000, guid: 8af9209461e562b41ad7526b45e26c3b, type: 2}
-  itemPrefab: {fileID: 422100335192643570, guid: 8dbf5d037ce947e498d444e7b4242780,
+  slotPrefab: {fileID: 422100335192643570, guid: 8dbf5d037ce947e498d444e7b4242780,
     type: 3}
   banner: {fileID: 2849023660665365221}
 --- !u!1 &6041155921274888607

@@ -69,7 +69,7 @@ MonoBehaviour:
       type: 3}
     banner: {fileID: 0}
   - id: 6
-    excludeFromStore: 1
+    excludeFromStore: 0
     type: 0
     name: Mohawk Hair
     description: Hair

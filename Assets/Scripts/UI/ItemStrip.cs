@@ -11,7 +11,7 @@ public class ItemStrip : MonoBehaviour
     Items items { get { return Items.Instance; } }
 
     [SerializeField] Transform content;
-    [SerializeField] GameObject itemPrefab;
+    [SerializeField] GameObject slotPrefab;
     [SerializeField] Image banner;
 
     public void UpdateContents()
@@ -28,7 +28,9 @@ public class ItemStrip : MonoBehaviour
         {
             if (!items[i].excludeFromStore && items[i].type == Type)
             {
-                ItemSlot slot = Instantiate(itemPrefab, content).GetComponent<ItemSlot>();
+                ItemSlot slot = Instantiate(slotPrefab, content).GetComponent<ItemSlot>();
+                slot.Initialize(items[i]);
+                
                 slot.button.onClick.AddListener(() => manager.selectedSlot = slot);
             }
         }

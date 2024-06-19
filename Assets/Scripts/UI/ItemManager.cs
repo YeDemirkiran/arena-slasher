@@ -11,30 +11,37 @@ public class ItemTypeBanner
     public Sprite banner;
 }
 
+[System.Serializable]
+public class ItemTypeCamera
+{
+    public Item.ItemType type;
+    public Transform targetTransform;
+}
+
 public class ItemManager : MonoBehaviour
 {
     [SerializeField] Transform selectorOutline;
 
     [Header("General")]
-    [SerializeField] Type type;
+    [SerializeField] PlayerMenuController playerMenuController;
     [SerializeField] TMP_Text itemInfoName;
     
-    [Header("Store")]
     [SerializeField] ItemTypeBanner[] itemTypeBanners;
     [SerializeField] Button buyButton;
     [SerializeField] GameObject itemStripPrefab;
     [SerializeField] Transform contentTransform;
-    [SerializeField] GameObject cantBuyMessage, alreadyHaveMessage;
+    [SerializeField] GameObject cantBuyMessage;
     [SerializeField] TMP_Text itemInfoPrice;
     [SerializeField] TMP_Text itemInfoDescription;
 
-    [Header("Inventory")]
     [SerializeField] Button equipButton;
     [SerializeField] BotOutfit botOufit;
 
+    [Header("Animation")]
+    [SerializeField] CameraEffects camEffects;
+    [SerializeField] ItemTypeCamera[] cameraPositions;
+
     GameData data;
-    
-    public enum Type { Store, Inventory }
 
     ItemSlot _selectedSlot;
     public ItemSlot selectedSlot
@@ -48,10 +55,21 @@ public class ItemManager : MonoBehaviour
         {
             _selectedSlot = value;
 
-            selectorOutline.gameObject.SetActive(true);
-            selectorOutline.SetParent(value.transform.parent);
-            selectorOutline.SetAsFirstSibling();
-            selectorOutline.position = value.transform.position;
+            if (_selectedSlot != null)
+            {
+                MoveCameraToItemTarget(value.item.type);
+
+                selectorOutline.gameObject.SetActive(true);
+                selectorOutline.SetParent(value.transform.parent);
+                selectorOutline.SetAsFirstSibling();
+                selectorOutline.position = value.transform.position;
+
+                
+            }
+            else
+            {
+                selectorOutline.gameObject.SetActive(false);
+            }
 
             DrawInfoScreen();
         }
@@ -77,29 +95,21 @@ public class ItemManager : MonoBehaviour
             }
         }
 
-        switch (type)
+        foreach (var item in itemTypeBanners)
         {
-            case Type.Store:
-                foreach (var item in itemTypeBanners)
-                {
-                    ItemStrip strip = Instantiate(itemStripPrefab, contentTransform).GetComponent<ItemStrip>();
-                    strip.manager = this;
-                    strip.Type = itemTypeBanners[i].type;
-                    strip.Banner = itemTypeBanners[i].banner;
-                    strip.UpdateContents();
+            ItemStrip strip = Instantiate(itemStripPrefab, contentTransform).GetComponent<ItemStrip>();
+            strip.manager = this;
+            strip.Type = itemTypeBanners[i].type;
+            strip.Banner = itemTypeBanners[i].banner;
+            strip.UpdateContents();
 
-                    i++;
-                }
-                break;
-
-            case Type.Inventory:
-                UpdatePlayerOutfit();
-
-                break;
-
-            default:
-                break;
+            i++;
         }
+    }
+
+    private void OnEnable()
+    {
+        selectedSlot = null;
     }
 
     public void BuySelectedItem()
@@ -118,15 +128,16 @@ public class ItemManager : MonoBehaviour
 
     public void EquipSelectedItem()
     {
-        foreach (var id in data.equippedItemIDs)
+        for (int id = data.equippedItemIDs.Count; id >= 0; id--)
         {
             if (Items.Instance[id].type == selectedSlot.item.type)
             {
                 data.EquipItem(selectedSlot.item, id);
-                UpdatePlayerOutfit();
+                playerMenuController.UpdatePlayerOutfit();
             }
         }
-        
+
+        DrawInfoScreen(); 
     }
 
     public void DrawInfoScreen()
@@ -135,39 +146,32 @@ public class ItemManager : MonoBehaviour
 
         itemInfoName.text = value.item.name;
 
-        switch (type)
-        {
-            case Type.Store:
-                itemInfoDescription.text = value.item.description;
-                itemInfoPrice.text = "$" + value.item.price;
+        itemInfoDescription.text = value.item.description;
+        itemInfoPrice.text = "$" + value.item.price;
 
-                bool noMoney = value.item.price > data.currency;
-                bool alreadyHave = data.boughtItemIDs.Contains(value.item.id);
+        bool noMoney = value.item.price > data.currency;
+        bool alreadyHave = data.boughtItemIDs.Contains(value.item.id);
+        bool alreadyEquipped = data.equippedItemIDs.Contains(value.item.id);
 
-                cantBuyMessage.SetActive(noMoney);
-                itemInfoPrice.gameObject.SetActive(!alreadyHave);
-                alreadyHaveMessage.SetActive(alreadyHave);
+        cantBuyMessage.SetActive(noMoney && !alreadyHave);
+        itemInfoPrice.gameObject.SetActive(!alreadyHave);       
 
-                buyButton.interactable = !(noMoney || alreadyHave);
-                break;
+        buyButton.gameObject.SetActive(!alreadyHave);
+        buyButton.interactable = !noMoney;
 
-            case Type.Inventory:
-                bool alreadyEquipped = data.equippedItemIDs.Contains(value.item.id);
-                equipButton.interactable = !alreadyEquipped;
-                break;
-
-            default:
-                break;
-        }
+        equipButton.gameObject.SetActive(alreadyHave);
+        equipButton.interactable = !alreadyEquipped;
     }
 
-    void UpdatePlayerOutfit()
+    public void MoveCameraToItemTarget(Item.ItemType type)
     {
-        foreach (var id in data.equippedItemIDs)
+        foreach (var item in cameraPositions)
         {
-            botOufit.SetGear(Items.Instance[id].prefab, botOufit.transform);
+            if (item.type == type)
+            {
+                camEffects.MoveToTransform(item.targetTransform, 0.25f, AnimationCurve.EaseInOut(0f, 0f, 1f, 1f));
+                break;
+            }
         }
-
-        botOufit.SetWeapon(Weapons.Instance[data.equippedWeaponID].prefab, botOufit.transform);
     }
 }

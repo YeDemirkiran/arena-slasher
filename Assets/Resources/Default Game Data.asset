@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameData:
     unlockedLevelIDs: 00000000
-    boughtItemIDs: 00000000
-    equippedItemIDs: 06000000
+    boughtItemIDs: 06000000
+    equippedItemIDs: 00000000
     boughtWeaponIDs: 00000000
     equippedWeaponID: 0
     sfxLevel: 1
