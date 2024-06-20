@@ -35212,13 +35212,21 @@ MonoBehaviour:
   playerMenuController: {fileID: 0}
   itemInfoName: {fileID: 875105454}
   itemTypeBanners:
-  - type: 0
+  - type:
+      id: 0
+      name: 
     banner: {fileID: 21300000, guid: cc56b4d2353700140af138a1435c237c, type: 3}
-  - type: 1
+  - type:
+      id: 0
+      name: 
     banner: {fileID: 21300000, guid: f185b1e52e4c50344b6ca99a924400dd, type: 3}
-  - type: 2
+  - type:
+      id: 0
+      name: 
     banner: {fileID: 21300000, guid: e13d9efe5dea7ec409d7a46f646db44f, type: 3}
-  - type: 3
+  - type:
+      id: 0
+      name: 
     banner: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   buyButton: {fileID: 922355663}
   itemStripPrefab: {fileID: 4441465966326063888, guid: 57dc356ddc52c564885ec09e9afe4b3f,
@@ -47679,13 +47687,21 @@ MonoBehaviour:
   playerMenuController: {fileID: 4580818480673469689}
   itemInfoName: {fileID: 1332612561}
   itemTypeBanners:
-  - type: 0
+  - type:
+      id: 0
+      name: 
     banner: {fileID: 21300000, guid: cc56b4d2353700140af138a1435c237c, type: 3}
-  - type: 1
+  - type:
+      id: 0
+      name: 
     banner: {fileID: 21300000, guid: f185b1e52e4c50344b6ca99a924400dd, type: 3}
-  - type: 2
+  - type:
+      id: 0
+      name: 
     banner: {fileID: 21300000, guid: e13d9efe5dea7ec409d7a46f646db44f, type: 3}
-  - type: 3
+  - type:
+      id: 0
+      name: 
     banner: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   buyButton: {fileID: 1235059851}
   itemStripPrefab: {fileID: 4441465966326063888, guid: 57dc356ddc52c564885ec09e9afe4b3f,
@@ -47698,13 +47714,21 @@ MonoBehaviour:
   botOufit: {fileID: 238527943420960166}
   camEffects: {fileID: 330585548}
   cameraPositions:
-  - type: 0
+  - type:
+      id: 0
+      name: 
     targetTransform: {fileID: 341532877}
-  - type: 1
+  - type:
+      id: 0
+      name: 
     targetTransform: {fileID: 958837229}
-  - type: 2
+  - type:
+      id: 0
+      name: 
     targetTransform: {fileID: 994798740}
-  - type: 3
+  - type:
+      id: 0
+      name: 
     targetTransform: {fileID: 1770155646}
 --- !u!1 &2034263068
 GameObject:
@@ -51101,7 +51125,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 6.8359685, y: 4.136438, z: 2.6163104}
   m_Center: {x: -0.5858669, y: 1.568219, z: -0.029401604}

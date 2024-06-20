@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ItemStrip : MonoBehaviour
 {
-    public Item.ItemType Type { get; set; }
+    public ItemType Type { get; set; }
     public Sprite Banner { get; set; }
 
     public ItemManager manager { get; set; }
@@ -24,7 +24,7 @@ public class ItemStrip : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < items.items.Length; i++)
+        for (int i = 0; i < items.Length; i++)
         {
             if (!items[i].excludeFromStore && items[i].type == Type)
             {

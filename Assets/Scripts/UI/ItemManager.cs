@@ -7,14 +7,14 @@ using UnityEngine.UI;
 [System.Serializable]
 public class ItemTypeBanner
 {
-    public Item.ItemType type;
+    public ItemType type;
     public Sprite banner;
 }
 
 [System.Serializable]
 public class ItemTypeCamera
 {
-    public Item.ItemType type;
+    public ItemType type;
     public Transform targetTransform;
 }
 
@@ -163,7 +163,7 @@ public class ItemManager : MonoBehaviour
         equipButton.interactable = !alreadyEquipped;
     }
 
-    public void MoveCameraToItemTarget(Item.ItemType type)
+    public void MoveCameraToItemTarget(ItemType type)
     {
         foreach (var item in cameraPositions)
         {

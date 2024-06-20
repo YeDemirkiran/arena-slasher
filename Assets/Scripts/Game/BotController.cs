@@ -16,7 +16,6 @@ public class BotController : MonoBehaviour
     public float maxHealth = 100f;
     public UnityAction onDeath, onAttack;
 
-    public Weapons weaponsList;
     public Weapon currentWeapon { get; set; }
     [SerializeField] AudioSource audioSource;
     public float parryCooldown;
@@ -69,7 +68,6 @@ public class BotController : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        currentWeapon = weaponsList.weapons[0];
     }
 
     void Update()

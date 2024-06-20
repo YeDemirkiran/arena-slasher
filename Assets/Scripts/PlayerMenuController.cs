@@ -51,6 +51,6 @@ public class PlayerMenuController : MonoBehaviour
             outfit.SetGear(Items.Instance[id].prefab, outfit.transform);
         }
 
-        outfit.SetWeapon(Weapons.Instance[data.equippedWeaponID].prefab, outfit.transform);
+        outfit.SetWeapon(Items.Instance.weapons[data.equippedWeaponID].prefab, outfit.transform);
     }
 }

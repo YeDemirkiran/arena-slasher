@@ -21,9 +21,9 @@ public class ItemSlot : MonoBehaviour
     public void Initialize(Item item)
     {
         this.item = item;
-        bannerSlot.sprite = item.banner;
+        bannerSlot.sprite = item.icon;
         textSlot.text = item.name;
 
-        lockedImage.SetActive(item.Locked(GameManager.Instance.gameData)); 
+        lockedImage.SetActive(item.Locked()); 
     }
 }

@@ -12,7 +12,6 @@ public class LevelManager : MonoBehaviour
 
     public Levels levels;
     [SerializeField] DifficultyLevels difficulties;
-    [SerializeField] Weapons weapons;
     [SerializeField] Enemies enemies;
 
     [SerializeField] Volume sceneVolume;
@@ -98,7 +97,7 @@ public class LevelManager : MonoBehaviour
             outfit.SetGear(gear.prefab, outfit.transform);
         }
 
-        Weapon weapon = Weapons.Instance[GameManager.Instance.gameData.equippedWeaponID];
+        Weapon weapon = Items.Instance.weapons[GameManager.Instance.gameData.equippedWeaponID];
         player.controller.weaponControllers = outfit.SetWeapon(weapon.prefab, outfit.transform);
         player.controller.animator.runtimeAnimatorController = weapon.controller;
 
@@ -125,7 +124,7 @@ public class LevelManager : MonoBehaviour
 
         BotOutfit outfit = enemyObj.GetComponent<BotOutfit>();
 
-        foreach (var gear in enemy.gears)
+        foreach (var gear in enemy.items)
         {
             outfit.SetGear(gear.prefab, outfit.transform);
         }

@@ -9,7 +9,7 @@ public class Enemy
 
     [SerializeField] int[] gearIDs;
 
-    public Item[] gears
+    public Item[] items
     {
         get
         {
@@ -17,7 +17,7 @@ public class Enemy
 
             foreach (var id in gearIDs)
             {
-                foreach (var item in Items.Instance.items)
+                foreach (var item in Items.Instance.gears)
                 {
                     if (item.id == id)
                     {
@@ -36,7 +36,7 @@ public class Enemy
     {
         get
         {
-            return Weapons.Instance[weaponID];
+            return Items.Instance.weapons[weaponID];
         }
     }
 
