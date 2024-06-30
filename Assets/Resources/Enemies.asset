@@ -16,8 +16,8 @@ MonoBehaviour:
   - id: 0
     prefab: {fileID: 8875070994121796977, guid: f506bf793bad1324f9d594eaa1ab40ef,
       type: 3}
-    gearIDs: 05000000
-    weaponID: 4
+    gearIDs: 0000000002000000
+    weaponID: 3
     drops:
     - rarity: 100
       prefab: {fileID: 1876570636509243283, guid: 960bcf87e6db561468a640c9ab62f7a3,
@@ -25,8 +25,8 @@ MonoBehaviour:
   - id: 1
     prefab: {fileID: 8875070994121796977, guid: f506bf793bad1324f9d594eaa1ab40ef,
       type: 3}
-    gearIDs: 0500000007000000
-    weaponID: 5
+    gearIDs: 0100000002000000
+    weaponID: 4
     drops:
     - rarity: 100
       prefab: {fileID: 1876570636509243283, guid: 960bcf87e6db561468a640c9ab62f7a3,

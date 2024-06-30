@@ -17,7 +17,7 @@ public class Enemy
 
             foreach (var id in gearIDs)
             {
-                foreach (var item in Items.Instance.gears)
+                foreach (var item in Items.Instance.gears.list)
                 {
                     if (item.id == id)
                     {

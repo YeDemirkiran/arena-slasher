@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -75,6 +76,22 @@ public class Weapon : Item
     public float parryDuration;
 }
 
+[System.Serializable]
+public class ListWithID<T> where T : Item
+{
+    public List<T> list;
+
+    public int Count { get { return list.Count; } }
+
+    public T this[int id]
+    {
+        get
+        {
+            return list.FirstOrDefault(x => x.id == id);
+        }
+    }
+}
+
 [CreateAssetMenu(fileName = "Items", menuName = "Scriptable Objects/Items")]
 public class Items : ScriptableObject
 {
@@ -94,18 +111,18 @@ public class Items : ScriptableObject
     }
 
     public List<ItemType> types;
-    public List<Gear> gears;
-    public List<Weapon> weapons;
+    public ListWithID<Gear> gears;
+    public ListWithID<Weapon> weapons;
 
     public Item this[int i]
     {
         get
         {
-            Item item = gears.FirstOrDefault(x => x.id == i);
+            Item item = gears[i];
 
             if (item == null)
             {
-                item = weapons.FirstOrDefault(x => x.id == i);
+                item = weapons[i];
             }
 
             return item;

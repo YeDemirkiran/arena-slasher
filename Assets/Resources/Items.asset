@@ -26,102 +26,68 @@ MonoBehaviour:
   - id: 5
     name: Double Sword
   gears:
-  - id: 0
-    excludeFromStore: 1
-    typeID: 0
-    name: HEAD_EMPTY
-    description: 
-    arenaID: 0
-    price: 0
-    prefab: {fileID: 0}
-    icon: {fileID: 0}
-  - id: 1
-    excludeFromStore: 0
-    typeID: 1
-    name: BODY_EMPTY
-    description: 
-    arenaID: 0
-    price: 0
-    prefab: {fileID: 0}
-    icon: {fileID: 0}
-  - id: 2
-    excludeFromStore: 0
-    typeID: 2
-    name: LEGS_EMPTY
-    description: 
-    arenaID: 0
-    price: 0
-    prefab: {fileID: 0}
-    icon: {fileID: 0}
-  - id: 3
-    excludeFromStore: 0
-    typeID: 3
-    name: FEET_EMPTY
-    description: 
-    arenaID: 0
-    price: 0
-    prefab: {fileID: 0}
-    icon: {fileID: 0}
-  - id: 6
-    excludeFromStore: 0
-    typeID: 0
-    name: Mohawk Hair
-    description: 
-    arenaID: 0
-    price: 25
-    prefab: {fileID: 3903423835090756995, guid: eeec6ecca54c15c418f2d0dba7508197,
-      type: 3}
-    icon: {fileID: 0}
-  - id: 7
-    excludeFromStore: 0
-    typeID: 0
-    name: Iron Helmet
-    description: 
-    arenaID: 0
-    price: 50
-    prefab: {fileID: 5362660531399981044, guid: d901603a911d69f459ceb59970be7af7,
-      type: 3}
-    icon: {fileID: 0}
-  - id: 8
-    excludeFromStore: 0
-    typeID: 1
-    name: Iron Armor
-    description: 
-    arenaID: 0
-    price: 75
-    prefab: {fileID: 1164285958295557463, guid: c51d08f0cff20be40b1d684139ec3286,
-      type: 3}
-    icon: {fileID: 0}
+    list:
+    - id: 0
+      excludeFromStore: 0
+      typeID: 0
+      name: Mohawk Hair
+      description: 
+      arenaID: 0
+      price: 25
+      prefab: {fileID: 3903423835090756995, guid: eeec6ecca54c15c418f2d0dba7508197,
+        type: 3}
+      icon: {fileID: 0}
+    - id: 1
+      excludeFromStore: 0
+      typeID: 0
+      name: Iron Helmet
+      description: 
+      arenaID: 0
+      price: 50
+      prefab: {fileID: 5362660531399981044, guid: d901603a911d69f459ceb59970be7af7,
+        type: 3}
+      icon: {fileID: 0}
+    - id: 2
+      excludeFromStore: 0
+      typeID: 1
+      name: Iron Armor
+      description: 
+      arenaID: 0
+      price: 75
+      prefab: {fileID: 1164285958295557463, guid: c51d08f0cff20be40b1d684139ec3286,
+        type: 3}
+      icon: {fileID: 0}
   weapons:
-  - id: 4
-    excludeFromStore: 0
-    typeID: 4
-    name: Single Sword
-    description: 
-    arenaID: 0
-    price: 0
-    prefab: {fileID: 7257401063311385245, guid: c6b06d50df32bf54d8eb4b8d83d39bef,
-      type: 3}
-    icon: {fileID: 0}
-    controller: {fileID: 9100000, guid: 4d5a3e56470fb0a4394ff25035df9dec, type: 2}
-    attackSoundClips: []
-    hitSoundClips: []
-    damagePerHit: 10
-    attackCooldown: 0.5
-    parryDuration: 0.5
-  - id: 5
-    excludeFromStore: 0
-    typeID: 5
-    name: Double Swords
-    description: 
-    arenaID: 0
-    price: 100
-    prefab: {fileID: 7257401063311385245, guid: 4a9902e9b12898741ac51fbe73778c2c,
-      type: 3}
-    icon: {fileID: 0}
-    controller: {fileID: 9100000, guid: a6aaf440e6d5caf44a1ec1405faba1e6, type: 2}
-    attackSoundClips: []
-    hitSoundClips: []
-    damagePerHit: 10
-    attackCooldown: 0.5
-    parryDuration: 0.5
+    list:
+    - id: 3
+      excludeFromStore: 0
+      typeID: 4
+      name: Single Sword
+      description: 
+      arenaID: 0
+      price: 0
+      prefab: {fileID: 7257401063311385245, guid: c6b06d50df32bf54d8eb4b8d83d39bef,
+        type: 3}
+      icon: {fileID: 0}
+      controller: {fileID: 9100000, guid: 4d5a3e56470fb0a4394ff25035df9dec, type: 2}
+      attackSoundClips: []
+      hitSoundClips: []
+      damagePerHit: 10
+      attackCooldown: 0.5
+      parryDuration: 0.5
+    - id: 4
+      excludeFromStore: 0
+      typeID: 5
+      name: Double Sword
+      description: 
+      arenaID: 0
+      price: 100
+      prefab: {fileID: 7257401063311385245, guid: 4a9902e9b12898741ac51fbe73778c2c,
+        type: 3}
+      icon: {fileID: 0}
+      controller: {fileID: 9100000, guid: a6aaf440e6d5caf44a1ec1405faba1e6, type: 2}
+      attackSoundClips: []
+      hitSoundClips: []
+      damagePerHit: 10
+      attackCooldown: 0.5
+      parryDuration: 0.5

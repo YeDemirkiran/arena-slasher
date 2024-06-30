@@ -16,7 +16,7 @@ MonoBehaviour:
     unlockedLevelIDs: 00000000
     boughtItemIDs: 0600000008000000
     equippedItemIDs: 00000000
-    boughtWeaponIDs: 04000000
-    equippedWeaponID: 4
+    boughtWeaponIDs: 03000000
+    equippedWeaponID: 3
     sfxLevel: 1
     musicLevel: 0.5
