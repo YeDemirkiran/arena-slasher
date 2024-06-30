@@ -98,6 +98,7 @@ public class LevelManager : MonoBehaviour
         }
 
         Weapon weapon = Items.Instance.weapons[GameManager.Instance.gameData.equippedWeaponID];
+        player.controller.currentWeapon = weapon;
         player.controller.weaponControllers = outfit.SetWeapon(weapon.prefab, outfit.transform);
         player.controller.animator.runtimeAnimatorController = weapon.controller;
 
@@ -129,6 +130,7 @@ public class LevelManager : MonoBehaviour
             outfit.SetGear(gear.prefab, outfit.transform);
         }
 
+        enemyBehaviour.controller.currentWeapon = enemy.weapon;
         enemyBehaviour.controller.weaponControllers = outfit.SetWeapon(enemy.weapon.prefab, outfit.transform);
         enemyBehaviour.controller.animator.runtimeAnimatorController = enemy.weapon.controller;
     }
