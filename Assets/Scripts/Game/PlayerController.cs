@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }
     public BotController controller { get; private set; }
-
+    DefaultControls controls;
 
     CameraController cameraController;
     GameObject deathMenu;
@@ -36,44 +36,44 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Start()
     {
+        controller.destroyOnDeath = false;
+
+        // Controls
+        while (InputManager.Instance == null) { yield return null; }
+        controls = InputManager.Instance.controls;
+
+        controls.Player.Attack.performed += delegate { controller.Attack(); };
+        controls.Player.Parry.performed += delegate { controller.Parry(); };
+
+        // Camera
         while (CameraController.Instance == null) { yield return null; }
         cameraController = CameraController.Instance;
 
+        controller.onAttack += () => cameraController.Shake(attackShake.x, attackShake.y, attackShake.z);
+
+        // UI
         while (UIManager.Instance == null) { yield return null; }
 
         UIManager.Instance.healthBar.controller = controller;
         UIManager.Instance.parryBar.controller = controller;
-
         deathMenu = UIManager.Instance.deathMenu.gameObject;
-
         controller.stunIcon = UIManager.Instance.stunIcon;
 
-        controller.onAttack += () => cameraController.Shake(attackShake.x, attackShake.y, attackShake.z);
-        controller.onDeath += () => 
+        controller.onDeath += () =>
         {
             GameManager.Instance.PauseGamePure();
             deathMenu.SetActive(true);
         };
-
-        controller.destroyOnDeath = false;
     }
 
     void Update()
     {
         if (GameManager.Instance.state != GameManager.GameState.Running) { return; }
 
-        controller.Move(Input.GetAxis("Vertical"));
-        controller.Rotate(Input.GetAxisRaw("Horizontal"));
+        Vector2 movement = controls.Player.Walk.ReadValue<Vector2>();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            controller.Attack();  
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            controller.Parry();
-        }   
+        controller.Move(movement.y);
+        controller.Rotate(movement.x);
     }
 
     public void ResetPlayer()
