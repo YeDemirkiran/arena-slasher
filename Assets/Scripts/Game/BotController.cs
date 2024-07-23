@@ -5,49 +5,43 @@ public class BotController : MonoBehaviour
 {
     CharacterController controller;
 
+    #region GENERAL
+    [Header("General")]
     public Animator animator;
+    [SerializeField] AudioSource audioSource;
 
     public float runningSpeed = 10f;
     public float rotationSpeed = 250f;
     public float gravity = -9.81f;
 
-    public float health { get; set; }
-    public bool destroyOnDeath { get; set; } = true;
-    public float maxHealth = 100f;
-    public UnityAction onDeath, onAttack;
-
-    public Weapon currentWeapon { get; set; }
-    [SerializeField] AudioSource audioSource;
-    public float parryCooldown;
-    [HideInInspector] public float parryCooldownTimer;
+    [SerializeField] float stunTime = 2f;
+    public RotatingObject stunIcon;
 
     Vector3 horizontalVelocity, verticalVelocity;
-
     bool moveCalledThisFrame = false;
 
     bool _stunned;
     public bool stunned { get { return _stunned; } private set { _stunned = value; stunIcon.gameObject.SetActive(value); animator.SetBool("Stunned", value); } }
 
+    #endregion
 
-    bool _parrying;
-    bool isParrying { get { return _parrying; } set { _parrying = value; animator.SetBool("Parrying", value); } }
+    #region HEALTH
+    public float health { get; set; }
+    public bool destroyOnDeath { get; set; } = true;
 
-    [SerializeField] float stunTime = 2f;
-    public RotatingObject stunIcon;
-    [SerializeField] GameObject bloodParticles;
-    float attackTimer, parryTimer, stunTimer;
+    [Header("Health")]
+    public float maxHealth = 100f;
+    public UnityAction onDeath, onAttack;
+    #endregion
 
-    [SerializeField] AudioClip[] warriorScreams, attackGrunts;
-
-    [SerializeField] string targetTag;
-
+    #region COMBAT
     WeaponController[] _weaponControllers;
-    public WeaponController[] weaponControllers 
-    { 
+    public WeaponController[] weaponControllers
+    {
         get
         {
             return _weaponControllers;
-        } 
+        }
         set
         {
             _weaponControllers = value;
@@ -59,6 +53,26 @@ public class BotController : MonoBehaviour
             }
         }
     }
+
+    float attackTimer, parryTimer, stunTimer;
+
+    public Weapon currentWeapon { get; set; }
+
+    [Header("Combat")]
+    [SerializeField] string targetTag;
+    public float parryCooldown;
+    [HideInInspector] public float parryCooldownTimer;
+
+    bool _parrying;
+    bool isParrying { get { return _parrying; } set { _parrying = value; animator.SetBool("Parrying", value); } }
+    #endregion 
+
+    #region VFX AND SFX
+    [Header("VFX & SFX")]
+    [SerializeField] GameObject bloodParticles;
+    [SerializeField] AudioClip[] warriorScreams, attackGrunts;
+    #endregion
+
 
     void Awake()
     {

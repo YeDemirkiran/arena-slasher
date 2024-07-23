@@ -42,8 +42,8 @@ public class PlayerController : MonoBehaviour
         while (InputManager.Instance == null) { yield return null; }
         controls = InputManager.Instance.controls;
 
-        controls.Player.Attack.performed += delegate { controller.Attack(); };
-        controls.Player.Parry.performed += delegate { controller.Parry(); };
+        controls.Player.Attack.performed += delegate { controller.Attack(); Debug.Log("Player press: Attack!"); };
+        controls.Player.Parry.performed += delegate { controller.Parry(); Debug.Log("Player press: Parry!"); };
 
         // Camera
         while (CameraController.Instance == null) { yield return null; }
