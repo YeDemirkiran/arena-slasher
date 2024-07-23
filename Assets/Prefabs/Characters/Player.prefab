@@ -1420,8 +1420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fdf2dc874564d4ea672420a65050ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
-  deathMenu: {fileID: 0}
   attackShake: {x: 0.1, y: 4, z: 1}
 --- !u!114 &174739239649461594
 MonoBehaviour:
@@ -1436,16 +1434,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1513187935490837729}
+  audioSource: {fileID: 8981909436537350096}
   runningSpeed: 10
   rotationSpeed: 500
   gravity: -20
-  maxHealth: 100
-  weaponsList: {fileID: 11400000, guid: 9648aefe5ef044748917aaf580bcee35, type: 2}
-  audioSource: {fileID: 8981909436537350096}
-  parryCooldown: 0.5
-  parryCooldownTimer: 0
   stunTime: 1
   stunIcon: {fileID: 0}
+  maxHealth: 100
+  targetTag: Enemy
+  parryCooldown: 0.5
+  parryCooldownTimer: 0
+  maxAttacksInQueue: 3
   bloodParticles: {fileID: 2116337426646649413, guid: 442500dd6a68fec43b5012bae35e2e8f,
     type: 3}
   warriorScreams:
@@ -1455,7 +1454,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aacc5892c150df245a902211fdbd432b, type: 3}
   - {fileID: 8300000, guid: a49e72f1f1cd8e14a8ae5d51ef27412e, type: 3}
   - {fileID: 8300000, guid: beadd68a15e4aea43bcb5969a25eab06, type: 3}
-  targetTag: Enemy
 --- !u!114 &6972626337075990088
 MonoBehaviour:
   m_ObjectHideFlags: 0

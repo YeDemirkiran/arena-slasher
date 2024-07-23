@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -63,6 +64,22 @@ public class BotController : MonoBehaviour
     public float parryCooldown;
     [HideInInspector] public float parryCooldownTimer;
 
+    [SerializeField] int maxAttacksInQueue = 3;
+
+    int _attacksInQueue;
+    int currentAttacksInQueue 
+    { 
+        get 
+        { 
+            return _attacksInQueue; 
+        } 
+        set 
+        {
+            _attacksInQueue = Mathf.Clamp(value, 0, maxAttacksInQueue);
+        } 
+    }
+    Coroutine currentAttackCoroutine;
+
     bool _parrying;
     bool isParrying { get { return _parrying; } set { _parrying = value; animator.SetBool("Parrying", value); } }
     #endregion 
@@ -82,6 +99,11 @@ public class BotController : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+
+        if (currentAttackCoroutine == null)
+        {
+            currentAttackCoroutine = StartCoroutine(AttackIE());
+        }
     }
 
     void Update()
@@ -184,16 +206,41 @@ public class BotController : MonoBehaviour
 
     public bool Attack()
     {
-        if (stunned || attackTimer < currentWeapon.attackCooldown) return false;
+        if (stunned) return false;
 
-        SetWeaponAttack(false);
-
-        isParrying = false;
-        animator.SetTrigger("Slash");
-        attackTimer = 0f;
-        audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
+        //Debug.Log("Before: " + currentAttacksInQueue);
+        currentAttacksInQueue++;
+        //Debug.Log("After: " + currentAttacksInQueue);
 
         return true;
+    }
+
+    IEnumerator AttackIE()
+    {
+        while (true)
+        {
+            //Debug.Log("Queue: " + currentAttacksInQueue);
+            if (currentAttacksInQueue > 0)
+            {
+                if (!GetWeaponAttack())
+                {
+                    Debug.Log("1");
+
+                    SetWeaponAttack(false);
+                    isParrying = false;
+                    animator.SetTrigger("Slash");
+                    audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
+
+                    currentAttacksInQueue--;
+                }
+                else
+                {
+                    Debug.Log("2");
+                } 
+            }
+
+            yield return null;
+        }
     }
 
     public void GiveDamage(BotController enemy, WeaponController caller, Vector3 attackPoint)
@@ -222,6 +269,11 @@ public class BotController : MonoBehaviour
         {
             item.isAttacking = value;
         }
+    }
+
+    public bool GetWeaponAttack()
+    {
+        return weaponControllers[0].isAttacking;
     }
 
     public void Parry()
