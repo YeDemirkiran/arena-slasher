@@ -35212,21 +35212,13 @@ MonoBehaviour:
   playerMenuController: {fileID: 0}
   itemInfoName: {fileID: 875105454}
   itemTypeBanners:
-  - type:
-      id: 0
-      name: 
+  - typeID: 0
     banner: {fileID: 21300000, guid: cc56b4d2353700140af138a1435c237c, type: 3}
-  - type:
-      id: 0
-      name: 
+  - typeID: 0
     banner: {fileID: 21300000, guid: f185b1e52e4c50344b6ca99a924400dd, type: 3}
-  - type:
-      id: 0
-      name: 
+  - typeID: 0
     banner: {fileID: 21300000, guid: e13d9efe5dea7ec409d7a46f646db44f, type: 3}
-  - type:
-      id: 0
-      name: 
+  - typeID: 0
     banner: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   buyButton: {fileID: 922355663}
   itemStripPrefab: {fileID: 4441465966326063888, guid: 57dc356ddc52c564885ec09e9afe4b3f,
@@ -47697,21 +47689,13 @@ MonoBehaviour:
   playerMenuController: {fileID: 4580818480673469689}
   itemInfoName: {fileID: 1332612561}
   itemTypeBanners:
-  - type:
-      id: 0
-      name: 
+  - typeID: 0
     banner: {fileID: 21300000, guid: cc56b4d2353700140af138a1435c237c, type: 3}
-  - type:
-      id: 0
-      name: 
+  - typeID: 1
     banner: {fileID: 21300000, guid: f185b1e52e4c50344b6ca99a924400dd, type: 3}
-  - type:
-      id: 0
-      name: 
+  - typeID: 2
     banner: {fileID: 21300000, guid: e13d9efe5dea7ec409d7a46f646db44f, type: 3}
-  - type:
-      id: 0
-      name: 
+  - typeID: 3
     banner: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   buyButton: {fileID: 1235059851}
   itemStripPrefab: {fileID: 4441465966326063888, guid: 57dc356ddc52c564885ec09e9afe4b3f,
@@ -47724,21 +47708,13 @@ MonoBehaviour:
   botOufit: {fileID: 238527943420960166}
   camEffects: {fileID: 330585548}
   cameraPositions:
-  - type:
-      id: 0
-      name: 
+  - typeID: 0
     targetTransform: {fileID: 341532877}
-  - type:
-      id: 0
-      name: 
+  - typeID: 1
     targetTransform: {fileID: 958837229}
-  - type:
-      id: 0
-      name: 
+  - typeID: 2
     targetTransform: {fileID: 994798740}
-  - type:
-      id: 0
-      name: 
+  - typeID: 3
     targetTransform: {fileID: 1770155646}
 --- !u!1 &2034263068
 GameObject:

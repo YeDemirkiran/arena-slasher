@@ -7,14 +7,14 @@ using UnityEngine.UI;
 [System.Serializable]
 public class ItemTypeBanner
 {
-    public ItemType type;
+    public int typeID;
     public Sprite banner;
 }
 
 [System.Serializable]
 public class ItemTypeCamera
 {
-    public ItemType type;
+    public int typeID;
     public Transform targetTransform;
 }
 
@@ -99,7 +99,7 @@ public class ItemManager : MonoBehaviour
         {
             ItemStrip strip = Instantiate(itemStripPrefab, contentTransform).GetComponent<ItemStrip>();
             strip.manager = this;
-            strip.Type = itemTypeBanners[i].type;
+            strip.Type = Items.Instance.types[i];
             strip.Banner = itemTypeBanners[i].banner;
             strip.UpdateContents();
 
@@ -142,6 +142,8 @@ public class ItemManager : MonoBehaviour
 
     public void DrawInfoScreen()
     {
+        if (selectedSlot == null) return;
+
         var value = selectedSlot;
 
         itemInfoName.text = value.item.name;
@@ -167,7 +169,7 @@ public class ItemManager : MonoBehaviour
     {
         foreach (var item in cameraPositions)
         {
-            if (item.type == type)
+            if (Items.Instance.types[item.typeID] == type)
             {
                 camEffects.MoveToTransform(item.targetTransform, 0.25f, AnimationCurve.EaseInOut(0f, 0f, 1f, 1f));
                 break;
