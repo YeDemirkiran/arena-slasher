@@ -65,6 +65,9 @@ public class BotController : MonoBehaviour
     [HideInInspector] public float parryCooldownTimer;
 
     [SerializeField] int maxAttacksInQueue = 3;
+    [SerializeField] float queueAttackCooldown;
+    float queueAttackTimer;
+    bool queueTimerOnSet = false;
 
     int _attacksInQueue;
     int currentAttacksInQueue 
@@ -78,6 +81,7 @@ public class BotController : MonoBehaviour
             _attacksInQueue = Mathf.Clamp(value, 0, maxAttacksInQueue);
         } 
     }
+
     Coroutine currentAttackCoroutine;
 
     bool _parrying;
@@ -217,26 +221,41 @@ public class BotController : MonoBehaviour
 
     IEnumerator AttackIE()
     {
+        int performedAttacks = 0;
+
         while (true)
         {
-            //Debug.Log("Queue: " + currentAttacksInQueue);
-            if (currentAttacksInQueue > 0)
+            if (queueTimerOnSet)
             {
-                if (!GetWeaponAttack())
+                if (queueAttackTimer < queueAttackCooldown)
                 {
-                    Debug.Log("1");
-
+                    queueAttackTimer += Time.deltaTime;
+                }
+                else
+                {
+                    queueTimerOnSet = false;
+                    currentAttacksInQueue = 0;
+                    performedAttacks = 0;
+                    queueAttackTimer = 0f;
+                }
+            }
+            else
+            {
+                if ((currentAttacksInQueue > 0) && !GetWeaponAttack())
+                {
                     SetWeaponAttack(false);
                     isParrying = false;
                     animator.SetTrigger("Slash");
                     audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
 
+                    performedAttacks++;
                     currentAttacksInQueue--;
+
+                    if (performedAttacks >= maxAttacksInQueue)
+                    {
+                        queueTimerOnSet = true;  
+                    }
                 }
-                else
-                {
-                    Debug.Log("2");
-                } 
             }
 
             yield return null;

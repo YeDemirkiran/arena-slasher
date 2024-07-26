@@ -1886,6 +1886,7 @@ MonoBehaviour:
   parryCooldown: 2
   parryCooldownTimer: 0
   maxAttacksInQueue: 3
+  queueAttackCooldown: 0.4
   bloodParticles: {fileID: 2116337426646649413, guid: 442500dd6a68fec43b5012bae35e2e8f,
     type: 3}
   warriorScreams:
