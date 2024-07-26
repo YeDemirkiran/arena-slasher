@@ -61,8 +61,9 @@ public class PlayerController : MonoBehaviour
 
         controller.onDeath += () =>
         {
-            GameManager.Instance.PauseGamePure();
             deathMenu.SetActive(true);
+            GameManager.Instance.PauseGamePure();
+            if (deathMenu != null) { Debug.Log("Death Menu is not null!"); }
         };
     }
 

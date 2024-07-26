@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] GameObject pauseMenu, deathMenu;
+    [SerializeField] GameObject pauseMenu;
 
     // Start is called before the first frame update
     void Awake()

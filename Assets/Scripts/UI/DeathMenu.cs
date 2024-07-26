@@ -7,10 +7,10 @@ public class DeathMenu : MonoBehaviour
     AudioSource audioSource;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     // Update is called once per frame
