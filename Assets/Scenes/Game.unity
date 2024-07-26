@@ -2759,6 +2759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 643514420}
   _parryBar: {fileID: 1576544436}
+  pauseMenu: {fileID: 2113635662}
   _deathMenu: {fileID: 1848231272}
   _stunIcon: {fileID: 634165199}
 --- !u!1 &861722756
@@ -8162,7 +8163,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1108115109}
-  - component: {fileID: 1108115110}
   m_Layer: 5
   m_Name: Menus
   m_TagString: Untagged
@@ -8192,20 +8192,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1108115110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1108115108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ae234725d13cfd4d9777d01e0083628, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 2113635662}
-  deathMenu: {fileID: 1848231267}
 --- !u!1 &1180686101
 GameObject:
   m_ObjectHideFlags: 0

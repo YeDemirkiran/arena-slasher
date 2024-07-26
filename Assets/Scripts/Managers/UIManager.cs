@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] ParryBar _parryBar;
     public ParryBar parryBar { get { return _parryBar; } }
 
+    [SerializeField] GameObject pauseMenu;
+
     [SerializeField] DeathMenu _deathMenu;
     public DeathMenu deathMenu { get { return _deathMenu; } }
 
@@ -25,6 +27,9 @@ public class UIManager : MonoBehaviour
         }
 
         Instance = this;
+
+        GameManager.Instance.onPause += () => pauseMenu.SetActive(true);
+        GameManager.Instance.onResume += () => pauseMenu.SetActive(false);
     }
 
     void OnDestroy()
