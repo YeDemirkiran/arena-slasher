@@ -17,8 +17,8 @@ MonoBehaviour:
     name: Testing
     description: No Enemies
     maxEnemies: 0
-    duration: 0
-    excludeFromGame: 1
+    duration: 999999
+    excludeFromGame: 0
   - id: 1
     name: Passive
     description: Enemies only follow, don't attack

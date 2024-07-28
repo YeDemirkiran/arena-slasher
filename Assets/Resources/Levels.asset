@@ -51,7 +51,7 @@ MonoBehaviour:
     spawnArea: {x: 96, y: 96}
     spawnTime: 10
     enemyPerSpawn: 2
-    enemyIDs: 0000000001000000
+    enemyIDs: 00000000
   - id: 1
     name: Thundersnow
     description: A savage group of warriors' hideout at the snowy mountains
