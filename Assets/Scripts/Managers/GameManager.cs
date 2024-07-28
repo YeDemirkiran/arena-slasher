@@ -73,6 +73,12 @@ public class GameManager : MonoBehaviour
     GameState _state;
     public GameState state { get { return _state; } private set { _state = value; EvaluateGameState(); } }
 
+    float _gameSpeed = 1f;
+    public float gameSpeed
+    {
+        get { return _gameSpeed; } private set { _gameSpeed = Mathf.Clamp(value, 0f, Mathf.Infinity); Time.timeScale = _gameSpeed; Debug.Log("GAME SPEED: " + _gameSpeed); }
+    }
+
     public UnityAction onResume, onPause, onGameBegin, onMainMenu;
 
     [HideInInspector] public GameData gameData;
@@ -106,6 +112,15 @@ public class GameManager : MonoBehaviour
             {
                 PauseGame();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            gameSpeed -= 0.1f;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            gameSpeed += 0.1f;
         }
     }
 
@@ -163,12 +178,12 @@ public class GameManager : MonoBehaviour
     {
         if (state == GameState.Running)
         {
-            Time.timeScale = 1f;
+            Time.timeScale = gameSpeed;
             SetMouse(false);
         }
         else if (state == GameState.Paused || state == GameState.MainMenu)
         {
-            Time.timeScale = 0f;
+            Time.timeScale = 0f; // Set the timescale itself so the previous game speed is stored safely
             SetMouse(true);
         }
     }
