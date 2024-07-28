@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Windows;
 
 public class BotController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class BotController : MonoBehaviour
 
     bool _stunned;
     public bool stunned { get { return _stunned; } private set { _stunned = value; stunIcon.gameObject.SetActive(value); animator.SetBool("Stunned", value); } }
+
+    bool movedLastFrame;
 
     #endregion
 
@@ -172,12 +175,11 @@ public class BotController : MonoBehaviour
         if (!isParrying && !stunned && verticalVelocity.y >= -0.1f) // Since vertical velocity is negative
         {
             horizontalVelocity = transform.forward * input * runningSpeed * Time.deltaTime;
-            animator.SetBool("Running", input > 0.1f);
+            
         }
         else
         {
             horizontalVelocity = Vector3.zero;
-            animator.SetBool("Running", false);
         }
 
         moveCalledThisFrame = true;
@@ -195,7 +197,9 @@ public class BotController : MonoBehaviour
         if (controller.isGrounded) verticalVelocity.y = 0f;
         else verticalVelocity.y += gravity * Time.deltaTime * Time.deltaTime;
 
-        animator.SetBool("Falling", verticalVelocity.y < -0.05f);
+        if (verticalVelocity.y < -0.05f)
+        {
+        }
 
         if (verticalVelocity.y < -0.05f && !audioSource.isPlaying && warriorScreams.Length > 0)
         {
@@ -206,6 +210,17 @@ public class BotController : MonoBehaviour
     public void ApplyMovement()
     {
         controller.Move(horizontalVelocity + verticalVelocity);
+
+        if (verticalVelocity.y < -0.05f) // We're falling
+        {
+            animator.Play("Falling", 0);
+        }
+        else // We're not falling
+        {
+            // Find a better way to determine whether we're moving or not
+            // This works too but I'm certain that it won't in the future
+            animator.Play(Mathf.Abs(horizontalVelocity.magnitude) > 0.001f ? "Running" : "Standing", 0); 
+        } 
     }
 
     public bool Attack()
@@ -214,6 +229,7 @@ public class BotController : MonoBehaviour
 
         //Debug.Log("Before: " + currentAttacksInQueue);
         currentAttacksInQueue++;
+        animator.SetLayerWeight(1, 1f);
         //Debug.Log("After: " + currentAttacksInQueue);
 
         return true;
@@ -237,6 +253,9 @@ public class BotController : MonoBehaviour
                     currentAttacksInQueue = 0;
                     performedAttacks = 0;
                     queueAttackTimer = 0f;
+
+                    animator.SetLayerWeight(1, 0f);
+                    animator.Play("Standing", 1);
                 }
             }
             else
@@ -245,7 +264,8 @@ public class BotController : MonoBehaviour
                 {
                     SetWeaponAttack(false);
                     isParrying = false;
-                    animator.SetTrigger("Slash");
+                    
+                    animator.Play("Attack", 1);
                     audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
 
                     performedAttacks++;

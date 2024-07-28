@@ -69,7 +69,7 @@ MonoBehaviour:
       prefab: {fileID: 7257401063311385245, guid: c6b06d50df32bf54d8eb4b8d83d39bef,
         type: 3}
       icon: {fileID: 0}
-      controller: {fileID: 9100000, guid: 4d5a3e56470fb0a4394ff25035df9dec, type: 2}
+      controller: {fileID: 9100000, guid: 5d6e7701c0cf3fa469db57ff08324f4f, type: 2}
       attackSoundClips:
       - {fileID: 8300000, guid: 9a26a3f9699efdc46a183f869c727fdf, type: 3}
       - {fileID: 8300000, guid: bc239572c53879749a5ad1f0e5e3640a, type: 3}
