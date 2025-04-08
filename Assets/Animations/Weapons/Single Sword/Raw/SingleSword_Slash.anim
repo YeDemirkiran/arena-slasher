@@ -12070,7 +12070,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 0.20833333
+  - time: 0.33333334
     functionName: SetAttackMode
     data: 
     objectReferenceParameter: {fileID: 0}

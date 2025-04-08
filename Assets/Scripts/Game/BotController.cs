@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Windows;
@@ -228,8 +229,13 @@ public class BotController : MonoBehaviour
         if (stunned) return false;
 
         //Debug.Log("Before: " + currentAttacksInQueue);
+        if (currentAttacksInQueue == 0)
+        {
+            animator.SetLayerWeight(1, 1f);
+        }
         currentAttacksInQueue++;
-        animator.SetLayerWeight(1, 1f);
+        Debug.Log("Queue " + currentAttacksInQueue);
+
         //Debug.Log("After: " + currentAttacksInQueue);
 
         return true;
@@ -239,44 +245,80 @@ public class BotController : MonoBehaviour
     {
         int performedAttacks = 0;
 
+        float attackTimer = 0f;
+        float attackTimeOut = 0.25f;
+
         while (true)
         {
-            if (queueTimerOnSet)
+            if (!IsAnimationPlaying("Attack", 1))
             {
-                if (queueAttackTimer < queueAttackCooldown)
+                if (currentAttacksInQueue > 0)
                 {
-                    queueAttackTimer += Time.deltaTime;
-                }
-                else
-                {
-                    queueTimerOnSet = false;
-                    currentAttacksInQueue = 0;
-                    performedAttacks = 0;
-                    queueAttackTimer = 0f;
-
-                    animator.SetLayerWeight(1, 0f);
-                    animator.Play("Standing", 1);
+                    animator.Play("Attack", 1);
+                    currentAttacksInQueue--;
                 }
             }
             else
             {
-                if ((currentAttacksInQueue > 0) && !GetWeaponAttack())
-                {
-                    SetWeaponAttack(false);
-                    isParrying = false;
-                    
-                    animator.Play("Attack", 1);
-                    audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
 
-                    performedAttacks++;
-                    currentAttacksInQueue--;
-
-                    if (performedAttacks >= maxAttacksInQueue)
-                    {
-                        queueTimerOnSet = true;  
-                    }
-                }
             }
+
+
+            /////////////
+            //if (queueTimerOnSet)
+            //{
+            //    if (queueAttackTimer < queueAttackCooldown)
+            //    {
+            //        queueAttackTimer += Time.deltaTime;
+            //    }
+            //    else
+            //    {
+            //        queueTimerOnSet = false;
+            //        currentAttacksInQueue = 0;
+            //        performedAttacks = 0;
+            //        queueAttackTimer = 0f; 
+            //    }
+            //}
+            //else
+            //{
+            //    if (currentAttacksInQueue > 0)
+            //    {
+            //        if (!IsAnimationPlaying("Attack", 1))
+            //        {
+
+            //            SetWeaponAttack(false);
+            //            isParrying = false;
+
+                        
+
+            //            animator.Play("Attack", 1);
+            //            audioSource.PlayOneShot(currentWeapon.attackSoundClips[Random.Range(0, currentWeapon.attackSoundClips.Length)]);
+
+            //            performedAttacks++;
+            //            currentAttacksInQueue--;
+
+            //            if (performedAttacks >= maxAttacksInQueue)
+            //            {
+            //                queueTimerOnSet = true;
+            //            }
+
+            //            Debug.Break();
+            //        }  
+            //    }
+            //    else
+            //    {
+            //        //if (!IsAnimationPlaying("Attack", 1))
+            //        //{
+            //        //    animator.SetLayerWeight(1, 0f);
+            //        //    animator.Play("Standing", 1);
+            //        //    Debug.Log("Anim not playing");
+            //        //}
+            //        //else
+            //        //{
+            //        //    Debug.Log("Anim playing");
+            //        //}
+            //    }
+            //}
 
             yield return null;
         }
@@ -338,5 +380,11 @@ public class BotController : MonoBehaviour
         parryCooldownTimer = parryCooldown;
         parryTimer = attackTimer = stunTimer = 0f;
         horizontalVelocity = verticalVelocity = Vector3.zero;
+    }
+
+    bool IsAnimationPlaying(string name, int layer)
+    {
+        return (animator.GetCurrentAnimatorStateInfo(layer).IsName(name) &&
+            animator.GetCurrentAnimatorStateInfo(layer).normalizedTime < 1.0f);
     }
 }
